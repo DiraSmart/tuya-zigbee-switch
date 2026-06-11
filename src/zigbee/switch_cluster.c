@@ -29,6 +29,8 @@ extern uint8_t switch_clusters_cnt;
 void switch_cluster_on_button_press(zigbee_switch_cluster *cluster);
 void switch_cluster_on_button_release(zigbee_switch_cluster *cluster);
 void switch_cluster_on_button_long_press(zigbee_switch_cluster *cluster);
+void switch_cluster_on_multi_press(zigbee_switch_cluster *cluster,
+                                   uint8_t press_count);
 static bool switch_cluster_has_valid_relay(
     const zigbee_switch_cluster *cluster);
 
@@ -69,7 +71,8 @@ static void switch_cluster_flash_indicator(zigbee_switch_cluster *cluster) {
     }
     // Only flash when LED is idle (not in "not connected" forever-blink)
     if (cluster->indicator_led->blink_times_left == 0) {
-        led_blink(cluster->indicator_led, 50, 50, 1);
+        // 3 blinks: feedback that the button is detached / child-locked
+        led_blink(cluster->indicator_led, 100, 100, 3);
     }
 }
 
@@ -98,6 +101,8 @@ void switch_cluster_add_to_endpoint(zigbee_switch_cluster *cluster,
         (ev_button_callback_t)switch_cluster_on_button_release;
     cluster->button->on_long_press =
         (ev_button_callback_t)switch_cluster_on_button_long_press;
+    cluster->button->on_multi_press =
+        (ev_button_multi_press_callback_t)switch_cluster_on_multi_press;
     cluster->button->callback_param = cluster;
 
     SETUP_ATTR(0, ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_TYPE, ZCL_DATA_TYPE_ENUM8,
@@ -117,11 +122,13 @@ void switch_cluster_add_to_endpoint(zigbee_switch_cluster *cluster,
                ZCL_DATA_TYPE_UINT8, ATTR_WRITABLE, cluster->level_move_rate);
     SETUP_ATTR(7, ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_BINDING_MODE,
                ZCL_DATA_TYPE_ENUM8, ATTR_WRITABLE, cluster->binded_mode);
+    SETUP_ATTR(8, ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_CHILD_LOCK_ENABLED,
+               ZCL_DATA_TYPE_BOOLEAN, ATTR_WRITABLE, cluster->child_lock_enabled);
 
     // Configuration
     endpoint->clusters[endpoint->cluster_count].cluster_id =
         ZCL_CLUSTER_ON_OFF_SWITCH_CONFIG;
-    endpoint->clusters[endpoint->cluster_count].attribute_count = 8;
+    endpoint->clusters[endpoint->cluster_count].attribute_count = 9;
     endpoint->clusters[endpoint->cluster_count].attributes      = cluster->attr_infos;
     endpoint->clusters[endpoint->cluster_count].is_server       = 1;
     endpoint->cluster_count++;
@@ -410,27 +417,31 @@ void switch_cluster_on_button_release(zigbee_switch_cluster *cluster) {
 }
 
 void switch_cluster_on_button_long_press(zigbee_switch_cluster *cluster) {
-    if (cluster->mode == ZCL_ONOFF_CONFIGURATION_SWITCH_TYPE_TOGGLE) {
-        // Toggle does not support modes (RISE, SHORT, LONG)
+    // The button long-press duration is configured to ~6s, so holding the
+    // touch button for that long triggers a factory reset / re-pair.
+    (void)cluster;
+    hal_factory_reset();
+}
+
+void switch_cluster_on_multi_press(zigbee_switch_cluster *cluster,
+                                   uint8_t press_count) {
+    // 5 quick presses toggle the child lock, but only when the child lock
+    // feature is enabled for this switch.
+    if (!cluster->child_lock_enabled) {
         return;
     }
-
-    if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_LONG) {
-        if (switch_cluster_has_valid_relay(cluster)) {
-            relay_cluster_toggle(&relay_clusters[cluster->relay_index - 1]);
-        }
+    if (press_count != 5) {
+        return;
     }
-
-    if (cluster->binded_mode == ZCL_ONOFF_CONFIGURATION_BINDED_MODE_LONG) {
-        switch_cluster_binding_action_on(cluster);
+    if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED) {
+        cluster->relay_mode = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_SHORT;
+    } else {
+        cluster->relay_mode = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED;
     }
-
-    switch_cluster_level_control(cluster);
-
-    cluster->multistate_state = MULTISTATE_LONG_PRESS;
-    hal_zigbee_notify_attribute_changed(cluster->endpoint,
-                                        ZCL_CLUSTER_MULTISTATE_INPUT_BASIC,
-                                        ZCL_ATTR_MULTISTATE_INPUT_PRESENT_VALUE);
+    switch_cluster_store_attrs_to_nv(cluster);
+    hal_zigbee_notify_attribute_changed(
+        cluster->endpoint, ZCL_CLUSTER_ON_OFF_SWITCH_CONFIG,
+        ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_RELAY_MODE);
 }
 
 void synchronize_multistate_state(zigbee_switch_cluster *cluster) {
@@ -472,6 +483,24 @@ void switch_cluster_on_write_attr(zigbee_switch_cluster *cluster,
             cluster->button->pressed_when_high = 0;
         }
     }
+    // Child lock gating: the lock (relay_mode = detached) can only be engaged
+    // while the child lock feature is enabled for this switch.
+    if (attribute_id == ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_CHILD_LOCK_ENABLED &&
+        !cluster->child_lock_enabled &&
+        cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED) {
+        cluster->relay_mode = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_SHORT;
+        hal_zigbee_notify_attribute_changed(
+            cluster->endpoint, ZCL_CLUSTER_ON_OFF_SWITCH_CONFIG,
+            ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_RELAY_MODE);
+    }
+    if (attribute_id == ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_RELAY_MODE &&
+        cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED &&
+        !cluster->child_lock_enabled) {
+        cluster->relay_mode = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_SHORT;
+        hal_zigbee_notify_attribute_changed(
+            cluster->endpoint, ZCL_CLUSTER_ON_OFF_SWITCH_CONFIG,
+            ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_RELAY_MODE);
+    }
     switch_cluster_store_attrs_to_nv(cluster);
 }
 
@@ -486,6 +515,7 @@ void switch_cluster_store_attrs_to_nv(zigbee_switch_cluster *cluster) {
         cluster->button->long_press_duration_ms;
     nv_config_buffer.level_move_rate = cluster->level_move_rate;
     nv_config_buffer.binded_mode     = cluster->binded_mode;
+    nv_config_buffer.child_lock_enabled = cluster->child_lock_enabled;
     hal_nvm_write(NV_ITEM_SWITCH_CLUSTER_DATA(cluster->switch_idx),
                   sizeof(zigbee_switch_cluster_config),
                   (uint8_t *)&nv_config_buffer);
@@ -508,6 +538,7 @@ void switch_cluster_load_attrs_from_nv(zigbee_switch_cluster *cluster) {
         nv_config_buffer.button_long_press_duration;
     cluster->level_move_rate = nv_config_buffer.level_move_rate;
     cluster->binded_mode     = nv_config_buffer.binded_mode;
+    cluster->child_lock_enabled = nv_config_buffer.child_lock_enabled;
 
     // Validate relay_index to prevent out-of-bounds access
     if (relay_clusters_cnt == 0) {

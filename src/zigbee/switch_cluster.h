@@ -14,6 +14,7 @@ typedef struct {
     uint16_t button_long_press_duration;
     uint8_t  level_move_rate;
     uint8_t  binded_mode;
+    uint8_t  child_lock_enabled;
 } zigbee_switch_cluster_config;
 
 typedef struct {
@@ -24,8 +25,9 @@ typedef struct {
     uint8_t              relay_mode;
     uint8_t              relay_index;
     uint8_t              binded_mode;
+    uint8_t              child_lock_enabled;
     button_t *           button;
-    hal_zigbee_attribute attr_infos[8];
+    hal_zigbee_attribute attr_infos[9];
     uint16_t             multistate_state;
     hal_zigbee_attribute multistate_attr_infos[4];
     uint8_t              level_move_rate;
