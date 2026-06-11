@@ -40,3 +40,15 @@ void network_indicator_not_connected(network_indicator_t *indicator) {
         led++;
     }
 }
+
+// Whole-device child lock active: hold the network LED steady ON as a clear
+// "locked" indicator for the user.
+void network_indicator_child_lock_active(network_indicator_t *indicator) {
+    led_t **led = indicator->leds;
+
+    while (*led != NULL && (led - indicator->leds) < 4) {
+        (*led)->blink_times_left = 0;
+        led_on(*led);
+        led++;
+    }
+}

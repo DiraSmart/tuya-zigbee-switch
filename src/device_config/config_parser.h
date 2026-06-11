@@ -18,5 +18,6 @@ extern battery_t battery;
 void parse_config();
 void init_reporting();
 void handle_version_changes();
+void refresh_network_led(void);
 
 #endif

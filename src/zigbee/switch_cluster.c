@@ -4,6 +4,7 @@
 #include "consts.h"
 #include "device_config/nvm_items.h"
 #include "device_config/device_params_nv.h"
+#include "device_config/config_parser.h"
 #include "hal/nvm.h"
 
 #include "hal/printf_selector.h"
@@ -349,12 +350,7 @@ void switch_cluster_level_control(zigbee_switch_cluster *cluster) {
 
 void switch_cluster_on_button_press(zigbee_switch_cluster *cluster) {
     if (g_child_lock_active) {
-        // child-locked: button does nothing but blink the indicator as feedback
-        if (cluster->indicator_led != NULL &&
-            cluster->indicator_led->blink_times_left == 0) {
-            led_blink(cluster->indicator_led, 100, 100, 3);
-        }
-        return;
+        return; // child-locked: button does nothing (network LED shows the lock)
     }
     if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED) {
         // virtual (decoupled) button: light the indicator while held, off on release
@@ -462,6 +458,7 @@ void switch_cluster_on_multi_press(zigbee_switch_cluster *cluster,
         return;
     }
     device_params_set_child_lock_active(!g_child_lock_active);
+    refresh_network_led();
     hal_zigbee_notify_attribute_changed(1, ZCL_CLUSTER_BASIC,
                                         ZCL_ATTR_BASIC_CHILD_LOCK);
 }

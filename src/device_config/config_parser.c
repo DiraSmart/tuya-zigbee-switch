@@ -32,7 +32,9 @@ void peripherals_init(void);
 network_indicator_t network_indicator = {
     .leds                        = { NULL, NULL, NULL, NULL },
     .has_dedicated_led           = 0,
-    .manual_state_when_connected = 1,
+    // Off when connected by default, so the network LED can serve as the
+    // child-lock indicator (steady ON only while child-locked).
+    .manual_state_when_connected = 0,
 };
 
 led_t   leds[5];
@@ -397,6 +399,20 @@ void parse_config() {
     printf("Config parsed successfully\r\n");
 }
 
+// Drive the network LED honoring the whole-device child lock:
+//   child-locked       -> steady ON (lock indicator)
+//   joined, unlocked   -> normal (manual state, off by default)
+//   not joined         -> blink (pairing)
+void refresh_network_led(void) {
+    if (g_child_lock_active) {
+        network_indicator_child_lock_active(&network_indicator);
+    } else if (hal_zigbee_get_network_status() == HAL_ZIGBEE_NETWORK_JOINED) {
+        network_indicator_connected(&network_indicator);
+    } else {
+        network_indicator_not_connected(&network_indicator);
+    }
+}
+
 void network_indicator_on_network_status_change(
     hal_zigbee_network_status_t new_status) {
     printf("Network status changed to %d\r\n", new_status);
@@ -404,12 +420,10 @@ void network_indicator_on_network_status_change(
         if (battery.pin != HAL_INVALID_PIN) {
             network_indicator.manual_state_when_connected = 0;
         }
-        network_indicator_connected(&network_indicator);
         update_switch_clusters();
         update_relay_clusters();
-    } else {
-        network_indicator_not_connected(&network_indicator);
     }
+    refresh_network_led();
 }
 
 void peripherals_init() {
@@ -423,12 +437,10 @@ void peripherals_init() {
         relay_init(&relays[index]);
     }
     if (hal_zigbee_get_network_status() == HAL_ZIGBEE_NETWORK_JOINED) {
-        network_indicator_connected(&network_indicator);
         update_switch_clusters();
         update_relay_clusters();
-    } else {
-        network_indicator_not_connected(&network_indicator);
     }
+    refresh_network_led();
     hal_register_on_network_status_change_callback(
         network_indicator_on_network_status_change);
 }

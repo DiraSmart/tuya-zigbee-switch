@@ -18,4 +18,6 @@ void network_indicator_commission_success(network_indicator_t *indicator);
 
 void network_indicator_not_connected(network_indicator_t *indicator);
 
+void network_indicator_child_lock_active(network_indicator_t *indicator);
+
 #endif

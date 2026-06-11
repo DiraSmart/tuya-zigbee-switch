@@ -50,6 +50,7 @@ void basic_cluster_callback_attr_write_trampoline(uint16_t attribute_id) {
     }
     if (attribute_id == ZCL_ATTR_BASIC_CHILD_LOCK) {
         device_params_set_child_lock_active(g_child_lock_active);
+        refresh_network_led();
     }
 }
 
