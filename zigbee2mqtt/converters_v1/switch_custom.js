@@ -439,8 +439,8 @@ const definitions = [
             "DS-ZB-001-v2",
         ],
         model: "DS-ZB-001-v2",
-        vendor: "Tuya-custom",
-        description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
+        vendor: "DiraSmart",
+        description: "DiraSmart 1-gang Zigbee (v2)",
         extend: [
             deviceEndpoints({ endpoints: {"11": 1, "12": 2, } }),
             romasku.childLockEnabled("child_lock_enabled", "11"),
@@ -490,8 +490,8 @@ const definitions = [
             "DS-ZB-002-v2",
         ],
         model: "DS-ZB-002-v2",
-        vendor: "Tuya-custom",
-        description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
+        vendor: "DiraSmart",
+        description: "DiraSmart 2-gang Zigbee (v2)",
         extend: [
             deviceEndpoints({ endpoints: {"11": 1, "21": 2, "12": 3, "22": 4, } }),
             romasku.childLockEnabled("child_lock_enabled", "11"),
@@ -570,8 +570,8 @@ const definitions = [
             "DS-ZB-003-v2",
         ],
         model: "DS-ZB-003-v2",
-        vendor: "Tuya-custom",
-        description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
+        vendor: "DiraSmart",
+        description: "DiraSmart 3-gang Zigbee (v2)",
         extend: [
             deviceEndpoints({ endpoints: {"11": 1, "21": 2, "31": 3, "12": 4, "22": 5, "32": 6, } }),
             romasku.childLockEnabled("child_lock_enabled", "11"),
