@@ -1,12 +1,12 @@
 [
   {
-    "fileName": "tlc_switch-1.1.2-f5262a49-forced.zigbee",
+    "fileName": "tlc_switch-1.1.2-a90917ca-forced.zigbee",
     "fileVersion": 4294967295,
     "fileSize": 181426,
-    "url": "https://github.com/DiraSmart/tuya-zigbee-switch/raw/225a36543ddd5a86a87f7a7d8f2bf1b3c575058d/bin/router/DIRASMART_TS0001/tlc_switch-1.1.2-f5262a49-forced.zigbee",
+    "url": "https://github.com/DiraSmart/tuya-zigbee-switch/raw/refs/heads/dirasmart-devices/bin/router/DIRASMART_TS0001/tlc_switch-1.1.2-a90917ca-forced.zigbee",
     "imageType": 47105,
     "manufacturerCode": 4417,
-    "sha512": "3e8c44bcb80980087b8ebab73142c0f9ffee2e47e5c245c604ebb36e69ee53b17d617bba26e7da95f8696a1f5faf5031410bfa7f45fc86af50c1da7b3fbe6792",
+    "sha512": "caf852e765ee0a06c574c5a810134041a598476b4be1adbbae45fcf895dccbfbd5579e0117cade488c992a658c1f1f3b37ef3bbbd35a0adf7105a09be910e955",
     "otaHeaderString": "Telink OTA Image\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
     "manufacturerName": [
       "_TZ3000_xbmnjoaf",
@@ -14,13 +14,13 @@
     ]
   },
   {
-    "fileName": "tlc_switch-1.1.2-f5262a49-forced.zigbee",
+    "fileName": "tlc_switch-1.1.2-a90917ca-forced.zigbee",
     "fileVersion": 4294967295,
     "fileSize": 181442,
-    "url": "https://github.com/DiraSmart/tuya-zigbee-switch/raw/225a36543ddd5a86a87f7a7d8f2bf1b3c575058d/bin/router/DIRASMART_TS0002/tlc_switch-1.1.2-f5262a49-forced.zigbee",
+    "url": "https://github.com/DiraSmart/tuya-zigbee-switch/raw/refs/heads/dirasmart-devices/bin/router/DIRASMART_TS0002/tlc_switch-1.1.2-a90917ca-forced.zigbee",
     "imageType": 47106,
     "manufacturerCode": 4417,
-    "sha512": "77a8cf0e4d852cf8219d73d623f96e9a1ea1486d04e443f455e75d477b4e8361f418ad682d4807dd68679fcfbc8530b825ac982888b009f8fd0ee07746890890",
+    "sha512": "8b86f24dd769348df38a8a904bb3c32000a4f41f9412c42d4ab42a4cdd7a1b3a5c6561489cf9e8ccbb0e0823d4d05582859958b7fcb9761aef82e322a7aca3e4",
     "otaHeaderString": "Telink OTA Image\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
     "manufacturerName": [
       "_TZ3000_bpig9yci",
@@ -28,13 +28,13 @@
     ]
   },
   {
-    "fileName": "tlc_switch-1.1.2-f5262a49-forced.zigbee",
+    "fileName": "tlc_switch-1.1.2-a90917ca-forced.zigbee",
     "fileVersion": 4294967295,
     "fileSize": 181442,
-    "url": "https://github.com/DiraSmart/tuya-zigbee-switch/raw/225a36543ddd5a86a87f7a7d8f2bf1b3c575058d/bin/router/DIRASMART_TS0003/tlc_switch-1.1.2-f5262a49-forced.zigbee",
+    "url": "https://github.com/DiraSmart/tuya-zigbee-switch/raw/refs/heads/dirasmart-devices/bin/router/DIRASMART_TS0003/tlc_switch-1.1.2-a90917ca-forced.zigbee",
     "imageType": 47107,
     "manufacturerCode": 4417,
-    "sha512": "26c6c14a1471d342aed2f8eae7c82fea9c29803799e02a3405d0d871b96a2cf10bc25d1d1a9c6230f08e478e5f9f78b1e412c0e059d4c203b7653f8b0152dcc3",
+    "sha512": "077a4a998467d13b58e5e899801b68eaa558ab20f4c81f89689e29f5b326620aaa8c34bc659c49475d464da1df2accd06620546e3b1d0c50fb7713fe9dbc7192",
     "otaHeaderString": "Telink OTA Image\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
     "manufacturerName": [
       "_TZ3000_iw4qodb8",
