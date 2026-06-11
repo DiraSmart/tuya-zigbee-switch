@@ -44,6 +44,8 @@
 #define ZCL_ATTR_BASIC_DEVICE_CONFIG              0xff00
 #define ZCL_ATTR_BASIC_STATUS_LED_STATE           0xff01
 #define ZCL_ATTR_BASIC_MULTI_PRESS_RESET_COUNT    0xff02
+#define ZCL_ATTR_BASIC_CHILD_LOCK_ENABLED         0xff03
+#define ZCL_ATTR_BASIC_CHILD_LOCK                 0xff04
 
 // Power Configuration cluster
 
@@ -138,6 +140,7 @@
 #define ZCL_ONOFF_INDICATOR_MODE_SAME               0x00
 #define ZCL_ONOFF_INDICATOR_MODE_OPPOSITE           0x01
 #define ZCL_ONOFF_INDICATOR_MODE_MANUAL             0x02
+#define ZCL_ONOFF_INDICATOR_MODE_OFF                0x03
 
 // OnOff configuration cluster
 

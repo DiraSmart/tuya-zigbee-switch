@@ -166,13 +166,14 @@ void sync_indicator_led(zigbee_relay_cluster *cluster) {
         return;
     }
 
-    if (cluster->indicator_led_mode != ZCL_ONOFF_INDICATOR_MODE_MANUAL) {
-        if (cluster->indicator_led_mode == ZCL_ONOFF_INDICATOR_MODE_SAME) {
-            cluster->indicator_state = cluster->relay->on;
-        } else {
-            cluster->indicator_state = !cluster->relay->on;
-        }
+    if (cluster->indicator_led_mode == ZCL_ONOFF_INDICATOR_MODE_OFF) {
+        cluster->indicator_state = 0; // always off
+    } else if (cluster->indicator_led_mode == ZCL_ONOFF_INDICATOR_MODE_SAME) {
+        cluster->indicator_state = cluster->relay->on;
+    } else if (cluster->indicator_led_mode == ZCL_ONOFF_INDICATOR_MODE_OPPOSITE) {
+        cluster->indicator_state = !cluster->relay->on;
     }
+    // MANUAL: leave indicator_state unchanged
 
     cluster->indicator_state ? led_on(cluster->indicator_led)
                            : led_off(cluster->indicator_led);

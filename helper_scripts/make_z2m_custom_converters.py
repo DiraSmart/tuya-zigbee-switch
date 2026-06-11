@@ -63,15 +63,10 @@ if __name__ == "__main__":
             if peripheral[:2] == "BT":
                 has_battery_cluster = True
 
-        if switch_cnt == 1:
-            switch_names = ["switch"]
-        else:
-            switch_names = [f"switch_{index + 1}" for index in range(switch_cnt)]
-
-        if relay_cnt == 1:
-            relay_names = ["relay"]
-        else:
-            relay_names = [f"relay_{index + 1}" for index in range(relay_cnt)]
+        # Endpoint naming scheme: "<gang><role>", role 1 = button, 2 = relay.
+        # e.g. 11 = button gang1, 12 = relay gang1, 21 = button gang2, 22 = relay gang2, ...
+        switch_names = [f"{index + 1}1" for index in range(switch_cnt)]
+        relay_names = [f"{index + 1}2" for index in range(relay_cnt)]
 
         if cover_switch_cnt == 1:
             cover_switch_names = ["cover_switch"]

@@ -64,11 +64,11 @@ const romasku = {
         binary({
             name,
             endpointName,
-            valueOn: ["ON", 0],   // 0 = detached -> button does NOT control the relay
-            valueOff: ["OFF", 3], // 3 = short_press -> normal operation
-            cluster: "genOnOffSwitchCfg",
-            attribute: { ID: 0xff01, type: 0x30 }, // Enum8 (relay_mode)
-            description: "Child lock: when ON, the physical button does not toggle the relay",
+            valueOn: ["ON", 1],
+            valueOff: ["OFF", 0],
+            cluster: "genBasic",
+            attribute: { ID: 0xff04, type: 0x10 }, // Boolean (whole-device child lock active)
+            description: "Child lock (whole device): when ON, no physical button controls its relay",
             access: "ALL",
             entityCategory: "config",
         }),
@@ -78,9 +78,9 @@ const romasku = {
             endpointName,
             valueOn: ["ON", 1],
             valueOff: ["OFF", 0],
-            cluster: "genOnOffSwitchCfg",
-            attribute: { ID: 0xff06, type: 0x10 }, // Boolean
-            description: "Enable child lock for this switch (off by default). When enabled, 5 quick presses toggle the lock.",
+            cluster: "genBasic",
+            attribute: { ID: 0xff03, type: 0x10 }, // Boolean
+            description: "Enable the child lock feature (off by default). When enabled, 5 quick presses on any button toggle the lock.",
             access: "ALL",
             entityCategory: "config",
         }),
@@ -143,10 +143,10 @@ const romasku = {
         enumLookup({
             name,
             endpointName,
-            lookup: { relay: 0, opposite: 1 },
+            lookup: { relay: 0, opposite: 1, off: 3 },
             cluster: "genOnOff",
             attribute: { ID: 0xff01, type: 0x30 }, // Enum8
-            description: "Indicator LED: relay = ON when light is on, opposite = ON when light is off",
+            description: "Indicator LED: relay = ON when light is on, opposite = ON when light is off, off = always off",
             entityCategory: "config",
         }),
     relayIndicator: (name, endpointName) =>
@@ -437,7 +437,10 @@ const definitions = [
                 {%- endfor -%}
             } }),
             {% set first_endpoint = device.switchNames[0] if device.switchNames else (device.relayNames[0] if device.relayNames else (device.coverSwitchNames[0] if device.coverSwitchNames else device.coverNames[0])) %}
-            romasku.deviceConfig("device_config", "{{first_endpoint}}"),
+            {% if device.switchNames and device.relayNames %}
+            romasku.childLockEnabled("child_lock_enabled", "{{first_endpoint}}"),
+            romasku.childLock("child_lock", "{{first_endpoint}}"),
+            {% endif %}
             {% if device.has_dedicated_net_led %}
             romasku.networkIndicator("network_led", "{{first_endpoint}}"),
             {% endif%}
@@ -447,15 +450,9 @@ const definitions = [
             {% for switchName in device.switchNames %}
             romasku.pressAction("{{switchName}}_press_action", "{{switchName}}"),
             romasku.switchAction("{{switchName}}_action_mode", "{{switchName}}"),
-            {% if device.relayNames %}
-            romasku.childLockEnabled("{{switchName}}_child_lock_enabled", "{{switchName}}"),
-            romasku.childLock("{{switchName}}_child_lock", "{{switchName}}"),
-            {% endif %}
-            romasku.longPressDuration("{{switchName}}_long_press_duration", "{{switchName}}"),
             {% endfor %}
             {% for relayName in device.relayIndicatorNames %}
             romasku.relayIndicatorMode("{{relayName}}_indicator_mode", "{{relayName}}"),
-            romasku.relayIndicator("{{relayName}}_indicator", "{{relayName}}"),
             {% endfor %}
             {% for coverName in device.coverNames %}
             windowCovering({ 
