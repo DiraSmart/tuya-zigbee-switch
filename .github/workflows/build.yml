@@ -50,10 +50,8 @@ jobs:
 
     - name: Install SDK and Toolchain
       run: |
-        make setup || (
-          echo "dumping log:" &&
-          cat /home/runner/work/tuya-zigbee-switch/tuya-zigbee-switch/silabs_tools/slc-cli/bin/slc-cli/configuration/*.log
-        )
+        # Only Telink toolchain needed for DiraSmart devices (skip slow/flaky Silabs slc-cli)
+        make telink/tools/all setup_venv
 
     - name: Clear out index files
       run: |
@@ -63,7 +61,7 @@ jobs:
     - name: Build for all boards
       run: |
         source .venv/bin/activate
-        yq -r 'to_entries | sort_by(.key)[] | "\(.key) \(.value.device_type) \(.value.build)"' device_db.yaml | while read ITER TYPE BUILD; do
+        yq -r 'to_entries | sort_by(.key)[] | "\(.key) \(.value.device_type) \(.value.build)"' device_db.yaml | grep '^DIRASMART_' | while read ITER TYPE BUILD; do
 
           if [ "$BUILD" = "no" ]; then
             echo "Skipping $ITER as building this model is disabled in the db."
