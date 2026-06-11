@@ -65,21 +65,13 @@ if __name__ == "__main__":
 
         if switch_cnt == 1:
             switch_names = ["switch"]
-        elif switch_cnt == 2:
-            switch_names = ["switch_left", "switch_right"]
-        elif switch_cnt == 3:
-            switch_names = ["switch_left", "switch_middle", "switch_right"]
         else:
-            switch_names = [f"switch_{index}" for index in range(switch_cnt)]
+            switch_names = [f"switch_{index + 1}" for index in range(switch_cnt)]
 
         if relay_cnt == 1:
             relay_names = ["relay"]
-        elif relay_cnt == 2:
-            relay_names = ["relay_left", "relay_right"]
-        elif relay_cnt == 3:
-            relay_names = ["relay_left", "relay_middle", "relay_right"]
         else:
-            relay_names = [f"relay_{index}" for index in range(relay_cnt)]
+            relay_names = [f"relay_{index + 1}" for index in range(relay_cnt)]
 
         if cover_switch_cnt == 1:
             cover_switch_names = ["cover_switch"]
