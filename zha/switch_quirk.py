@@ -230,6 +230,9 @@ class CustomWindowCoveringCluster(CustomCluster, WindowCovering):
 ``````````````````````````````````````````````````````````````````'''
 
 CONFIGS = [
+    "xbmnjoaf;DS-ZB-001-v2;SB4u;RC0;ID2i;M;",
+    "bpig9yci;DS-ZB-002-v2;SC3u;RC2;IB1i;SB5u;RD4;ID7i;M;",
+    "iw4qodb8;DS-ZB-003-v2;SC3u;RC2;IB1i;SB4u;RC0;ID2i;SB5u;RD4;ID7i;M;",
     "imaccztn;TS0004-MC;LC3i;SD7u;RD4;SC0u;RA0;SB5u;RD2;SB7u;RC2;M;",
     "imaccztn1;TS0004-MC1;LC3i;SD7u;RD4;SC0u;RA0;SB5u;RD2;SB7u;RC2;M;",
     "u3oupgdy;TS0004-MC2;LC3i;SD7u;RD4;SC0u;RA0;SB5u;RD2;SB7u;RC2;M;",
@@ -504,6 +507,11 @@ CONFIGS = [
     "bmzfjnbp;TS0011-MHB;SA4u;RD1D0;IA6i;M;",
     "ugaem1nb;TS0012-MHB;SA3u;RD1D0;IB1i;SB0u;RC2A0;IA5i;M;",
     "snq47izk;TS0013-MHB;SA3u;RD1D0;IB1i;SA4u;RC2A0;IA6i;SB0u;RC0C1;IA5i;M;",
+    "gsqxcwqr;TS0001-MIL;BC0u;LA0i;SC0u;RB4;IC4i;",
+    "ybjqjsuz;TS0002-YBJ;LA0i;SB6u;RB4;IA1i;SD3u;RD2;ID4i;",
+    "ybjqjsuz;TS0003-YBJ;LA0i;SB6u;RB4;IA1i;SC0u;RD2;IC4i;SD3u;RC3;ID4i;",
+    "ybjqjsuz;TS0003-YBJ;LA0i;SB6u;RB4;IA1i;SC0u;RD2;IC4i;SD3u;RC3;ID4i;",
+    "03vs3ks5;TS0004-MIL;LA0i;SB6u;RC2;IA1i;SC0u;RC3;IC4i;SD7u;RD2;IC1i;SD3u;RB4;ID4i;",
     "hhiodade;Moes-1-gang;SC1u;RB5;ID7;M;",
     "hhiodade;Moes-1-gang-ED;SC1u;RB5;ID7;M;",
     "Moes-1-gang;Moes-1-gang;SC1u;RB5;ID7;M;",
@@ -648,7 +656,7 @@ for config in CONFIGS:
                 attribute_converter = lambda x: {0: "released", 1: "press", 2: "long_press", 3: "position_on", 4: "position_off"}[int(x)]
             )
         )
-    for endpoint_id in range(switch_cnt + 1, switch_cnt + indicators_cnt + 1):
+    for endpoint_id in range(switch_cnt + 1, switch_cnt + min(relay_cnt, indicators_cnt) + 1):
         builder = (
             builder
             .removes(OnOff.cluster_id, cluster_type=ClusterType.Client, endpoint_id=endpoint_id)
