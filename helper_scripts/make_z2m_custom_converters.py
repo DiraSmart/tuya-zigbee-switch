@@ -1,8 +1,13 @@
 import argparse
+import json
 from pathlib import Path
 
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+# Optional per-model branding icons (base64 data URIs), keyed by Z2M model name.
+_ICONS_FILE = Path(__file__).parent / "dirasmart_icons.json"
+ICONS = json.loads(_ICONS_FILE.read_text()) if _ICONS_FILE.exists() else {}
 
 env = Environment(
     loader=FileSystemLoader("helper_scripts/templates"),
@@ -92,11 +97,14 @@ if __name__ == "__main__":
         else:
             cover_names = [f"cover_{index}" for index in range(cover_cnt)]
 
+        model_name = device.get("override_z2m_device") or device["stock_converter_model"]
         devices.append(
             {
                 "zb_models": [zb_model] + (device.get("old_zb_models") or []),
-                "model": device.get("override_z2m_device")
-                or device["stock_converter_model"],
+                "model": model_name,
+                "vendor": device.get("vendor"),
+                "description": device.get("description"),
+                "icon": ICONS.get(model_name),
                 "switchNames": switch_names,
                 "relayNames": relay_names,
                 "relayIndicatorNames": relay_names[:indicators_cnt],

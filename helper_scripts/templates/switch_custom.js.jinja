@@ -444,8 +444,11 @@ const definitions = [
         {% endfor %}
         ],
         model: "{{device.model}}",
-        vendor: "Tuya-custom",
-        description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
+        vendor: "{{device.vendor or 'Tuya-custom'}}",
+        description: "{{device.description or 'Custom switch (https://github.com/romasku/tuya-zigbee-switch)'}}",
+        {% if device.icon %}
+        icon: "{{device.icon}}",
+        {% endif %}
         {% set first_endpoint = device.switchNames[0] if device.switchNames else (device.relayNames[0] if device.relayNames else device.coverNames[0]) %}
         extend: [
             {% if device.has_battery_cluster %}

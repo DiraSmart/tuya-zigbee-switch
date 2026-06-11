@@ -11,6 +11,14 @@
           "type": "string",
           "description": "Human-readable device name"
         },
+        "vendor": {
+          "oneOf": [{"type": "string"}, {"type": "null"}],
+          "description": "Vendor name for the custom-FW Z2M converter (defaults to Tuya-custom)"
+        },
+        "description": {
+          "oneOf": [{"type": "string"}, {"type": "null"}],
+          "description": "Description for the custom-FW Z2M converter"
+        },
         "category": {
           "type": "string",
           "enum": ["module", "switch", "remote", "outlet", "board", "plug", "din_relay"],
