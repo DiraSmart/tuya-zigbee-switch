@@ -13,6 +13,87 @@
 # - Keep KEYs in (mostly) alphabetical order
 # - Keep attributes in the same order
 
+DIRASMART_TS0001:
+  human_name: DiraSmart 1-gang (DS-ZB-001-v2)
+  category: switch
+  power: mains
+  neutral: required
+  output: relay
+  device_type: router
+  stock_model_name: TS0001
+  stock_manufacturer_name: _TZ3000_xbmnjoaf
+  stock_converter_manufacturer: Tuya
+  stock_converter_model: TS0001
+  override_z2m_device: DS-ZB-001-v2
+  tuya_module: ZT3L
+  mcu_family: Telink
+  mcu: TLSR8258
+  config_str: xbmnjoaf;DS-ZB-001-v2;SB4u;RC0;ID2i;M;
+  alt_config_str: null
+  old_manufacturer_names: null
+  old_zb_models: null
+  stock_manufacturer_id: 4417
+  stock_image_type: 54179
+  firmware_image_type: 47105
+  build: yes
+  status: in_progress
+  info: "Candidate pinout via CB3S to ZT3L bridge, unverified on hardware"
+  threads: null
+  store: null
+DIRASMART_TS0002:
+  human_name: DiraSmart 2-gang (DS-ZB-002-v2)
+  category: switch
+  power: mains
+  neutral: required
+  output: relay
+  device_type: router
+  stock_model_name: TS0002
+  stock_manufacturer_name: _TZ3000_bpig9yci
+  stock_converter_manufacturer: Tuya
+  stock_converter_model: TS0002
+  override_z2m_device: DS-ZB-002-v2
+  tuya_module: ZT3L
+  mcu_family: Telink
+  mcu: TLSR8258
+  config_str: bpig9yci;DS-ZB-002-v2;SC3u;RC2;IB1i;SB5u;RD4;ID7i;M;
+  alt_config_str: null
+  old_manufacturer_names: null
+  old_zb_models: null
+  stock_manufacturer_id: 4417
+  stock_image_type: 54179
+  firmware_image_type: 47106
+  build: yes
+  status: in_progress
+  info: "Candidate pinout via CB3S to ZT3L bridge, unverified on hardware"
+  threads: null
+  store: null
+DIRASMART_TS0003:
+  human_name: DiraSmart 3-gang (DS-ZB-003-v2)
+  category: switch
+  power: mains
+  neutral: required
+  output: relay
+  device_type: router
+  stock_model_name: TS0003
+  stock_manufacturer_name: _TZ3000_iw4qodb8
+  stock_converter_manufacturer: Tuya
+  stock_converter_model: TS0003
+  override_z2m_device: DS-ZB-003-v2
+  tuya_module: ZT3L
+  mcu_family: Telink
+  mcu: TLSR8258
+  config_str: iw4qodb8;DS-ZB-003-v2;SC3u;RC2;IB1i;SB4u;RC0;ID2i;SB5u;RD4;ID7i;M;
+  alt_config_str: null
+  old_manufacturer_names: null
+  old_zb_models: null
+  stock_manufacturer_id: 4417
+  stock_image_type: 54179
+  firmware_image_type: 47107
+  build: yes
+  status: in_progress
+  info: "Candidate pinout via CB3S to ZT3L bridge, unverified on hardware"
+  threads: null
+  store: null
 BOARD__MHCOZY_TS0004:
   human_name: MHCOZY TYWB 4ch-RF <br> ZG-005(-RF) 🅰
   category: board
