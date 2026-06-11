@@ -17,8 +17,9 @@ void btn_init(button_t *button) {
     uint8_t state = hal_gpio_read(button->pin);
 
     if (state == button->pressed_when_high) {
-        button->pressed      = true;
-        button->long_pressed = true;
+        button->pressed           = true;
+        button->long_pressed      = true;
+        button->very_long_pressed = true;
     }
     button->debounce_last_state = state;
     button->update_task.handler = _btn_update_callback;
@@ -47,12 +48,19 @@ void _btn_update_callback(void *arg) {
     btn_update_debounced(button,
                          button->debounce_last_state == button->pressed_when_high,
                          button->debounce_last_change);
-    if (button->pressed && !button->long_pressed) {
+    if (button->pressed && !button->very_long_pressed) {
         uint32_t pressed_for = hal_millis() - button->pressed_at_ms;
-        hal_tasks_schedule(&button->update_task,
-                           pressed_for < button->long_press_duration_ms
-                           ? button->long_press_duration_ms - pressed_for
-                           : 0);
+        if (!button->long_pressed) {
+            hal_tasks_schedule(&button->update_task,
+                               pressed_for < button->long_press_duration_ms
+                               ? button->long_press_duration_ms - pressed_for
+                               : 0);
+        } else if (button->very_long_press_duration_ms != 0) {
+            hal_tasks_schedule(&button->update_task,
+                               pressed_for < button->very_long_press_duration_ms
+                               ? button->very_long_press_duration_ms - pressed_for
+                               : 0);
+        }
     }
 }
 
@@ -76,9 +84,10 @@ void btn_update_debounced(button_t *button, uint8_t is_pressed,
         }
     } else if (button->pressed && !is_pressed) {
         printf("Release detected\r\n");
-        button->released_at_ms = changed_at;
-        button->pressed        = false;
-        button->long_pressed   = false;
+        button->released_at_ms   = changed_at;
+        button->pressed          = false;
+        button->long_pressed     = false;
+        button->very_long_pressed = false;
         if (button->on_release != NULL) {
             button->on_release(button->callback_param);
         }
@@ -92,6 +101,15 @@ void btn_update_debounced(button_t *button, uint8_t is_pressed,
         printf("Long press detected\r\n");
         if (button->on_long_press != NULL) {
             button->on_long_press(button->callback_param);
+        }
+    }
+    if (is_pressed && !button->very_long_pressed &&
+        button->very_long_press_duration_ms != 0 &&
+        (button->very_long_press_duration_ms <= (now - button->pressed_at_ms))) {
+        button->very_long_pressed = true;
+        printf("Very long press detected\r\n");
+        if (button->on_very_long_press != NULL) {
+            button->on_very_long_press(button->callback_param);
         }
     }
 }

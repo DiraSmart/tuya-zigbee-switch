@@ -349,9 +349,21 @@ void switch_cluster_level_control(zigbee_switch_cluster *cluster) {
 
 void switch_cluster_on_button_press(zigbee_switch_cluster *cluster) {
     if (g_child_lock_active) {
-        return; // device child-locked: physical button does nothing
+        // child-locked: button does nothing but blink the indicator as feedback
+        if (cluster->indicator_led != NULL &&
+            cluster->indicator_led->blink_times_left == 0) {
+            led_blink(cluster->indicator_led, 100, 100, 3);
+        }
+        return;
     }
-    switch_cluster_flash_indicator(cluster);
+    if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED) {
+        // virtual (decoupled) button: light the indicator while held, off on release
+        if (cluster->indicator_led != NULL) {
+            led_on(cluster->indicator_led);
+        }
+    } else {
+        switch_cluster_flash_indicator(cluster);
+    }
 
     if (cluster->mode == ZCL_ONOFF_CONFIGURATION_SWITCH_TYPE_TOGGLE) {
         // Toggle does not support modes (RISE, SHORT, LONG)
@@ -383,6 +395,10 @@ void switch_cluster_on_button_press(zigbee_switch_cluster *cluster) {
 void switch_cluster_on_button_release(zigbee_switch_cluster *cluster) {
     if (g_child_lock_active) {
         return; // device child-locked: physical button does nothing
+    }
+    if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED &&
+        cluster->indicator_led != NULL) {
+        led_off(cluster->indicator_led); // virtual button: indicator off on release
     }
     if (cluster->mode == ZCL_ONOFF_CONFIGURATION_SWITCH_TYPE_TOGGLE) {
         // Only flash on release for toggles,
@@ -422,10 +438,16 @@ void switch_cluster_on_button_release(zigbee_switch_cluster *cluster) {
 }
 
 void switch_cluster_on_button_long_press(zigbee_switch_cluster *cluster) {
-    // The button long-press duration is configured to ~6s, so holding the
-    // touch button for that long triggers a factory reset / re-pair.
-    (void)cluster;
-    hal_factory_reset();
+    // Long press (~2s) emits a "long_press" event via the multistate input for
+    // HA automations (scenes / covers, esp. for decoupled/virtual buttons).
+    // A factory reset is a separate, longer hold (~6s) -> on_very_long_press.
+    if (g_child_lock_active) {
+        return;
+    }
+    cluster->multistate_state = MULTISTATE_LONG_PRESS;
+    hal_zigbee_notify_attribute_changed(cluster->endpoint,
+                                        ZCL_CLUSTER_MULTISTATE_INPUT_BASIC,
+                                        ZCL_ATTR_MULTISTATE_INPUT_PRESENT_VALUE);
 }
 
 void switch_cluster_on_multi_press(zigbee_switch_cluster *cluster,

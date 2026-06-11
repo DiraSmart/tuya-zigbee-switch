@@ -15,9 +15,11 @@ typedef struct {
     uint8_t                          pressed_when_high;
     uint8_t                          pressed;
     uint8_t                          long_pressed;
+    uint8_t                          very_long_pressed;
     uint32_t                         pressed_at_ms;
     uint32_t                         released_at_ms;
     uint16_t                         long_press_duration_ms;
+    uint16_t                         very_long_press_duration_ms;
     uint32_t                         multi_press_duration_ms;
     uint8_t                          multi_press_cnt;
     uint16_t                         debounce_delay_ms;
@@ -26,6 +28,7 @@ typedef struct {
     uint32_t                         debounce_last_change;
     ev_button_callback_t             on_press;
     ev_button_callback_t             on_long_press;
+    ev_button_callback_t             on_very_long_press;
     ev_button_callback_t             on_release;
     ev_button_multi_press_callback_t on_multi_press;
     void *                           callback_param;

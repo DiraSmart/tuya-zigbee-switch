@@ -84,6 +84,18 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
+    decouple: (name, endpointName) =>
+        binary({
+            name,
+            endpointName,
+            valueOn: ["ON", 0],   // 0 = detached -> virtual button (does not drive its relay)
+            valueOff: ["OFF", 3], // 3 = short_press -> normal (drives its relay)
+            cluster: "genOnOffSwitchCfg",
+            attribute: { ID: 0xff01, type: 0x30 }, // Enum8 (relay_mode)
+            description: "Decouple: when ON the button does not control its relay (virtual button for scenes/covers via the press_action sensor)",
+            access: "ALL",
+            entityCategory: "config",
+        }),
     relayIndex: (name, endpointName, relay_cnt) =>
         enumLookup({
             name,
@@ -450,6 +462,9 @@ const definitions = [
             {% for switchName in device.switchNames %}
             romasku.pressAction("{{switchName}}_press_action", "{{switchName}}"),
             romasku.switchAction("{{switchName}}_action_mode", "{{switchName}}"),
+            {% if device.relayNames %}
+            romasku.decouple("{{switchName}}_decouple", "{{switchName}}"),
+            {% endif %}
             {% endfor %}
             {% for relayName in device.relayIndicatorNames %}
             romasku.relayIndicatorMode("{{relayName}}_indicator_mode", "{{relayName}}"),
