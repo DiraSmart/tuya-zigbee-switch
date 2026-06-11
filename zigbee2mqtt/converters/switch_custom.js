@@ -444,6 +444,7 @@ const definitions = [
             deviceEndpoints({ endpoints: {"11": 1, "12": 2, } }),
             romasku.childLockEnabled("child_lock_enabled", "11"),
             romasku.childLock("child_lock", "11"),
+            romasku.networkIndicator("network_led", "11"),
             onOff({ powerOnBehavior: false, endpointNames: ["12"] }),
             romasku.generalPowerOnBehavior("power_on_behavior", [2]),
             romasku.generalIndicatorMode("indicator_mode", [2]),

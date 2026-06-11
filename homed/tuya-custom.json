@@ -17,7 +17,8 @@
         "DS-ZB-001-v2"
       ],
       "exposes": [
-        "multiPressResetCount"
+        "multiPressResetCount",
+        "networkIndicator"
       ],
       "options": {
         "customAttributes": {
@@ -27,12 +28,22 @@
             "attributeId": 65282,
             "dataType": 32,
             "action": true
+          },
+          "networkIndicator": {
+            "type": "bool",
+            "clusterId": 0,
+            "attributeId": 65281,
+            "dataType": 16,
+            "action": true
           }
         },
         "multiPressResetCount": {
           "type": "number",
           "min": 0,
           "max": 255
+        },
+        "networkIndicator": {
+          "type": "toggle"
         }
       },
       "endpointId": 1
