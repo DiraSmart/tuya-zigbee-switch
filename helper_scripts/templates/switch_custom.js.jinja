@@ -12,6 +12,8 @@ const {assertString} = require("zigbee-herdsman-converters/lib/utils");
 const reporting = require("zigbee-herdsman-converters/lib/reporting");
 const constants = require("zigbee-herdsman-converters/lib/constants");
 const Zcl = require('zigbee-herdsman').Zcl;
+const e = require("zigbee-herdsman-converters/lib/exposes").presets;
+const ea = require("zigbee-herdsman-converters/lib/exposes").access;
 {% if z2m_v1 %}
 const ota = require("zigbee-herdsman-converters/lib/ota");
 {% endif%}
@@ -96,6 +98,46 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
+    // General (whole-device) power-on behavior: one control that writes
+    // startUpOnOff to every relay endpoint.
+    generalPowerOnBehavior: (name, relayEndpoints) => {
+        const lookup = {off: 0, on: 1, toggle: 2, previous: 255};
+        return {
+            exposes: [e.enum(name, ea.STATE_SET, Object.keys(lookup))
+                .withDescription("Power-on behavior applied to all relays")
+                .withCategory("config")],
+            toZigbee: [{
+                key: [name],
+                convertSet: async (entity, key, value, meta) => {
+                    for (const ep of relayEndpoints) {
+                        await meta.device.getEndpoint(ep).write("genOnOff", {16387: {value: lookup[value], type: 0x30}});
+                    }
+                    return {state: {[name]: value}};
+                },
+            }],
+            isModernExtend: true,
+        };
+    },
+    // General (whole-device) relay indicator LED mode: one control that writes
+    // the indicator mode to every relay endpoint.
+    generalIndicatorMode: (name, relayEndpoints) => {
+        const lookup = {relay: 0, opposite: 1, off: 3};
+        return {
+            exposes: [e.enum(name, ea.STATE_SET, Object.keys(lookup))
+                .withDescription("Indicator LED (all relays): relay=on with light, opposite=on when off, off=always off")
+                .withCategory("config")],
+            toZigbee: [{
+                key: [name],
+                convertSet: async (entity, key, value, meta) => {
+                    for (const ep of relayEndpoints) {
+                        await meta.device.getEndpoint(ep).write("genOnOff", {65281: {value: lookup[value], type: 0x30}});
+                    }
+                    return {state: {[name]: value}};
+                },
+            }],
+            isModernExtend: true,
+        };
+    },
     relayIndex: (name, endpointName, relay_cnt) =>
         enumLookup({
             name,
@@ -457,7 +499,11 @@ const definitions = [
             romasku.networkIndicator("network_led", "{{first_endpoint}}"),
             {% endif%}
             {% if device.relayNames %}
-            onOff({ endpointNames: {{device.relayNames | tojson }} }),
+            onOff({ powerOnBehavior: false, endpointNames: {{device.relayNames | tojson }} }),
+            romasku.generalPowerOnBehavior("power_on_behavior", [{% for relayName in device.relayNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
+            {% if device.relayIndicatorNames %}
+            romasku.generalIndicatorMode("indicator_mode", [{% for relayName in device.relayIndicatorNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
+            {% endif %}
             {% endif %}
             {% for switchName in device.switchNames %}
             romasku.pressAction("{{switchName}}_press_action", "{{switchName}}"),
@@ -465,9 +511,6 @@ const definitions = [
             {% if device.relayNames %}
             romasku.decouple("{{switchName}}_decouple", "{{switchName}}"),
             {% endif %}
-            {% endfor %}
-            {% for relayName in device.relayIndicatorNames %}
-            romasku.relayIndicatorMode("{{relayName}}_indicator_mode", "{{relayName}}"),
             {% endfor %}
             {% for coverName in device.coverNames %}
             windowCovering({ 
