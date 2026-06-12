@@ -86,13 +86,10 @@ void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,
         relay_cluster_callback_trampoline;
     endpoint->cluster_count++;
 
-    endpoint->clusters[endpoint->cluster_count].cluster_id      = ZCL_CLUSTER_LEVEL_CONTROL;
-    endpoint->clusters[endpoint->cluster_count].attribute_count = 0;
-    endpoint->clusters[endpoint->cluster_count].attributes      = NULL;
-    endpoint->clusters[endpoint->cluster_count].is_server       = 1;
-    endpoint->clusters[endpoint->cluster_count].cmd_callback    =
-        relay_cluster_level_callback_trampoline;
-    endpoint->cluster_count++;
+    // NOTE: the relay endpoint intentionally does NOT advertise genLevelCtrl.
+    // It is an on/off relay; exposing LevelControl makes HA treat it as a
+    // dimmable light (brightness slider). On/off binding uses genOnOff only.
+    // (relay_cluster_level_callback is kept for reference but not registered.)
 }
 
 hal_zigbee_cmd_result_t relay_cluster_callback_trampoline(uint8_t endpoint,
