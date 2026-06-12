@@ -230,9 +230,9 @@ class CustomWindowCoveringCluster(CustomCluster, WindowCovering):
 ``````````````````````````````````````````````````````````````````'''
 
 CONFIGS = [
-    "xbmnjoaf;DS-ZB-001-v2;LC4;SB5u;RC0;ID2i;M;",
-    "bpig9yci;DS-ZB-002-v2;LC4;SC3u;RC2;IB1i;SB7u;RB4;ID7i;M;",
-    "iw4qodb8;DS-ZB-003-v2;LC4;SC3u;RC2;IB1i;SB7u;RB4;ID7i;SB5u;RC0;ID2i;M;",
+    "xbmnjoaf;DS-ZB-001-v2;LC4i;SB5u;RC0;ID2;M;",
+    "bpig9yci;DS-ZB-002-v2;LC4i;SC3u;RC2;IB1i;SB7u;RB4;ID7i;M;",
+    "iw4qodb8;DS-ZB-003-v2;LC4i;SC3u;RC2;IB1i;SB7u;RB4;ID7i;SB5u;RC0;ID2i;M;",
     "imaccztn;TS0004-MC;LC3i;SD7u;RD4;SC0u;RA0;SB5u;RD2;SB7u;RC2;M;",
     "imaccztn1;TS0004-MC1;LC3i;SD7u;RD4;SC0u;RA0;SB5u;RD2;SB7u;RC2;M;",
     "u3oupgdy;TS0004-MC2;LC3i;SD7u;RD4;SC0u;RA0;SB5u;RD2;SB7u;RC2;M;",
