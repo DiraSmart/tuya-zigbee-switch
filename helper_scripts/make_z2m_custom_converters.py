@@ -68,10 +68,12 @@ if __name__ == "__main__":
             if peripheral[:2] == "BT":
                 has_battery_cluster = True
 
-        # Endpoint naming scheme: "<gang><role>", role 1 = button, 2 = relay.
-        # e.g. 11 = button gang1, 12 = relay gang1, 21 = button gang2, 22 = relay gang2, ...
-        switch_names = [f"{index + 1}1" for index in range(switch_cnt)]
-        relay_names = [f"{index + 1}2" for index in range(relay_cnt)]
+        # Endpoint naming: non-numeric names (pure-numeric names like "11"/"12"
+        # confused z2m's endpoint resolution -> commands didn't reach the relay).
+        # Relays = l1/l2/l3 (matches the standard Tuya multi-gang convention),
+        # buttons = button_1/button_2/button_3.
+        switch_names = [f"button_{index + 1}" for index in range(switch_cnt)]
+        relay_names = [f"l{index + 1}" for index in range(relay_cnt)]
 
         if cover_switch_cnt == 1:
             cover_switch_names = ["cover_switch"]
