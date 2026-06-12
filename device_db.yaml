@@ -30,7 +30,7 @@ DIRASMART_TS0001:
   tuya_module: ZT3L
   mcu_family: Telink
   mcu: TLSR8258
-  config_str: xbmnjoaf;DS-ZB-001-v2;LC4;SB5u;RC0;ID2i;M;
+  config_str: xbmnjoaf;DS-ZB-001-v2;LC4i;SB5u;RC0;ID2;M;
   alt_config_str: null
   old_manufacturer_names: null
   old_zb_models: null
@@ -59,7 +59,7 @@ DIRASMART_TS0002:
   tuya_module: ZT3L
   mcu_family: Telink
   mcu: TLSR8258
-  config_str: bpig9yci;DS-ZB-002-v2;LC4;SC3u;RC2;IB1i;SB7u;RB4;ID7i;M;
+  config_str: bpig9yci;DS-ZB-002-v2;LC4i;SC3u;RC2;IB1i;SB7u;RB4;ID7i;M;
   alt_config_str: null
   old_manufacturer_names: null
   old_zb_models: null
@@ -88,7 +88,7 @@ DIRASMART_TS0003:
   tuya_module: ZT3L
   mcu_family: Telink
   mcu: TLSR8258
-  config_str: iw4qodb8;DS-ZB-003-v2;LC4;SC3u;RC2;IB1i;SB7u;RB4;ID7i;SB5u;RC0;ID2i;M;
+  config_str: iw4qodb8;DS-ZB-003-v2;LC4i;SC3u;RC2;IB1i;SB7u;RB4;ID7i;SB5u;RC0;ID2i;M;
   alt_config_str: null
   old_manufacturer_names: null
   old_zb_models: null
