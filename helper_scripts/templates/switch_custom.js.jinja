@@ -495,9 +495,10 @@ const definitions = [
             } }),
             {% set first_endpoint = device.switchNames[0] if device.switchNames else (device.relayNames[0] if device.relayNames else (device.coverSwitchNames[0] if device.coverSwitchNames else device.coverNames[0])) %}
             {% if device.switchNames and device.relayNames %}
-            romasku.childLockEnabled("child_lock_enabled", "{{first_endpoint}}"),
-            romasku.childLock("child_lock", "{{first_endpoint}}"),
+            romasku.childLockEnabled("child_lock_enabled"),
+            romasku.childLock("child_lock"),
             {% endif %}
+            romasku.deviceConfig("device_config"),
             {% if device.has_dedicated_net_led %}
             romasku.networkIndicator("network_led", "{{first_endpoint}}"),
             {% endif%}

@@ -404,7 +404,7 @@ void parse_config() {
 //   joined, unlocked   -> normal (manual state, off by default)
 //   not joined         -> blink (pairing)
 void refresh_network_led(void) {
-    if (g_child_lock_active) {
+    if (g_child_lock_enabled && g_child_lock_active) {
         network_indicator_child_lock_active(&network_indicator);
     } else if (hal_zigbee_get_network_status() == HAL_ZIGBEE_NETWORK_JOINED) {
         network_indicator_connected(&network_indicator);

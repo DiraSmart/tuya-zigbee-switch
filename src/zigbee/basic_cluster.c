@@ -47,9 +47,23 @@ void basic_cluster_callback_attr_write_trampoline(uint16_t attribute_id) {
     }
     if (attribute_id == ZCL_ATTR_BASIC_CHILD_LOCK_ENABLED) {
         device_params_set_child_lock_enabled(g_child_lock_enabled);
+        // Disabling the feature clears any active lock + updates the LED.
+        if (!g_child_lock_enabled && g_child_lock_active) {
+            device_params_set_child_lock_active(0);
+            hal_zigbee_notify_attribute_changed(1, ZCL_CLUSTER_BASIC,
+                                                ZCL_ATTR_BASIC_CHILD_LOCK);
+        }
+        refresh_network_led();
     }
     if (attribute_id == ZCL_ATTR_BASIC_CHILD_LOCK) {
-        device_params_set_child_lock_active(g_child_lock_active);
+        // Can't activate the lock while the feature is disabled.
+        if (!g_child_lock_enabled && g_child_lock_active) {
+            device_params_set_child_lock_active(0);
+            hal_zigbee_notify_attribute_changed(1, ZCL_CLUSTER_BASIC,
+                                                ZCL_ATTR_BASIC_CHILD_LOCK);
+        } else {
+            device_params_set_child_lock_active(g_child_lock_active);
+        }
         refresh_network_led();
     }
 }
