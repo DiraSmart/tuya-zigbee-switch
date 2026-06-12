@@ -14,6 +14,8 @@ const constants = require("zigbee-herdsman-converters/lib/constants");
 const Zcl = require('zigbee-herdsman').Zcl;
 const e = require("zigbee-herdsman-converters/lib/exposes").presets;
 const ea = require("zigbee-herdsman-converters/lib/exposes").access;
+const fz = require("zigbee-herdsman-converters/converters/fromZigbee");
+const tz = require("zigbee-herdsman-converters/converters/toZigbee");
 {% if z2m_v1 %}
 const ota = require("zigbee-herdsman-converters/lib/ota");
 {% endif%}
@@ -98,13 +100,15 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
-    // Expose relays as on/off LIGHTS in HA. Reuses the proven onOff() control
-    // path (toZigbee/fromZigbee/configure) and only swaps the exposed entity
-    // type from switch to light. No brightness (relays are on/off).
-    relayLights: (relayNames) => {
-        const base = onOff({ powerOnBehavior: false, endpointNames: relayNames });
-        return { ...base, exposes: relayNames.map((n) => e.light().withEndpoint(n)) };
-    },
+    // Expose relays as on/off LIGHTS in HA. Explicit modernExtend (same shape as
+    // the general* helpers that work) so z2m actually uses these exposes instead
+    // of auto-detecting from clusters. on/off only (relays are not dimmable).
+    relayLights: (relayNames) => ({
+        exposes: relayNames.map((n) => e.light().withEndpoint(n)),
+        fromZigbee: [fz.on_off],
+        toZigbee: [tz.on_off],
+        isModernExtend: true,
+    }),
     // General (whole-device) power-on behavior: one control that writes
     // startUpOnOff to every relay endpoint.
     generalPowerOnBehavior: (name, relayEndpoints) => {
