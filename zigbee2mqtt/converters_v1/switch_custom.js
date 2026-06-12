@@ -80,7 +80,7 @@ const romasku = {
             valueOff: ["OFF", 0],
             cluster: "genBasic",
             attribute: { ID: 0xff03, type: 0x10 }, // Boolean
-            description: "Enable the child lock feature (off by default). When enabled, 5 quick presses on any button toggle the lock.",
+            description: "Master switch for child lock. When OFF, child lock has NO effect at all (ignored from physical buttons, Home Assistant and Z2M). When ON, it can be activated (5 quick presses on any button, or the Child lock control).",
             access: "ALL",
             entityCategory: "config",
         }),
@@ -312,10 +312,12 @@ const romasku = {
                         validatePin(part.slice(1,3));
                     } else if(part[0] == 'M') {
                         ;
+                    } else if(part[0] == 'H') {
+                        ; // child lock hides the relay indicator LED while active
                     } else if(part[0] == 'i') {
                         ; // TODO: write validation
                     } else {
-                        throw new Error(`Invalid entry ${part}. Should start with one of B, BT, C, D, I, L, M, R, S, SLP, X, i`);
+                        throw new Error(`Invalid entry ${part}. Should start with one of B, BT, C, D, H, I, L, M, R, S, SLP, X, i`);
                     }
                 }
             },
