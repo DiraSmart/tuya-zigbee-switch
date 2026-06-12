@@ -1,6 +1,8 @@
 #include "relay_cluster.h"
 #include "cluster_common.h"
 #include "consts.h"
+#include "device_config/config_parser.h"
+#include "device_config/device_params_nv.h"
 #include "device_config/nvm_items.h"
 #include "hal/nvm.h"
 #include "hal/printf_selector.h"
@@ -163,6 +165,16 @@ hal_zigbee_cmd_result_t relay_cluster_level_callback(zigbee_relay_cluster *clust
 
 void sync_indicator_led(zigbee_relay_cluster *cluster) {
     if (cluster->indicator_led == NULL) {
+        return;
+    }
+
+    // Child lock can hide the relay indicator LED (config token "H"): while the
+    // lock is active, force the relay LED off (the network LED shows the lock).
+    if (child_lock_hides_relay_led && g_child_lock_enabled && g_child_lock_active) {
+        cluster->indicator_state = 0;
+        led_off(cluster->indicator_led);
+        hal_zigbee_notify_attribute_changed(cluster->endpoint, ZCL_CLUSTER_ON_OFF,
+                                            ZCL_ATTR_ONOFF_INDICATOR_STATE);
         return;
     }
 

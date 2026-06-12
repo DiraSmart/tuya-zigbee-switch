@@ -37,6 +37,11 @@ network_indicator_t network_indicator = {
     .manual_state_when_connected = 0,
 };
 
+// When set (config token "H"), the relay indicator LED is forced OFF while the
+// child lock is active (e.g. 1-gang where the relay LED sits next to the
+// network/child-lock LED and both lit looks odd).
+uint8_t child_lock_hides_relay_led = 0;
+
 led_t   leds[5];
 uint8_t leds_cnt = 0;
 
@@ -120,6 +125,9 @@ void parse_config() {
         if (entry[0] == 'S' && entry[1] == 'L' && entry[2] == 'P') {
             // Simultaneous Latching Pulses == SLP
             allow_simultaneous_latching_pulses = 1;
+        } else if (entry[0] == 'H') {
+            // Child lock Hides the relay indicator LED while active.
+            child_lock_hides_relay_led = 1;
         } else if (entry[0] == 'D' && entry[1] >= '0' && entry[1] <= '9') {
             // D<N> sets the global debounce duration in milliseconds.
             debounce_ms = (uint16_t)parse_int(entry + 1);
@@ -231,6 +239,12 @@ void parse_config() {
 
             relay_clusters[relay_clusters_cnt].relay_idx = relay_clusters_cnt;
             relay_clusters[relay_clusters_cnt].relay     = &relays[relays_cnt];
+            // Defaults on a fresh device (NVM overrides these if present):
+            // power-on = previous, indicator = relay (SAME).
+            relay_clusters[relay_clusters_cnt].startup_mode =
+                ZCL_START_UP_ONOFF_SET_ONOFF_TO_PREVIOUS;
+            relay_clusters[relay_clusters_cnt].indicator_led_mode =
+                ZCL_ONOFF_INDICATOR_MODE_SAME;
 
             relays_cnt++;
             relay_clusters_cnt++;
@@ -411,6 +425,8 @@ void refresh_network_led(void) {
     } else {
         network_indicator_not_connected(&network_indicator);
     }
+    // Refresh relay indicator LEDs so they honor the child lock (hide-relay-led).
+    update_relay_clusters();
 }
 
 void network_indicator_on_network_status_change(

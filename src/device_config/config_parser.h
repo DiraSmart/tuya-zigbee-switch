@@ -13,6 +13,8 @@ extern hal_zigbee_endpoint endpoints[10];
 
 extern uint8_t allow_simultaneous_latching_pulses;
 
+extern uint8_t child_lock_hides_relay_led;
+
 extern battery_t battery;
 
 void parse_config();
