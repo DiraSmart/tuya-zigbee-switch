@@ -14,8 +14,6 @@ const constants = require("zigbee-herdsman-converters/lib/constants");
 const Zcl = require('zigbee-herdsman').Zcl;
 const e = require("zigbee-herdsman-converters/lib/exposes").presets;
 const ea = require("zigbee-herdsman-converters/lib/exposes").access;
-const fz = require("zigbee-herdsman-converters/converters/fromZigbee");
-const tz = require("zigbee-herdsman-converters/converters/toZigbee");
 {% if z2m_v1 %}
 const ota = require("zigbee-herdsman-converters/lib/ota");
 {% endif%}
@@ -100,15 +98,6 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
-    // Expose relays as on/off LIGHTS (HA light domain) instead of switches,
-    // so devices show up as lights without per-device homeassistant overrides.
-    // No brightness (relays are on/off only).
-    relayLights: (relayNames) => ({
-        exposes: relayNames.map((n) => e.light().withEndpoint(n)),
-        fromZigbee: [fz.on_off],
-        toZigbee: [tz.on_off],
-        isModernExtend: true,
-    }),
     // General (whole-device) power-on behavior: one control that writes
     // startUpOnOff to every relay endpoint.
     generalPowerOnBehavior: (name, relayEndpoints) => {
@@ -513,7 +502,7 @@ const definitions = [
             romasku.networkIndicator("network_led", "{{first_endpoint}}"),
             {% endif%}
             {% if device.relayNames %}
-            romasku.relayLights({{device.relayNames | tojson }}),
+            onOff({ powerOnBehavior: false, endpointNames: {{device.relayNames | tojson }} }),
             romasku.generalPowerOnBehavior("power_on_behavior", [{% for relayName in device.relayNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
             {% if device.relayIndicatorNames %}
             romasku.generalIndicatorMode("indicator_mode", [{% for relayName in device.relayIndicatorNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
