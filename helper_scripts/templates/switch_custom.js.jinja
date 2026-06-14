@@ -101,10 +101,17 @@ const romasku = {
             entityCategory: "config",
         }),
     // Expose relays as on/off LIGHTS in HA. Explicit modernExtend (same shape as
-    // the general* helpers that work) so z2m actually uses these exposes instead
-    // of auto-detecting from clusters. on/off only (relays are not dimmable).
+    // the general* helpers that work) so z2m uses these exposes. We strip every
+    // feature except "state" so HA shows it as an on/off light (no dimmer slider)
+    // even if e.light() ships with brightness in this z2m/z-h-c version.
     relayLights: (relayNames) => ({
-        exposes: relayNames.map((n) => e.light().withEndpoint(n)),
+        exposes: relayNames.map((n) => {
+            const light = e.light().withEndpoint(n);
+            light.features = (light.features || []).filter(
+                (f) => (f.name || f.property) === "state"
+            );
+            return light;
+        }),
         fromZigbee: [fz.on_off],
         toZigbee: [tz.on_off],
         isModernExtend: true,
