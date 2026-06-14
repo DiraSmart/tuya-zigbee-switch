@@ -100,12 +100,15 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
-    // Expose relays as plain on/off SWITCHES. In HA you turn them into on/off
-    // lights with a per-device homeassistant override (switch_lN -> type: light),
-    // which is the only reliable way to get an on/off light WITHOUT a dimmer
-    // slider in this z2m/z-h-c (the native light expose always carries brightness).
-    relayLights: (relayNames) =>
-        onOff({ powerOnBehavior: false, endpointNames: relayNames }),
+    // Expose relays as on/off LIGHTS (native, e.light() = state only). z2m forces
+    // supported_color_modes:["brightness"] on any light, so to remove the dimmer
+    // slider in HA add a per-device override: light_lN: {supported_color_modes: [onoff]}.
+    relayLights: (relayNames) => ({
+        exposes: relayNames.map((n) => e.light().withEndpoint(n)),
+        fromZigbee: [fz.on_off],
+        toZigbee: [tz.on_off],
+        isModernExtend: true,
+    }),
     // General (whole-device) power-on behavior: one control that writes
     // startUpOnOff to every relay endpoint.
     generalPowerOnBehavior: (name, relayEndpoints) => {
