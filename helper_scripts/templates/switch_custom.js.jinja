@@ -582,6 +582,7 @@ const definitions = [
             {% endif %}
             {% for relayName in device.relayNames %}
             const endpoint{{loop.index  + (device.switchNames | length)}} = device.getEndpoint({{loop.index  + (device.switchNames | length)}});
+            await reporting.bind(endpoint{{loop.index  + (device.switchNames | length)}}, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint{{loop.index  + (device.switchNames | length)}}, {
                 min: 0,
                 max: constants.repInterval.MAX,
