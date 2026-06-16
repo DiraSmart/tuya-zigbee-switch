@@ -14,6 +14,8 @@ const constants = require("zigbee-herdsman-converters/lib/constants");
 const Zcl = require('zigbee-herdsman').Zcl;
 const e = require("zigbee-herdsman-converters/lib/exposes").presets;
 const ea = require("zigbee-herdsman-converters/lib/exposes").access;
+const fz = require("zigbee-herdsman-converters/converters/fromZigbee");
+const tz = require("zigbee-herdsman-converters/converters/toZigbee");
 
 /********************************************************************
   This file (`switch_custom.js`) is generated. 
@@ -95,13 +97,15 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
-    // Expose relays as on/off LIGHTS in HA. Reuses the proven onOff() control
-    // path (toZigbee/fromZigbee/configure) and only swaps the exposed entity
-    // type from switch to light. No brightness (relays are on/off).
-    relayLights: (relayNames) => {
-        const base = onOff({ powerOnBehavior: false, endpointNames: relayNames });
-        return { ...base, exposes: relayNames.map((n) => e.light().withEndpoint(n)) };
-    },
+    // Expose relays as on/off LIGHTS (native, e.light() = state only). z2m forces
+    // supported_color_modes:["brightness"] on any light, so to remove the dimmer
+    // slider in HA add a per-device override: light_lN: {supported_color_modes: [onoff]}.
+    relayLights: (relayNames) => ({
+        exposes: relayNames.map((n) => e.light().withEndpoint(n)),
+        fromZigbee: [fz.on_off],
+        toZigbee: [tz.on_off],
+        isModernExtend: true,
+    }),
     // General (whole-device) power-on behavior: one control that writes
     // startUpOnOff to every relay endpoint.
     generalPowerOnBehavior: (name, relayEndpoints) => {
@@ -477,9 +481,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -545,15 +550,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -641,21 +648,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -763,27 +773,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -867,27 +881,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -971,27 +989,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1075,27 +1097,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1137,9 +1163,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1195,15 +1222,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1259,15 +1288,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1310,9 +1341,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1363,9 +1395,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1416,9 +1449,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1474,15 +1508,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1552,21 +1588,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1650,27 +1689,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1714,9 +1757,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1774,15 +1818,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1854,21 +1900,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -1954,27 +2003,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2044,21 +2097,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2142,27 +2198,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2204,9 +2264,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2249,9 +2310,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2308,15 +2370,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2372,15 +2436,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2450,21 +2516,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2520,15 +2589,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2584,15 +2655,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2634,9 +2707,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2692,15 +2766,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2756,15 +2832,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2807,9 +2885,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2880,21 +2959,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2936,9 +3018,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -2994,15 +3077,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3044,9 +3129,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3088,9 +3174,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3147,15 +3234,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3384,9 +3473,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3428,9 +3518,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3472,9 +3563,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3516,9 +3608,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3560,9 +3653,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3604,9 +3698,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3677,21 +3772,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3775,27 +3873,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3837,9 +3939,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3881,9 +3984,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3925,9 +4029,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -3983,15 +4088,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4060,21 +4167,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4116,9 +4226,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4174,15 +4285,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4252,21 +4365,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4350,27 +4466,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4412,9 +4532,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4456,9 +4577,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4500,9 +4622,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4544,9 +4667,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4588,9 +4712,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4632,9 +4757,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4691,15 +4817,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4783,27 +4911,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4873,21 +5005,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4929,9 +5064,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -4973,9 +5109,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5017,9 +5154,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5061,9 +5199,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5105,9 +5244,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5149,9 +5289,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5209,15 +5350,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5288,21 +5431,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5344,9 +5490,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5388,9 +5535,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5446,15 +5594,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5524,21 +5674,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5580,9 +5733,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5638,15 +5792,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5688,9 +5844,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5746,15 +5903,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5900,21 +6059,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -5956,9 +6118,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6014,15 +6177,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6078,15 +6243,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6128,9 +6295,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6172,9 +6340,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6216,9 +6385,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6302,27 +6472,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6378,15 +6552,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6442,15 +6618,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6493,9 +6671,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6538,9 +6717,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6591,9 +6771,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6644,9 +6825,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6697,9 +6879,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6749,9 +6932,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6801,9 +6985,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6853,9 +7038,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6905,9 +7091,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -6957,9 +7144,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8345,9 +8533,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8403,15 +8592,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8482,21 +8673,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8580,27 +8774,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8644,9 +8842,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8712,15 +8911,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8807,21 +9008,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8864,9 +9068,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -8933,15 +9138,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9029,21 +9236,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9109,9 +9319,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9167,15 +9378,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9246,21 +9459,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9345,27 +9561,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9408,9 +9628,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9461,9 +9682,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9528,15 +9750,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9601,15 +9825,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9660,9 +9886,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9728,15 +9955,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9809,15 +10038,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9904,21 +10135,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -9985,9 +10219,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10052,15 +10287,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10147,21 +10384,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10271,27 +10511,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10366,9 +10610,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10433,15 +10678,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10528,21 +10775,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10608,9 +10858,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10660,9 +10911,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10718,15 +10970,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10796,21 +11050,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10852,9 +11109,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10910,15 +11168,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -10988,21 +11248,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11058,15 +11321,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11152,21 +11417,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11308,9 +11576,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11374,15 +11643,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11468,21 +11739,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11548,9 +11822,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11614,15 +11889,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11708,21 +11985,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11789,9 +12069,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11856,15 +12137,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -11951,21 +12234,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12060,21 +12346,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12183,27 +12472,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12278,9 +12571,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12345,15 +12639,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12440,21 +12736,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12562,27 +12861,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12698,27 +13001,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12820,21 +13127,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12901,9 +13211,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -12968,15 +13279,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13036,9 +13349,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13104,15 +13418,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13199,21 +13515,24 @@ const definitions = [
                 },
             ]);
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13263,9 +13582,10 @@ const definitions = [
         meta: { multiEndpoint: true },
         configure: async (device, coordinatorEndpoint, logger) => {
             const endpoint1 = device.getEndpoint(1);
+            await reporting.bind(endpoint1, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint1, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13315,9 +13635,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13401,27 +13722,31 @@ const definitions = [
                 },
             ]);
             const endpoint5 = device.getEndpoint(5);
+            await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint6 = device.getEndpoint(6);
+            await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint7 = device.getEndpoint(7);
+            await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint8 = device.getEndpoint(8);
+            await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13463,9 +13788,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13530,15 +13856,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13596,9 +13924,10 @@ const definitions = [
                 },
             ]);
             const endpoint2 = device.getEndpoint(2);
+            await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
@@ -13662,15 +13991,17 @@ const definitions = [
                 },
             ]);
             const endpoint3 = device.getEndpoint(3);
+            await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             const endpoint4 = device.getEndpoint(4);
+            await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
 
