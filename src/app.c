@@ -9,6 +9,7 @@
 #include "hal/zigbee_ota.h"
 #include "zigbee/battery_cluster.h"
 #include "zigbee/general_commands.h"
+#include "zigbee/relay_cluster.h"
 #ifdef END_DEVICE
 #include "zigbee/poll_control_cluster.h"
 #endif
@@ -68,6 +69,7 @@ void app_task() {
     if (!boot_announce_sent &&
         hal_zigbee_get_network_status() == HAL_ZIGBEE_NETWORK_JOINED) {
         hal_zigbee_send_announce();
+        report_all_relay_states(); // re-sync z2m/HA after boot / power restore
         boot_announce_sent = true;
     }
 }

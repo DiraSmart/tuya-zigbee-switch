@@ -585,7 +585,7 @@ const definitions = [
             await reporting.bind(endpoint{{loop.index  + (device.switchNames | length)}}, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint{{loop.index  + (device.switchNames | length)}}, {
                 min: 0,
-                max: constants.repInterval.MAX,
+                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
             {% endfor %}

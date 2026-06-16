@@ -54,6 +54,21 @@ void update_relay_clusters() {
     }
 }
 
+void relay_cluster_report(zigbee_relay_cluster *cluster) {
+    hal_zigbee_notify_attribute_changed(cluster->endpoint, ZCL_CLUSTER_ON_OFF,
+                                        ZCL_ATTR_ONOFF);
+}
+
+// Report every relay's current on/off state. Called on boot/join so z2m/HA
+// re-sync after a power outage or coordinator restart.
+void report_all_relay_states() {
+    for (int i = 0; i < 10; i++) {
+        if (relay_cluster_by_endpoint[i] != NULL) {
+            relay_cluster_report(relay_cluster_by_endpoint[i]);
+        }
+    }
+}
+
 void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,
                                    hal_zigbee_endpoint *endpoint) {
     relay_cluster_by_endpoint[endpoint->endpoint] = cluster;
