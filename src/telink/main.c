@@ -67,8 +67,14 @@ int real_main(startup_state_e state) {
 #endif
 
     if (battery.pin != HAL_INVALID_PIN) {
-        // Use lower TX power if battery powered
+        // Use lower TX power if battery powered (range vs. battery life trade-off)
         g_zb_txPowerSet = RF_POWER_INDEX_P3p01dBm;
+    } else {
+        // Mains-powered routers: force the chip's maximum TX power explicitly
+        // (best range / mesh robustness). Same level as the SDK default
+        // (ZB_DEFAULT_TX_POWER_IDX = RF_POWER_INDEX_P10p46dBm), set here so it is
+        // guaranteed and not silently changed by an SDK default update.
+        g_zb_txPowerSet = RF_POWER_INDEX_P10p46dBm;
     }
 
     drv_wd_setInterval(1000);

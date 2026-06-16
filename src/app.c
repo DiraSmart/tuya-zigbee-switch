@@ -5,6 +5,7 @@
 #include "hal/nvm.h"
 #include "hal/printf_selector.h"
 #include "hal/system.h"
+#include "hal/timer.h"
 #include "hal/zigbee.h"
 #include "hal/zigbee_ota.h"
 #include "zigbee/battery_cluster.h"
@@ -56,6 +57,24 @@ void app_init(void) {
 
 static bool boot_announce_sent = false;
 
+#ifndef END_DEVICE
+// Link self-heal / route-refresh watchdog (mains routers only).
+//
+// While JOINED, periodically re-announce our presence and re-report relay
+// state. This keeps the coordinator's address/routing tables fresh and works
+// around stale ("sticky") routes, where a device becomes hard to reach even
+// though its neighbours are fine. The unicast state report also gives the NWK
+// layer a chance to repair a broken route on no-ACK.
+//
+// Note: this does NOT force a rejoin. A full disconnect (NOT_JOINED) is already
+// recovered by start_network_steering below, and the Telink SDK rejoins on a
+// detected parent loss. Detecting a "joined but silently isolated" router would
+// need an APS delivery-confirmation signal the HAL does not currently expose;
+// a blind periodic rejoin on a deployed fleet would do more harm than good.
+#define LINK_REFRESH_INTERVAL_MS (60u * 60u * 1000u) // 1 hour
+static uint32_t last_link_refresh_ms = 0;
+#endif
+
 void app_task() {
 #ifdef END_DEVICE
     poll_control_cluster_update();
@@ -71,5 +90,20 @@ void app_task() {
         hal_zigbee_send_announce();
         report_all_relay_states(); // re-sync z2m/HA after boot / power restore
         boot_announce_sent = true;
+#ifndef END_DEVICE
+        last_link_refresh_ms = hal_millis();
+#endif
     }
+
+#ifndef END_DEVICE
+    // Periodic presence/route refresh once we are up and running.
+    if (boot_announce_sent &&
+        hal_zigbee_get_network_status() == HAL_ZIGBEE_NETWORK_JOINED &&
+        (uint32_t)(hal_millis() - last_link_refresh_ms) >=
+            LINK_REFRESH_INTERVAL_MS) {
+        hal_zigbee_send_announce();
+        report_all_relay_states();
+        last_link_refresh_ms = hal_millis();
+    }
+#endif
 }

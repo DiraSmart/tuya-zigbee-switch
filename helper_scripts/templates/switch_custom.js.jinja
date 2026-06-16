@@ -588,6 +588,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint{{loop.index  + (device.switchNames | length)}}.read("genOnOff", ["onOff"]);
             {% endfor %}
 
             {% for relayName in device.relayIndicatorNames %}
