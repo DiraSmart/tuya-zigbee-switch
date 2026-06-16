@@ -16,6 +16,10 @@ typedef struct {
     relay_t *            relay;
     led_t *              indicator_led;
     uint8_t              indicator_state;
+    // Last relay state propagated to bindings. Used as an anti-loop guard for
+    // the 3-way mirror: we only forward to bindings on a real state transition,
+    // so a mirrored command bouncing back (already in that state) stops here.
+    uint8_t              mirror_last_state;
 } zigbee_relay_cluster;
 
 void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,

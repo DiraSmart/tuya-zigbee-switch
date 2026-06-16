@@ -275,6 +275,35 @@ void switch_cluster_binding_action_on(zigbee_switch_cluster *cluster) {
     hal_zigbee_send_cmd_to_bindings(&c);
 }
 
+// Forward a relay's current state to the bindings of the button(s) that drive
+// it. Sends an ABSOLUTE ON/OFF command (never TOGGLE) so the mirror is
+// idempotent — together with the transition guard in the relay cluster this
+// guarantees a bounced-back command stops instead of looping forever.
+void switch_cluster_mirror_relay_state(zigbee_relay_cluster *relay_cluster,
+                                       uint8_t state) {
+    if (relay_cluster == NULL) {
+        return;
+    }
+    if (hal_zigbee_get_network_status() != HAL_ZIGBEE_NETWORK_JOINED) {
+        return;
+    }
+
+    uint8_t cmd_id = state ? ZCL_CMD_ONOFF_ON : ZCL_CMD_ONOFF_OFF;
+
+    for (int i = 0; i < switch_clusters_cnt; i++) {
+        zigbee_switch_cluster *cluster = &switch_clusters[i];
+        if (cluster->relay_index == 0 ||
+            cluster->relay_index > relay_clusters_cnt) {
+            continue;
+        }
+        if (&relay_clusters[cluster->relay_index - 1] != relay_cluster) {
+            continue;
+        }
+        hal_zigbee_cmd c = build_onoff_cmd(cluster->endpoint, cmd_id);
+        hal_zigbee_send_cmd_to_bindings(&c);
+    }
+}
+
 // Send OnOff command to binded device based on OFF position (position 2 in
 // ZCL docs)
 void switch_cluster_binding_action_off(zigbee_switch_cluster *cluster) {

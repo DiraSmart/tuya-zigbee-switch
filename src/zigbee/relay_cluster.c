@@ -6,6 +6,7 @@
 #include "device_config/nvm_items.h"
 #include "hal/nvm.h"
 #include "hal/printf_selector.h"
+#include "switch_cluster.h"
 
 hal_zigbee_cmd_result_t relay_cluster_callback(zigbee_relay_cluster *cluster,
                                                uint8_t command_id,
@@ -225,6 +226,16 @@ void relay_cluster_on_relay_change(zigbee_relay_cluster *cluster,
                                    uint8_t state) {
     hal_zigbee_notify_attribute_changed(cluster->endpoint, ZCL_CLUSTER_ON_OFF,
                                         ZCL_ATTR_ONOFF);
+
+    // 3-way mirror with anti-loop guard: only forward to bindings on a real
+    // state transition. relay_on/relay_off fire this callback even when the
+    // relay was already in the requested state (e.g. a mirrored command
+    // bouncing back), so guarding on the transition is what breaks the loop.
+    if (state != cluster->mirror_last_state) {
+        cluster->mirror_last_state = state;
+        switch_cluster_mirror_relay_state(cluster, state);
+    }
+
     if (cluster->startup_mode == ZCL_START_UP_ONOFF_SET_ONOFF_TOGGLE ||
         cluster->startup_mode == ZCL_START_UP_ONOFF_SET_ONOFF_TO_PREVIOUS) {
         relay_cluster_store_attrs_to_nv(cluster);

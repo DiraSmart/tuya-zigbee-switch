@@ -4,6 +4,7 @@
 #include "base_components/button.h"
 #include "base_components/led.h"
 #include "hal/zigbee.h"
+#include "relay_cluster.h"
 #include <stdint.h>
 
 typedef struct {
@@ -38,6 +39,14 @@ void switch_cluster_add_to_endpoint(zigbee_switch_cluster *cluster,
 
 void switch_cluster_callback_attr_write_trampoline(uint8_t endpoint,
                                                    uint16_t attribute_id);
+
+// 3-way mirror: when a relay changes state (by any source: physical button,
+// HA/Z2M command, group, etc.), forward the new absolute ON/OFF state to the
+// bindings of the button(s) that control it. This makes a relay bound for
+// 3-way stay in sync regardless of where the change originated, without making
+// the relay endpoint a binding source (which would also spam the coordinator).
+void switch_cluster_mirror_relay_state(zigbee_relay_cluster *relay_cluster,
+                                       uint8_t state);
 
 void update_switch_clusters(void);
 
