@@ -43,6 +43,46 @@ zigbee_relay_cluster *relay_cluster_by_endpoint[10];
 
 bool relay_cluster_mirror_suppressed = false;
 
+extern zigbee_relay_cluster  relay_clusters[];
+extern uint8_t               relay_clusters_cnt;
+extern zigbee_switch_cluster switch_clusters[];
+extern uint8_t               switch_clusters_cnt;
+
+// Group id currently applied to the hardware (group membership + button
+// bindings). Tracked so a change can remove the previous group cleanly.
+static uint16_t applied_sync_group_id = 0;
+
+void sync_group_apply(void) {
+    // Remove the previously applied group when it changed (e.g. user edited it),
+    // so we don't leave stale membership/bindings behind.
+    if (applied_sync_group_id != 0 &&
+        applied_sync_group_id != g_sync_group_id) {
+        for (int i = 0; i < relay_clusters_cnt; i++) {
+            hal_zigbee_group_remove(relay_clusters[i].endpoint,
+                                    applied_sync_group_id);
+        }
+        for (int i = 0; i < switch_clusters_cnt; i++) {
+            hal_zigbee_unbind_from_group(switch_clusters[i].endpoint,
+                                         ZCL_CLUSTER_ON_OFF,
+                                         applied_sync_group_id);
+        }
+    }
+
+    if (g_sync_group_id != 0) {
+        // Relays join the group to RECEIVE groupcasts.
+        for (int i = 0; i < relay_clusters_cnt; i++) {
+            hal_zigbee_group_add(relay_clusters[i].endpoint, g_sync_group_id);
+        }
+        // Buttons bind genOnOff to the group to SEND on press / on mirror.
+        for (int i = 0; i < switch_clusters_cnt; i++) {
+            hal_zigbee_bind_to_group(switch_clusters[i].endpoint,
+                                     ZCL_CLUSTER_ON_OFF, g_sync_group_id);
+        }
+    }
+
+    applied_sync_group_id = g_sync_group_id;
+}
+
 void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,
                                                   uint16_t attribute_id) {
     relay_cluster_on_write_attr(relay_cluster_by_endpoint[endpoint],

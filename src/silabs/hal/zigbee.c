@@ -49,6 +49,21 @@ bool hal_zigbee_get_current_command_is_groupcast(void) {
     return current_cmd_is_groupcast;
 }
 
+// Auto sync-group management is not implemented on the Silabs HAL yet.
+void hal_zigbee_group_add(uint8_t endpoint, uint16_t group_id) {
+}
+
+void hal_zigbee_group_remove(uint8_t endpoint, uint16_t group_id) {
+}
+
+void hal_zigbee_bind_to_group(uint8_t endpoint, uint16_t cluster_id,
+                              uint16_t group_id) {
+}
+
+void hal_zigbee_unbind_from_group(uint8_t endpoint, uint16_t cluster_id,
+                                  uint16_t group_id) {
+}
+
 static uint32_t on_command_callback(sl_service_opcode_t opcode,
                                     sl_service_function_context_t *context) {
     assert(opcode == SL_SERVICE_FUNCTION_TYPE_ZCL_COMMAND);

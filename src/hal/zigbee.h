@@ -171,6 +171,30 @@ typedef enum {
 hal_zigbee_status_t hal_zigbee_send_cmd_to_bindings(const hal_zigbee_cmd *cmd);
 
 /**
+ * Add an endpoint to a Zigbee group, so it receives groupcasts to that group.
+ * @param endpoint Endpoint to add (e.g. a relay endpoint)
+ * @param group_id Group address
+ */
+void hal_zigbee_group_add(uint8_t endpoint, uint16_t group_id);
+
+/** Remove an endpoint from a Zigbee group. */
+void hal_zigbee_group_remove(uint8_t endpoint, uint16_t group_id);
+
+/**
+ * Create a local binding from an endpoint+cluster to a Zigbee group, so
+ * commands that endpoint sends to its bindings reach the whole group.
+ * @param endpoint Source endpoint (e.g. a button endpoint)
+ * @param cluster_id Cluster to bind (e.g. genOnOff)
+ * @param group_id Destination group address
+ */
+void hal_zigbee_bind_to_group(uint8_t endpoint, uint16_t cluster_id,
+                              uint16_t group_id);
+
+/** Remove a local endpoint+cluster -> group binding. */
+void hal_zigbee_unbind_from_group(uint8_t endpoint, uint16_t cluster_id,
+                                  uint16_t group_id);
+
+/**
  * Send attribute report to bound devices (notify of state changes)
  * @param endpoint Source endpoint
  * @param cluster_id Cluster containing the attribute

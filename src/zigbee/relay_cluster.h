@@ -32,6 +32,11 @@ void relay_cluster_toggle(zigbee_relay_cluster *cluster);
 void relay_cluster_report(zigbee_relay_cluster *cluster);
 void report_all_relay_states();
 
+// Apply the configured 3-way sync group (g_sync_group_id): join relays to the
+// group and bind buttons' genOnOff to it; remove a previously applied group on
+// change. Called on boot (after join) and when the group id is written.
+void sync_group_apply(void);
+
 // When set, a relay state change does NOT mirror to the controlling button's
 // bindings. The switch sets this while driving the relay from a local button
 // press, because the button's own binding_action already propagates the change

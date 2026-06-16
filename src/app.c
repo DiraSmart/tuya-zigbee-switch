@@ -89,6 +89,7 @@ void app_task() {
         hal_zigbee_get_network_status() == HAL_ZIGBEE_NETWORK_JOINED) {
         hal_zigbee_send_announce();
         report_all_relay_states(); // re-sync z2m/HA after boot / power restore
+        sync_group_apply();        // apply configured 3-way group membership/bindings
         boot_announce_sent = true;
 #ifndef END_DEVICE
         last_link_refresh_ms = hal_millis();

@@ -105,6 +105,26 @@ bool hal_zigbee_get_current_command_is_groupcast(void) {
     return false;
 }
 
+void hal_zigbee_group_add(uint8_t endpoint, uint16_t group_id) {
+    io_log("ZIGBEE", "group_add ep=%u group=0x%04x", endpoint, group_id);
+}
+
+void hal_zigbee_group_remove(uint8_t endpoint, uint16_t group_id) {
+    io_log("ZIGBEE", "group_remove ep=%u group=0x%04x", endpoint, group_id);
+}
+
+void hal_zigbee_bind_to_group(uint8_t endpoint, uint16_t cluster_id,
+                              uint16_t group_id) {
+    io_log("ZIGBEE", "bind_to_group ep=%u cluster=0x%04x group=0x%04x", endpoint,
+           cluster_id, group_id);
+}
+
+void hal_zigbee_unbind_from_group(uint8_t endpoint, uint16_t cluster_id,
+                                  uint16_t group_id) {
+    io_log("ZIGBEE", "unbind_from_group ep=%u cluster=0x%04x group=0x%04x",
+           endpoint, cluster_id, group_id);
+}
+
 static hal_network_status_change_callback_t network_status_change_callback =
     NULL;
 

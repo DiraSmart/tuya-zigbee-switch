@@ -88,6 +88,16 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
+    syncGroupId: (name) =>
+        numeric({
+            name,
+            cluster: "genBasic",
+            attribute: { ID: 0xff05, type: 0x21 }, // uint16
+            description: "3-way sync group. Set the SAME number on every switch that controls the same light(s) (0 = disabled). The firmware then joins its relay(s) to this Zigbee group and binds its button(s) to it automatically, so all switches stay in sync (physical and from HA) with no manual group/binding setup.",
+            valueMin: 0,
+            valueMax: 65535,
+            entityCategory: "config",
+        }),
     decouple: (name, endpointName) =>
         binary({
             name,
@@ -512,6 +522,9 @@ const definitions = [
             romasku.childLock("child_lock"),
             {% endif %}
             romasku.deviceConfig("device_config"),
+            {% if device.relayNames %}
+            romasku.syncGroupId("sync_group"),
+            {% endif %}
             {% if device.has_dedicated_net_led %}
             romasku.networkIndicator("network_led", "{{first_endpoint}}"),
             {% endif%}

@@ -284,6 +284,45 @@ hal_zigbee_status_t hal_zigbee_send_cmd_to_bindings(const hal_zigbee_cmd *cmd) {
     return HAL_ZIGBEE_OK;
 }
 
+void hal_zigbee_group_add(uint8_t endpoint, uint16_t group_id) {
+    aps_add_group_req_t req;
+    req.group_addr = group_id;
+    req.ep         = endpoint;
+    aps_me_group_add_req(&req);
+}
+
+void hal_zigbee_group_remove(uint8_t endpoint, uint16_t group_id) {
+    aps_delete_group_req_t req;
+    req.group_addr = group_id;
+    req.ep         = endpoint;
+    aps_me_group_delete_req(&req);
+}
+
+static void fill_group_bind_req(aps_me_bind_req_t *r, uint8_t endpoint,
+                                uint16_t cluster_id, uint16_t group_id) {
+    TL_SETSTRUCTCONTENT(*r, 0);
+    zb_getLocalExtAddr(r->ext_src_addr);
+    r->src_ep         = endpoint;
+    r->cid16_l        = cluster_id & 0xff;
+    r->cid16_h        = (cluster_id >> 8) & 0xff;
+    r->dst_addr_mode  = APS_BIND_DST_ADDR_GROUP;
+    r->dst_group_addr = group_id;
+}
+
+void hal_zigbee_bind_to_group(uint8_t endpoint, uint16_t cluster_id,
+                              uint16_t group_id) {
+    aps_me_bind_req_t r;
+    fill_group_bind_req(&r, endpoint, cluster_id, group_id);
+    aps_me_bind_req(&r);
+}
+
+void hal_zigbee_unbind_from_group(uint8_t endpoint, uint16_t cluster_id,
+                                  uint16_t group_id) {
+    aps_me_bind_req_t r;
+    fill_group_bind_req(&r, endpoint, cluster_id, group_id);
+    aps_me_unbind_req(&r);
+}
+
 hal_zigbee_status_t
 hal_zigbee_send_report_attr(uint8_t endpoint, uint16_t cluster_id,
                             uint16_t attr_id, uint8_t zcl_type_id,
