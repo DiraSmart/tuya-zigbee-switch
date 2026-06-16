@@ -487,6 +487,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -556,6 +559,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -563,6 +569,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -654,6 +663,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -661,6 +673,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -668,6 +683,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -779,6 +797,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -786,6 +807,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -793,6 +817,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -800,6 +827,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -887,6 +917,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -894,6 +927,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -901,6 +937,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -908,6 +947,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -995,6 +1037,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -1002,6 +1047,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -1009,6 +1057,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -1016,6 +1067,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -1103,6 +1157,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -1110,6 +1167,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -1117,6 +1177,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -1124,6 +1187,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -1169,6 +1235,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -1228,6 +1297,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -1235,6 +1307,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -1294,6 +1369,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -1301,6 +1379,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -1347,6 +1428,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -1401,6 +1485,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -1455,6 +1542,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -1514,6 +1604,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -1521,6 +1614,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -1594,6 +1690,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -1601,6 +1700,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -1608,6 +1710,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -1695,6 +1800,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -1702,6 +1810,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -1709,6 +1820,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -1716,6 +1830,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -1763,6 +1880,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -1824,6 +1944,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -1831,6 +1954,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -1906,6 +2032,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -1913,6 +2042,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -1920,6 +2052,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -2009,6 +2144,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -2016,6 +2154,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -2023,6 +2164,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -2030,6 +2174,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -2103,6 +2250,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -2110,6 +2260,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -2117,6 +2270,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -2204,6 +2360,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -2211,6 +2370,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -2218,6 +2380,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -2225,6 +2390,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -2270,6 +2438,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -2316,6 +2487,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -2376,6 +2550,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -2383,6 +2560,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -2442,6 +2622,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -2449,6 +2632,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -2522,6 +2708,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -2529,6 +2718,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -2536,6 +2728,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -2595,6 +2790,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -2602,6 +2800,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -2661,6 +2862,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -2668,6 +2872,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -2713,6 +2920,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -2772,6 +2982,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -2779,6 +2992,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -2838,6 +3054,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -2845,6 +3064,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -2891,6 +3113,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -2965,6 +3190,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -2972,6 +3200,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -2979,6 +3210,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -3024,6 +3258,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3083,6 +3320,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -3090,6 +3330,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -3135,6 +3378,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3180,6 +3426,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3240,6 +3489,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -3247,6 +3499,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -3479,6 +3734,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3524,6 +3782,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3569,6 +3830,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3614,6 +3878,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3659,6 +3926,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3704,6 +3974,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3778,6 +4051,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -3785,6 +4061,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -3792,6 +4071,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -3879,6 +4161,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -3886,6 +4171,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -3893,6 +4181,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -3900,6 +4191,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -3945,6 +4239,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -3990,6 +4287,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4035,6 +4335,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4094,6 +4397,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -4101,6 +4407,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -4173,6 +4482,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -4180,6 +4492,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -4187,6 +4502,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -4232,6 +4550,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4291,6 +4612,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -4298,6 +4622,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -4371,6 +4698,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -4378,6 +4708,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -4385,6 +4718,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -4472,6 +4808,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -4479,6 +4818,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -4486,6 +4828,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -4493,6 +4838,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -4538,6 +4886,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4583,6 +4934,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4628,6 +4982,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4673,6 +5030,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4718,6 +5078,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4763,6 +5126,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -4823,6 +5189,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -4830,6 +5199,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -4917,6 +5289,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -4924,6 +5299,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -4931,6 +5309,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -4938,6 +5319,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -5011,6 +5395,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -5018,6 +5405,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -5025,6 +5415,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -5070,6 +5463,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5115,6 +5511,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5160,6 +5559,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5205,6 +5607,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5250,6 +5655,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5295,6 +5703,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5356,6 +5767,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -5363,6 +5777,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -5437,6 +5854,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -5444,6 +5864,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -5451,6 +5874,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -5496,6 +5922,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5541,6 +5970,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5600,6 +6032,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -5607,6 +6042,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -5680,6 +6118,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -5687,6 +6128,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -5694,6 +6138,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -5739,6 +6186,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5798,6 +6248,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -5805,6 +6258,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -5850,6 +6306,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -5909,6 +6368,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -5916,6 +6378,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -6065,6 +6530,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -6072,6 +6540,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -6079,6 +6550,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -6124,6 +6598,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -6183,6 +6660,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -6190,6 +6670,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -6249,6 +6732,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -6256,6 +6742,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -6301,6 +6790,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -6346,6 +6838,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -6391,6 +6886,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -6478,6 +6976,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -6485,6 +6986,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -6492,6 +6996,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -6499,6 +7006,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -6558,6 +7068,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -6565,6 +7078,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -6624,6 +7140,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -6631,6 +7150,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -6677,6 +7199,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -6723,6 +7248,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -6777,6 +7305,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -6831,6 +7362,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -6885,6 +7419,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -6938,6 +7475,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -6991,6 +7531,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -7044,6 +7587,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -7097,6 +7643,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -7150,6 +7699,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -8539,6 +9091,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -8598,6 +9153,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -8605,6 +9163,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -8679,6 +9240,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -8686,6 +9250,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -8693,6 +9260,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -8780,6 +9350,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -8787,6 +9360,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -8794,6 +9370,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -8801,6 +9380,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -8848,6 +9430,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -8917,6 +9502,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -8924,6 +9512,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -9014,6 +9605,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -9021,6 +9615,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -9028,6 +9625,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -9074,6 +9674,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -9144,6 +9747,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -9151,6 +9757,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -9242,6 +9851,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -9249,6 +9861,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -9256,6 +9871,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -9325,6 +9943,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -9384,6 +10005,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -9391,6 +10015,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -9465,6 +10092,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -9472,6 +10102,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -9479,6 +10112,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -9567,6 +10203,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -9574,6 +10213,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -9581,6 +10223,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -9588,6 +10233,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -9634,6 +10282,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -9688,6 +10339,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -9756,6 +10410,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -9763,6 +10420,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -9831,6 +10491,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -9838,6 +10501,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -9892,6 +10558,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -9961,6 +10630,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -9968,6 +10640,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -10044,6 +10719,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -10051,6 +10729,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -10141,6 +10822,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -10148,6 +10832,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -10155,6 +10842,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -10225,6 +10915,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -10293,6 +10986,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -10300,6 +10996,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -10390,6 +11089,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -10397,6 +11099,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -10404,6 +11109,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -10517,6 +11225,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -10524,6 +11235,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -10531,6 +11245,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -10538,6 +11255,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
             await endpoint5.configureReporting("genOnOff", [
                 {
@@ -10616,6 +11336,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -10684,6 +11407,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -10691,6 +11417,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -10781,6 +11510,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -10788,6 +11520,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -10795,6 +11530,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -10864,6 +11602,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -10917,6 +11658,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -10976,6 +11720,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -10983,6 +11730,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -11056,6 +11806,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -11063,6 +11816,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -11070,6 +11826,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -11115,6 +11874,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -11174,6 +11936,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -11181,6 +11946,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
 
 
@@ -11254,6 +12022,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -11261,6 +12032,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -11268,6 +12042,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
 
 
@@ -11327,6 +12104,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -11334,6 +12114,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -11423,6 +12206,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -11430,6 +12216,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -11437,6 +12226,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -11582,6 +12374,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -11649,6 +12444,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -11656,6 +12454,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -11745,6 +12546,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -11752,6 +12556,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -11759,6 +12566,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -11828,6 +12638,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -11895,6 +12708,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -11902,6 +12718,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -11991,6 +12810,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -11998,6 +12820,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -12005,6 +12830,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -12075,6 +12903,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -12143,6 +12974,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -12150,6 +12984,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -12240,6 +13077,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -12247,6 +13087,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -12254,6 +13097,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -12352,6 +13198,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -12359,6 +13208,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -12366,6 +13218,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -12478,6 +13333,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -12485,6 +13343,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -12492,6 +13353,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -12499,6 +13363,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
             await endpoint5.configureReporting("genOnOff", [
                 {
@@ -12577,6 +13444,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -12645,6 +13515,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -12652,6 +13525,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -12742,6 +13618,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -12749,6 +13628,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -12756,6 +13638,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -12867,6 +13752,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -12874,6 +13762,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -12881,6 +13772,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -12888,6 +13782,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
             await endpoint5.configureReporting("genOnOff", [
                 {
@@ -13007,6 +13904,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -13014,6 +13914,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -13021,6 +13924,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -13028,6 +13934,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
             await endpoint5.configureReporting("genOnOff", [
                 {
@@ -13133,6 +14042,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -13140,6 +14052,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -13147,6 +14062,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -13217,6 +14135,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -13285,6 +14206,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -13292,6 +14216,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -13355,6 +14282,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -13424,6 +14354,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -13431,6 +14364,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -13521,6 +14457,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
             const endpoint5 = device.getEndpoint(5);
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
@@ -13528,6 +14467,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -13535,6 +14477,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
 
             await endpoint4.configureReporting("genOnOff", [
                 {
@@ -13588,6 +14533,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint1.read("genOnOff", ["onOff"]);
 
             await endpoint1.configureReporting("genOnOff", [
                 {
@@ -13641,6 +14589,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
 
 
@@ -13728,6 +14679,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint5.read("genOnOff", ["onOff"]);
             const endpoint6 = device.getEndpoint(6);
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
@@ -13735,6 +14689,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint6.read("genOnOff", ["onOff"]);
             const endpoint7 = device.getEndpoint(7);
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
@@ -13742,6 +14699,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint7.read("genOnOff", ["onOff"]);
             const endpoint8 = device.getEndpoint(8);
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
@@ -13749,6 +14709,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint8.read("genOnOff", ["onOff"]);
 
 
 
@@ -13794,6 +14757,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -13862,6 +14828,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -13869,6 +14838,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
@@ -13930,6 +14902,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint2.read("genOnOff", ["onOff"]);
 
             await endpoint2.configureReporting("genOnOff", [
                 {
@@ -13997,6 +14972,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint3.read("genOnOff", ["onOff"]);
             const endpoint4 = device.getEndpoint(4);
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
@@ -14004,6 +14982,9 @@ const definitions = [
                 max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
                 change: 1,
             });
+            // Read the current relay state so HA shows it right after
+            // interview/reconfigure, without waiting for the first change/heartbeat.
+            await endpoint4.read("genOnOff", ["onOff"]);
 
             await endpoint3.configureReporting("genOnOff", [
                 {
