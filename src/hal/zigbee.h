@@ -76,6 +76,15 @@ void hal_zigbee_init(hal_zigbee_endpoint *endpoints, uint8_t endpoints_cnt);
  */
 hal_zigbee_network_status_t hal_zigbee_get_network_status(void);
 
+/**
+ * Get the source network address of the Zigbee command currently being
+ * dispatched to a cluster command callback. Returns 0x0000 for the coordinator
+ * (Home Assistant / zigbee2mqtt). A non-zero value means the command came from
+ * another device (e.g. a peer switch via a direct binding). Only meaningful
+ * while inside a command callback.
+ */
+uint16_t hal_zigbee_get_current_command_source(void);
+
 /** Function called when network status changes */
 typedef void (*hal_network_status_change_callback_t)(
     hal_zigbee_network_status_t new_status);

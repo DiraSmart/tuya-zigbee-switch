@@ -65,6 +65,15 @@ static cluster_registerFunc_t get_register_func_by_cluster_id(u16 cluster_id) {
     return NULL;
 }
 
+// Source network address of the command currently being dispatched. Set by the
+// per-cluster wrappers below (which receive the address info) before the
+// application callback runs. 0x0000 = coordinator (Home Assistant / z2m).
+static u16 current_cmd_src_addr = 0;
+
+uint16_t hal_zigbee_get_current_command_source(void) {
+    return current_cmd_src_addr;
+}
+
 static status_t cmd_callback(u8 endpoint, u16 clusterId, u8 cmdId,
                              void *cmdPayload, u16 cmdPayloadLen) {
     hal_zigbee_cluster *cluster = hal_zigbee_find_cluster(
@@ -98,6 +107,7 @@ static status_t cmd_callback_on_off(zclIncomingAddrInfo_t *pAddrInfo, u8 cmdId,
                                     void *cmdPayload) {
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
+    current_cmd_src_addr = pAddrInfo->srcAddr;
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_GEN_ON_OFF, cmdId,
                         pInMsg->pData, pInMsg->dataLen);
 }
@@ -106,6 +116,7 @@ static status_t cmd_callback_window_covering(zclIncomingAddrInfo_t *pAddrInfo,
                                              u8 cmdId, void *cmdPayload) {
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
+    current_cmd_src_addr = pAddrInfo->srcAddr;
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_CLOSURES_WINDOW_COVERING,
                         cmdId, pInMsg->pData, pInMsg->dataLen);
 }
@@ -114,6 +125,7 @@ static status_t cmd_callback_level_control(zclIncomingAddrInfo_t *pAddrInfo,
                                            u8 cmdId, void *cmdPayload) {
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
+    current_cmd_src_addr = pAddrInfo->srcAddr;
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_GEN_LEVEL_CONTROL, cmdId,
                         pInMsg->pData, pInMsg->dataLen);
 }
@@ -122,6 +134,7 @@ static status_t cmd_callback_poll_control(zclIncomingAddrInfo_t *pAddrInfo,
                                           u8 cmdId, void *cmdPayload) {
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
+    current_cmd_src_addr = pAddrInfo->srcAddr;
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_GEN_POLL_CONTROL, cmdId,
                         pInMsg->pData, pInMsg->dataLen);
 }

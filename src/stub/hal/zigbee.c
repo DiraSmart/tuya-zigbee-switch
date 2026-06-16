@@ -95,6 +95,11 @@ hal_zigbee_network_status_t hal_zigbee_get_network_status(void) {
     return network_status;
 }
 
+// Simulated commands are treated as coming from the coordinator (0x0000).
+uint16_t hal_zigbee_get_current_command_source(void) {
+    return 0x0000;
+}
+
 static hal_network_status_change_callback_t network_status_change_callback =
     NULL;
 

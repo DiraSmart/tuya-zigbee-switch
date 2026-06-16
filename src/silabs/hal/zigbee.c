@@ -36,6 +36,14 @@ hal_zigbee_attribute *find_hal_attr(uint8_t endpoint,
                                      clusterId, attributeId);
 }
 
+// Source network address of the command currently being dispatched.
+// 0x0000 = coordinator (Home Assistant / zigbee2mqtt).
+static uint16_t current_cmd_src_addr = 0;
+
+uint16_t hal_zigbee_get_current_command_source(void) {
+    return current_cmd_src_addr;
+}
+
 static uint32_t on_command_callback(sl_service_opcode_t opcode,
                                     sl_service_function_context_t *context) {
     assert(opcode == SL_SERVICE_FUNCTION_TYPE_ZCL_COMMAND);
@@ -46,6 +54,8 @@ static uint32_t on_command_callback(sl_service_opcode_t opcode,
         cmd->apsFrame->destinationEndpoint, cmd->apsFrame->clusterId);
     if (hal_cluster == NULL || hal_cluster->cmd_callback == NULL)
         return SL_ZIGBEE_ZCL_STATUS_UNSUP_COMMAND;
+
+    current_cmd_src_addr = cmd->source;
 
     uint8_t *payload     = NULL;
     uint16_t payload_len = 0;

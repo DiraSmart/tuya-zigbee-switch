@@ -123,6 +123,15 @@ hal_zigbee_cmd_result_t relay_cluster_callback(zigbee_relay_cluster *cluster,
                                                uint8_t command_id,
                                                void *cmd_payload,
                                                uint16_t cmd_payload_len) {
+    // Only mirror this change to 3-way bindings if the command came from the
+    // coordinator (Home Assistant / z2m, addr 0x0000). A command from a peer
+    // switch (its 3-way binding) must NOT be echoed back: otherwise a command
+    // delayed in the mesh, racing against a later contradicting command, would
+    // bounce back and revert the relay to a stale state.
+    relay_cluster_mirror_suppressed =
+        (hal_zigbee_get_current_command_source() != 0x0000);
+
+    hal_zigbee_cmd_result_t result = HAL_ZIGBEE_CMD_PROCESSED;
     switch (command_id) {
     case ZCL_CMD_ONOFF_ON:
     case ZCL_CMD_ON_WITH_RECALL_GLOBAL_SCENE:
@@ -140,9 +149,12 @@ hal_zigbee_cmd_result_t relay_cluster_callback(zigbee_relay_cluster *cluster,
 
     default:
         printf("Unknown OnOff command: %d\r\n", command_id);
-        return HAL_ZIGBEE_CMD_SKIPPED;
+        result = HAL_ZIGBEE_CMD_SKIPPED;
+        break;
     }
-    return HAL_ZIGBEE_CMD_PROCESSED;
+
+    relay_cluster_mirror_suppressed = false;
+    return result;
 }
 
 hal_zigbee_cmd_result_t relay_cluster_level_callback_trampoline(uint8_t endpoint,
