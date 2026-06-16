@@ -32,6 +32,12 @@ void relay_cluster_toggle(zigbee_relay_cluster *cluster);
 void relay_cluster_report(zigbee_relay_cluster *cluster);
 void report_all_relay_states();
 
+// When set, a relay state change does NOT mirror to the controlling button's
+// bindings. The switch sets this while driving the relay from a local button
+// press, because the button's own binding_action already propagates the change
+// to 3-way targets (mirroring again would send the command twice).
+extern bool relay_cluster_mirror_suppressed;
+
 void update_relay_clusters();
 
 void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,

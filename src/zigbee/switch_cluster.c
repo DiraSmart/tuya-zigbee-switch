@@ -182,6 +182,9 @@ void switch_cluster_relay_action_on(zigbee_switch_cluster *cluster) {
     zigbee_relay_cluster *relay_cluster =
         &relay_clusters[cluster->relay_index - 1];
 
+    // Local button press: the button's binding_action below already propagates
+    // to 3-way targets, so suppress the relay-change mirror to avoid a duplicate.
+    relay_cluster_mirror_suppressed = true;
     switch (cluster->action) {
     case ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_ONOFF:
         relay_cluster_on(relay_cluster);
@@ -199,6 +202,7 @@ void switch_cluster_relay_action_on(zigbee_switch_cluster *cluster) {
         relay_cluster_toggle(relay_cluster);
         break;
     }
+    relay_cluster_mirror_suppressed = false;
 }
 
 // Perform the relay action for OFF position (position 2 in ZCL docs)
@@ -209,6 +213,9 @@ void switch_cluster_relay_action_off(zigbee_switch_cluster *cluster) {
     zigbee_relay_cluster *relay_cluster =
         &relay_clusters[cluster->relay_index - 1];
 
+    // Local button press: the button's binding_action below already propagates
+    // to 3-way targets, so suppress the relay-change mirror to avoid a duplicate.
+    relay_cluster_mirror_suppressed = true;
     switch (cluster->action) {
     case ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_ONOFF:
         relay_cluster_off(relay_cluster);
@@ -226,6 +233,7 @@ void switch_cluster_relay_action_off(zigbee_switch_cluster *cluster) {
         relay_cluster_toggle(relay_cluster);
         break;
     }
+    relay_cluster_mirror_suppressed = false;
 }
 
 // Send OnOff command to binded device based on ON position (position 1 in

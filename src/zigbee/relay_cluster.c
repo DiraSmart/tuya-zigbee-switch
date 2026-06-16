@@ -41,6 +41,8 @@ void sync_indicator_led(zigbee_relay_cluster *cluster);
 
 zigbee_relay_cluster *relay_cluster_by_endpoint[10];
 
+bool relay_cluster_mirror_suppressed = false;
+
 void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,
                                                   uint16_t attribute_id) {
     relay_cluster_on_write_attr(relay_cluster_by_endpoint[endpoint],
@@ -233,7 +235,9 @@ void relay_cluster_on_relay_change(zigbee_relay_cluster *cluster,
     // bouncing back), so guarding on the transition is what breaks the loop.
     if (state != cluster->mirror_last_state) {
         cluster->mirror_last_state = state;
-        switch_cluster_mirror_relay_state(cluster, state);
+        if (!relay_cluster_mirror_suppressed) {
+            switch_cluster_mirror_relay_state(cluster, state);
+        }
     }
 
     if (cluster->startup_mode == ZCL_START_UP_ONOFF_SET_ONOFF_TOGGLE ||
