@@ -85,6 +85,14 @@ hal_zigbee_network_status_t hal_zigbee_get_network_status(void);
  */
 uint16_t hal_zigbee_get_current_command_source(void);
 
+/**
+ * Returns true if the command currently being dispatched arrived as a
+ * groupcast (multicast to a Zigbee group) rather than a unicast. Only
+ * meaningful while inside a command callback. Used to avoid re-broadcasting a
+ * change that every group member already received directly.
+ */
+bool hal_zigbee_get_current_command_is_groupcast(void);
+
 /** Function called when network status changes */
 typedef void (*hal_network_status_change_callback_t)(
     hal_zigbee_network_status_t new_status);

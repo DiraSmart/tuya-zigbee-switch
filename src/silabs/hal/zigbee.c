@@ -38,10 +38,15 @@ hal_zigbee_attribute *find_hal_attr(uint8_t endpoint,
 
 // Source network address of the command currently being dispatched.
 // 0x0000 = coordinator (Home Assistant / zigbee2mqtt).
-static uint16_t current_cmd_src_addr = 0;
+static uint16_t current_cmd_src_addr     = 0;
+static bool     current_cmd_is_groupcast = false;
 
 uint16_t hal_zigbee_get_current_command_source(void) {
     return current_cmd_src_addr;
+}
+
+bool hal_zigbee_get_current_command_is_groupcast(void) {
+    return current_cmd_is_groupcast;
 }
 
 static uint32_t on_command_callback(sl_service_opcode_t opcode,

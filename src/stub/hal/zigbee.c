@@ -100,6 +100,11 @@ uint16_t hal_zigbee_get_current_command_source(void) {
     return 0x0000;
 }
 
+// Simulated commands are treated as unicast.
+bool hal_zigbee_get_current_command_is_groupcast(void) {
+    return false;
+}
+
 static hal_network_status_change_callback_t network_status_change_callback =
     NULL;
 

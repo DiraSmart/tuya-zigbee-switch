@@ -123,13 +123,19 @@ hal_zigbee_cmd_result_t relay_cluster_callback(zigbee_relay_cluster *cluster,
                                                uint8_t command_id,
                                                void *cmd_payload,
                                                uint16_t cmd_payload_len) {
-    // Only mirror this change to 3-way bindings if the command came from the
-    // coordinator (Home Assistant / z2m, addr 0x0000). A command from a peer
-    // switch (its 3-way binding) must NOT be echoed back: otherwise a command
-    // delayed in the mesh, racing against a later contradicting command, would
-    // bounce back and revert the relay to a stale state.
+    // Mirror this change to 3-way bindings ONLY if it arrived as a UNICAST from
+    // the coordinator (Home Assistant / z2m, addr 0x0000):
+    //   - peer command (another switch's binding): must not echo back, or a
+    //     mesh-delayed command racing a later contradicting one would bounce
+    //     and revert the relay to a stale state;
+    //   - groupcast (a Zigbee group): every member already got it directly, so
+    //     re-broadcasting would just add redundant traffic (scales badly with
+    //     many switches in a multi-way group).
+    // This way even an individual relay toggled from HA still propagates to a
+    // whole group (mirror -> button binding -> groupcast) without looping.
     relay_cluster_mirror_suppressed =
-        (hal_zigbee_get_current_command_source() != 0x0000);
+        (hal_zigbee_get_current_command_source() != 0x0000) ||
+        hal_zigbee_get_current_command_is_groupcast();
 
     hal_zigbee_cmd_result_t result = HAL_ZIGBEE_CMD_PROCESSED;
     switch (command_id) {

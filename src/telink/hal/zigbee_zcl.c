@@ -68,10 +68,15 @@ static cluster_registerFunc_t get_register_func_by_cluster_id(u16 cluster_id) {
 // Source network address of the command currently being dispatched. Set by the
 // per-cluster wrappers below (which receive the address info) before the
 // application callback runs. 0x0000 = coordinator (Home Assistant / z2m).
-static u16 current_cmd_src_addr = 0;
+static u16  current_cmd_src_addr    = 0;
+static bool current_cmd_is_groupcast = false;
 
 uint16_t hal_zigbee_get_current_command_source(void) {
     return current_cmd_src_addr;
+}
+
+bool hal_zigbee_get_current_command_is_groupcast(void) {
+    return current_cmd_is_groupcast;
 }
 
 static status_t cmd_callback(u8 endpoint, u16 clusterId, u8 cmdId,
@@ -108,6 +113,8 @@ static status_t cmd_callback_on_off(zclIncomingAddrInfo_t *pAddrInfo, u8 cmdId,
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
     current_cmd_src_addr = pAddrInfo->srcAddr;
+    current_cmd_is_groupcast =
+        (pInMsg->msg->indInfo.dst_addr_mode == APS_SHORT_GROUPADDR_NOEP);
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_GEN_ON_OFF, cmdId,
                         pInMsg->pData, pInMsg->dataLen);
 }
@@ -117,6 +124,8 @@ static status_t cmd_callback_window_covering(zclIncomingAddrInfo_t *pAddrInfo,
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
     current_cmd_src_addr = pAddrInfo->srcAddr;
+    current_cmd_is_groupcast =
+        (pInMsg->msg->indInfo.dst_addr_mode == APS_SHORT_GROUPADDR_NOEP);
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_CLOSURES_WINDOW_COVERING,
                         cmdId, pInMsg->pData, pInMsg->dataLen);
 }
@@ -126,6 +135,8 @@ static status_t cmd_callback_level_control(zclIncomingAddrInfo_t *pAddrInfo,
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
     current_cmd_src_addr = pAddrInfo->srcAddr;
+    current_cmd_is_groupcast =
+        (pInMsg->msg->indInfo.dst_addr_mode == APS_SHORT_GROUPADDR_NOEP);
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_GEN_LEVEL_CONTROL, cmdId,
                         pInMsg->pData, pInMsg->dataLen);
 }
@@ -135,6 +146,8 @@ static status_t cmd_callback_poll_control(zclIncomingAddrInfo_t *pAddrInfo,
     zclIncoming_t *pInMsg = cmd_incoming_from_addr_info(pAddrInfo);
 
     current_cmd_src_addr = pAddrInfo->srcAddr;
+    current_cmd_is_groupcast =
+        (pInMsg->msg->indInfo.dst_addr_mode == APS_SHORT_GROUPADDR_NOEP);
     return cmd_callback(pAddrInfo->dstEp, ZCL_CLUSTER_GEN_POLL_CONTROL, cmdId,
                         pInMsg->pData, pInMsg->dataLen);
 }
