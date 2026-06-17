@@ -48,39 +48,48 @@ extern uint8_t               relay_clusters_cnt;
 extern zigbee_switch_cluster switch_clusters[];
 extern uint8_t               switch_clusters_cnt;
 
-// Group id currently applied to the hardware (group membership + button
-// bindings). Tracked so a change can remove the previous group cleanly.
-static uint16_t applied_sync_group_id = 0;
+// True if switch `sw` drives relay `relay` (so its button should send to the
+// relay's sync group).
+static bool switch_controls_relay(const zigbee_switch_cluster *sw,
+                                  const zigbee_relay_cluster *relay) {
+    return sw->relay_index > 0 && sw->relay_index <= relay_clusters_cnt &&
+           &relay_clusters[sw->relay_index - 1] == relay;
+}
 
+// Apply each relay's own sync group: the relay joins the group (to receive
+// groupcasts) and every button that controls it binds genOnOff to the group
+// (to send). Per-light, so on a multi-gang device each l1/l2 can be in a
+// different group (or none). Cleans up a previously applied group on change.
 void sync_group_apply(void) {
-    // Remove the previously applied group when it changed (e.g. user edited it),
-    // so we don't leave stale membership/bindings behind.
-    if (applied_sync_group_id != 0 &&
-        applied_sync_group_id != g_sync_group_id) {
-        for (int i = 0; i < relay_clusters_cnt; i++) {
-            hal_zigbee_group_remove(relay_clusters[i].endpoint,
-                                    applied_sync_group_id);
-        }
-        for (int i = 0; i < switch_clusters_cnt; i++) {
-            hal_zigbee_unbind_from_group(switch_clusters[i].endpoint,
-                                         ZCL_CLUSTER_ON_OFF,
-                                         applied_sync_group_id);
-        }
-    }
+    for (int i = 0; i < relay_clusters_cnt; i++) {
+        zigbee_relay_cluster *relay = &relay_clusters[i];
+        uint16_t              want  = relay->sync_group_id;
+        uint16_t              have  = relay->applied_sync_group_id;
 
-    if (g_sync_group_id != 0) {
-        // Relays join the group to RECEIVE groupcasts.
-        for (int i = 0; i < relay_clusters_cnt; i++) {
-            hal_zigbee_group_add(relay_clusters[i].endpoint, g_sync_group_id);
+        if (want == have) {
+            continue;
         }
-        // Buttons bind genOnOff to the group to SEND on press / on mirror.
-        for (int i = 0; i < switch_clusters_cnt; i++) {
-            hal_zigbee_bind_to_group(switch_clusters[i].endpoint,
-                                     ZCL_CLUSTER_ON_OFF, g_sync_group_id);
-        }
-    }
 
-    applied_sync_group_id = g_sync_group_id;
+        if (have != 0) {
+            hal_zigbee_group_remove(relay->endpoint, have);
+            for (int j = 0; j < switch_clusters_cnt; j++) {
+                if (switch_controls_relay(&switch_clusters[j], relay)) {
+                    hal_zigbee_unbind_from_group(switch_clusters[j].endpoint,
+                                                 ZCL_CLUSTER_ON_OFF, have);
+                }
+            }
+        }
+        if (want != 0) {
+            hal_zigbee_group_add(relay->endpoint, want);
+            for (int j = 0; j < switch_clusters_cnt; j++) {
+                if (switch_controls_relay(&switch_clusters[j], relay)) {
+                    hal_zigbee_bind_to_group(switch_clusters[j].endpoint,
+                                             ZCL_CLUSTER_ON_OFF, want);
+                }
+            }
+        }
+        relay->applied_sync_group_id = want;
+    }
 }
 
 void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,
@@ -128,16 +137,18 @@ void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,
                cluster->relay->on);
     SETUP_ATTR(1, ZCL_ATTR_START_UP_ONOFF, ZCL_DATA_TYPE_ENUM8, ATTR_WRITABLE,
                cluster->startup_mode);
+    SETUP_ATTR(2, ZCL_ATTR_ONOFF_SYNC_GROUP_ID, ZCL_DATA_TYPE_UINT16,
+               ATTR_WRITABLE, cluster->sync_group_id);
     if (cluster->indicator_led != NULL) {
-        SETUP_ATTR(2, ZCL_ATTR_ONOFF_INDICATOR_MODE, ZCL_DATA_TYPE_ENUM8,
+        SETUP_ATTR(3, ZCL_ATTR_ONOFF_INDICATOR_MODE, ZCL_DATA_TYPE_ENUM8,
                    ATTR_WRITABLE, cluster->indicator_led_mode);
-        SETUP_ATTR(3, ZCL_ATTR_ONOFF_INDICATOR_STATE, ZCL_DATA_TYPE_BOOLEAN,
+        SETUP_ATTR(4, ZCL_ATTR_ONOFF_INDICATOR_STATE, ZCL_DATA_TYPE_BOOLEAN,
                    ATTR_WRITABLE, cluster->indicator_state);
     }
 
     endpoint->clusters[endpoint->cluster_count].cluster_id      = ZCL_CLUSTER_ON_OFF;
     endpoint->clusters[endpoint->cluster_count].attribute_count =
-        cluster->indicator_led != NULL ? 4 : 2;
+        cluster->indicator_led != NULL ? 5 : 3;
     endpoint->clusters[endpoint->cluster_count].attributes   = cluster->attr_infos;
     endpoint->clusters[endpoint->cluster_count].is_server    = 1;
     endpoint->clusters[endpoint->cluster_count].cmd_callback =
@@ -306,6 +317,14 @@ void relay_cluster_on_relay_change(zigbee_relay_cluster *cluster,
 
 void relay_cluster_on_write_attr(zigbee_relay_cluster *cluster,
                                  uint16_t attribute_id) {
+    if (attribute_id == ZCL_ATTR_ONOFF_SYNC_GROUP_ID) {
+        // Persist in its own NV item and (re)apply group membership + bindings.
+        uint16_t group_id = cluster->sync_group_id;
+        hal_nvm_write(NV_ITEM_RELAY_SYNC_GROUP(cluster->relay_idx),
+                      sizeof(group_id), (uint8_t *)&group_id);
+        sync_group_apply();
+        return;
+    }
     if (attribute_id == ZCL_ATTR_ONOFF_INDICATOR_STATE) {
         sync_indicator_led(cluster);
     }
@@ -339,6 +358,15 @@ void relay_cluster_store_attrs_to_nv(zigbee_relay_cluster *cluster) {
 }
 
 void relay_cluster_load_attrs_from_nv(zigbee_relay_cluster *cluster) {
+    // Sync group id is stored in its own NV item (independent of the config
+    // struct below), so read it separately and unconditionally.
+    uint16_t group_id;
+    if (hal_nvm_read(NV_ITEM_RELAY_SYNC_GROUP(cluster->relay_idx),
+                     sizeof(group_id),
+                     (uint8_t *)&group_id) == HAL_NVM_SUCCESS) {
+        cluster->sync_group_id = group_id;
+    }
+
     hal_nvm_status_t st = hal_nvm_read(
         NV_ITEM_RELAY_CLUSTER_DATA(cluster->relay_idx),
         sizeof(zigbee_relay_cluster_config), (uint8_t *)&nv_config_buffer);

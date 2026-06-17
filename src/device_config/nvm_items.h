@@ -29,6 +29,8 @@
 #define NV_ITEM_POLL_CONTROL_CONFIG        34
 #define NV_ITEM_CHILD_LOCK_ENABLED         35
 #define NV_ITEM_CHILD_LOCK_ACTIVE          36
-#define NV_ITEM_SYNC_GROUP_ID              37
+// Per-relay 3-way sync group id (separate item so adding it doesn't change the
+// relay cluster config struct size / reset existing relay settings).
+#define NV_ITEM_RELAY_SYNC_GROUP(relay_idx) (37 + (relay_idx))
 
 #endif /* DEVICE_CONFIG_NVM_ITEMS_H_ */

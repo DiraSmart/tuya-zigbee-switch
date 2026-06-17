@@ -12,7 +12,7 @@ typedef struct {
     uint8_t              endpoint;
     uint8_t              startup_mode;
     uint8_t              indicator_led_mode;
-    hal_zigbee_attribute attr_infos[4];
+    hal_zigbee_attribute attr_infos[5];
     relay_t *            relay;
     led_t *              indicator_led;
     uint8_t              indicator_state;
@@ -20,6 +20,12 @@ typedef struct {
     // the 3-way mirror: we only forward to bindings on a real state transition,
     // so a mirrored command bouncing back (already in that state) stops here.
     uint8_t              mirror_last_state;
+    // Per-light 3-way sync group. When non-zero, this relay joins the Zigbee
+    // group (to receive) and the button(s) controlling it bind genOnOff to it
+    // (to send). 0 = disabled. Persisted in NVM. applied_* tracks what is
+    // currently configured in hardware so a change can be cleaned up.
+    uint16_t             sync_group_id;
+    uint16_t             applied_sync_group_id;
 } zigbee_relay_cluster;
 
 void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,
@@ -32,9 +38,10 @@ void relay_cluster_toggle(zigbee_relay_cluster *cluster);
 void relay_cluster_report(zigbee_relay_cluster *cluster);
 void report_all_relay_states();
 
-// Apply the configured 3-way sync group (g_sync_group_id): join relays to the
-// group and bind buttons' genOnOff to it; remove a previously applied group on
-// change. Called on boot (after join) and when the group id is written.
+// Apply each relay's per-light 3-way sync group: a relay with a non-zero
+// sync_group_id joins that Zigbee group and the button(s) controlling it bind
+// genOnOff to it; a previously applied group is removed on change. Called on
+// boot (after join) and when a relay's sync group id is written.
 void sync_group_apply(void);
 
 // When set, a relay state change does NOT mirror to the controlling button's

@@ -10,7 +10,6 @@
 #include "device_config/reset.h"
 #include "hal/nvm.h"
 #include "hal/tasks.h"
-#include "relay_cluster.h"
 #include <stddef.h>
 
 #ifdef HAL_SILABS
@@ -67,10 +66,6 @@ void basic_cluster_callback_attr_write_trampoline(uint16_t attribute_id) {
         }
         refresh_network_led();
     }
-    if (attribute_id == ZCL_ATTR_BASIC_SYNC_GROUP_ID) {
-        device_params_set_sync_group_id(g_sync_group_id);
-        sync_group_apply(); // join/leave group + (re)bind buttons accordingly
-    }
 }
 
 void basic_cluster_add_to_endpoint(zigbee_basic_cluster *cluster,
@@ -116,16 +111,14 @@ void basic_cluster_add_to_endpoint(zigbee_basic_cluster *cluster,
                ATTR_WRITABLE, g_child_lock_enabled);
     SETUP_ATTR(14, ZCL_ATTR_BASIC_CHILD_LOCK, ZCL_DATA_TYPE_BOOLEAN,
                ATTR_WRITABLE, g_child_lock_active);
-    SETUP_ATTR(15, ZCL_ATTR_BASIC_SYNC_GROUP_ID, ZCL_DATA_TYPE_UINT16,
-               ATTR_WRITABLE, g_sync_group_id);
     if (network_indicator.has_dedicated_led) {
-        SETUP_ATTR(16, ZCL_ATTR_BASIC_STATUS_LED_STATE, ZCL_DATA_TYPE_BOOLEAN,
+        SETUP_ATTR(15, ZCL_ATTR_BASIC_STATUS_LED_STATE, ZCL_DATA_TYPE_BOOLEAN,
                    ATTR_WRITABLE, network_indicator.manual_state_when_connected);
     }
 
     endpoint->clusters[endpoint->cluster_count].cluster_id      = ZCL_CLUSTER_BASIC;
     endpoint->clusters[endpoint->cluster_count].attribute_count =
-        network_indicator.has_dedicated_led ? 17 : 16;
+        network_indicator.has_dedicated_led ? 16 : 15;
     endpoint->clusters[endpoint->cluster_count].attributes = cluster->attr_infos;
     endpoint->clusters[endpoint->cluster_count].is_server  = 1;
     endpoint->cluster_count++;

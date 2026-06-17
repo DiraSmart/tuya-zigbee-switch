@@ -88,12 +88,13 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
-    syncGroupId: (name) =>
+    relaySyncGroup: (relayNames) =>
         numeric({
-            name,
-            cluster: "genBasic",
-            attribute: { ID: 0xff05, type: 0x21 }, // uint16
-            description: "3-way sync group. Set the SAME number on every switch that controls the same light(s) (0 = disabled). The firmware then joins its relay(s) to this Zigbee group and binds its button(s) to it automatically, so all switches stay in sync (physical and from HA) with no manual group/binding setup.",
+            name: "sync_group",
+            endpointNames: relayNames,
+            cluster: "genOnOff",
+            attribute: { ID: 0xff03, type: 0x21 }, // uint16
+            description: "3-way sync group for THIS light. Set the SAME number on every light (across switches) that must stay in sync (0 = disabled). The firmware joins this relay to the Zigbee group and binds its button to it automatically — no manual group/binding setup. Works physically and from HA.",
             valueMin: 0,
             valueMax: 65535,
             entityCategory: "config",
@@ -522,14 +523,12 @@ const definitions = [
             romasku.childLock("child_lock"),
             {% endif %}
             romasku.deviceConfig("device_config"),
-            {% if device.relayNames %}
-            romasku.syncGroupId("sync_group"),
-            {% endif %}
             {% if device.has_dedicated_net_led %}
             romasku.networkIndicator("network_led", "{{first_endpoint}}"),
             {% endif%}
             {% if device.relayNames %}
             romasku.relayLights({{device.relayNames | tojson }}),
+            romasku.relaySyncGroup({{device.relayNames | tojson }}),
             romasku.generalPowerOnBehavior("power_on_behavior", [{% for relayName in device.relayNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
             {% if device.relayIndicatorNames %}
             romasku.generalIndicatorMode("indicator_mode", [{% for relayName in device.relayIndicatorNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),

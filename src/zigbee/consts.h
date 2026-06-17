@@ -46,7 +46,6 @@
 #define ZCL_ATTR_BASIC_MULTI_PRESS_RESET_COUNT    0xff02
 #define ZCL_ATTR_BASIC_CHILD_LOCK_ENABLED         0xff03
 #define ZCL_ATTR_BASIC_CHILD_LOCK                 0xff04
-#define ZCL_ATTR_BASIC_SYNC_GROUP_ID              0xff05
 
 // Power Configuration cluster
 
@@ -66,6 +65,7 @@
 
 #define ZCL_ATTR_ONOFF_INDICATOR_MODE     0xff01
 #define ZCL_ATTR_ONOFF_INDICATOR_STATE    0xff02
+#define ZCL_ATTR_ONOFF_SYNC_GROUP_ID      0xff03
 
 // OnOff configuration cluster
 
