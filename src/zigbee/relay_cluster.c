@@ -56,39 +56,35 @@ static bool switch_controls_relay(const zigbee_switch_cluster *sw,
            &relay_clusters[sw->relay_index - 1] == relay;
 }
 
-// Apply each relay's own sync group: the relay joins the group (to receive
-// groupcasts) and every button that controls it binds genOnOff to the group
-// (to send). Per-light, so on a multi-gang device each l1/l2 can be in a
-// different group (or none). Cleans up a previously applied group on change.
+// The firmware-managed sync group is DISABLED: it was invisible in z2m and its
+// group ids collided with manually-created z2m groups (turning on the wrong
+// lights). Instead of applying it, this CLEANS UP any leftover state on boot:
+// removes the relay from its old group, unbinds the controlling button(s) from
+// that group, and zeroes the stored id in NVM. So a single OTA + reboot fully
+// wipes the old auto-group config; manual z2m groups/bindings (other ids) are
+// left untouched.
 void sync_group_apply(void) {
     for (int i = 0; i < relay_clusters_cnt; i++) {
         zigbee_relay_cluster *relay = &relay_clusters[i];
-        uint16_t              want  = relay->sync_group_id;
-        uint16_t              have  = relay->applied_sync_group_id;
+        uint16_t              g     = relay->sync_group_id;
 
-        if (want == have) {
+        if (g == 0) {
             continue;
         }
 
-        if (have != 0) {
-            hal_zigbee_group_remove(relay->endpoint, have);
-            for (int j = 0; j < switch_clusters_cnt; j++) {
-                if (switch_controls_relay(&switch_clusters[j], relay)) {
-                    hal_zigbee_unbind_from_group(switch_clusters[j].endpoint,
-                                                 ZCL_CLUSTER_ON_OFF, have);
-                }
+        hal_zigbee_group_remove(relay->endpoint, g);
+        for (int j = 0; j < switch_clusters_cnt; j++) {
+            if (switch_controls_relay(&switch_clusters[j], relay)) {
+                hal_zigbee_unbind_from_group(switch_clusters[j].endpoint,
+                                             ZCL_CLUSTER_ON_OFF, g);
             }
         }
-        if (want != 0) {
-            hal_zigbee_group_add(relay->endpoint, want);
-            for (int j = 0; j < switch_clusters_cnt; j++) {
-                if (switch_controls_relay(&switch_clusters[j], relay)) {
-                    hal_zigbee_bind_to_group(switch_clusters[j].endpoint,
-                                             ZCL_CLUSTER_ON_OFF, want);
-                }
-            }
-        }
-        relay->applied_sync_group_id = want;
+
+        relay->sync_group_id         = 0;
+        relay->applied_sync_group_id = 0;
+        uint16_t zero                = 0;
+        hal_nvm_write(NV_ITEM_RELAY_SYNC_GROUP(relay->relay_idx), sizeof(zero),
+                      (uint8_t *)&zero);
     }
 }
 

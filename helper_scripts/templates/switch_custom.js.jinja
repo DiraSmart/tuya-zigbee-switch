@@ -88,15 +88,6 @@ const romasku = {
             access: "ALL",
             entityCategory: "config",
         }),
-    relaySyncGroup: (relayNames) =>
-        numeric({
-            name: "sync_group",
-            endpointNames: relayNames,
-            cluster: "genOnOff",
-            attribute: { ID: 0xff03, type: 0x21 }, // uint16
-            description: "Firmware 3-way group for THIS light (0 = disabled). Leave at 0 if you use Zigbee groups in z2m instead. Non-zero makes the firmware auto-join this relay to that group and bind its button to it.",
-            entityCategory: "config",
-        }),
     decouple: (name, endpointName) =>
         binary({
             name,
@@ -526,7 +517,6 @@ const definitions = [
             {% endif%}
             {% if device.relayNames %}
             romasku.relayLights({{device.relayNames | tojson }}),
-            romasku.relaySyncGroup({{device.relayNames | tojson }}),
             romasku.generalPowerOnBehavior("power_on_behavior", [{% for relayName in device.relayNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
             {% if device.relayIndicatorNames %}
             romasku.generalIndicatorMode("indicator_mode", [{% for relayName in device.relayIndicatorNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
