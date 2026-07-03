@@ -484,7 +484,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -556,7 +556,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -566,7 +566,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -660,7 +660,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -670,7 +670,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -680,7 +680,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -794,7 +794,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -804,7 +804,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -814,7 +814,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -824,7 +824,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -914,7 +914,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -924,7 +924,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -934,7 +934,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -944,7 +944,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1034,7 +1034,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1044,7 +1044,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1054,7 +1054,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1064,7 +1064,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1154,7 +1154,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1164,7 +1164,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1174,7 +1174,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1184,7 +1184,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1232,7 +1232,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1294,7 +1294,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1304,7 +1304,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1366,7 +1366,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1376,7 +1376,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1425,7 +1425,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1482,7 +1482,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1539,7 +1539,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1601,7 +1601,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1611,7 +1611,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1687,7 +1687,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1697,7 +1697,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1707,7 +1707,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1797,7 +1797,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1807,7 +1807,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1817,7 +1817,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1827,7 +1827,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1877,7 +1877,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1941,7 +1941,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -1951,7 +1951,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2029,7 +2029,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2039,7 +2039,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2049,7 +2049,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2141,7 +2141,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2151,7 +2151,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2161,7 +2161,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2171,7 +2171,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2247,7 +2247,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2257,7 +2257,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2267,7 +2267,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2357,7 +2357,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2367,7 +2367,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2377,7 +2377,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2387,7 +2387,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2435,7 +2435,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2484,7 +2484,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2547,7 +2547,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2557,7 +2557,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2619,7 +2619,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2629,7 +2629,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2705,7 +2705,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2715,7 +2715,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2725,7 +2725,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2787,7 +2787,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2797,7 +2797,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2859,7 +2859,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2869,7 +2869,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2917,7 +2917,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2979,7 +2979,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -2989,7 +2989,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3051,7 +3051,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3061,7 +3061,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3110,7 +3110,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3187,7 +3187,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3197,7 +3197,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3207,7 +3207,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3255,7 +3255,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3317,7 +3317,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3327,7 +3327,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3375,7 +3375,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3423,7 +3423,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3486,7 +3486,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3496,7 +3496,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3731,7 +3731,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3779,7 +3779,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3827,7 +3827,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3875,7 +3875,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3923,7 +3923,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -3971,7 +3971,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4048,7 +4048,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4058,7 +4058,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4068,7 +4068,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4158,7 +4158,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4168,7 +4168,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4178,7 +4178,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4188,7 +4188,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4236,7 +4236,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4284,7 +4284,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4332,7 +4332,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4394,7 +4394,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4404,7 +4404,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4479,7 +4479,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4489,7 +4489,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4499,7 +4499,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4547,7 +4547,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4609,7 +4609,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4619,7 +4619,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4695,7 +4695,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4705,7 +4705,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4715,7 +4715,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4805,7 +4805,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4815,7 +4815,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4825,7 +4825,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4835,7 +4835,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4883,7 +4883,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4931,7 +4931,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -4979,7 +4979,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5027,7 +5027,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5075,7 +5075,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5123,7 +5123,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5186,7 +5186,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5196,7 +5196,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5286,7 +5286,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5296,7 +5296,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5306,7 +5306,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5316,7 +5316,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5392,7 +5392,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5402,7 +5402,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5412,7 +5412,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5460,7 +5460,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5508,7 +5508,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5556,7 +5556,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5604,7 +5604,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5652,7 +5652,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5700,7 +5700,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5764,7 +5764,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5774,7 +5774,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5851,7 +5851,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5861,7 +5861,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5871,7 +5871,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5919,7 +5919,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -5967,7 +5967,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6029,7 +6029,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6039,7 +6039,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6115,7 +6115,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6125,7 +6125,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6135,7 +6135,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6183,7 +6183,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6245,7 +6245,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6255,7 +6255,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6303,7 +6303,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6365,7 +6365,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6375,7 +6375,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6527,7 +6527,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6537,7 +6537,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6547,7 +6547,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6595,7 +6595,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6657,7 +6657,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6667,7 +6667,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6729,7 +6729,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6739,7 +6739,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6787,7 +6787,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6835,7 +6835,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6883,7 +6883,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6973,7 +6973,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6983,7 +6983,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -6993,7 +6993,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7003,7 +7003,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7065,7 +7065,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7075,7 +7075,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7137,7 +7137,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7147,7 +7147,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7196,7 +7196,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7245,7 +7245,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7302,7 +7302,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7359,7 +7359,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7416,7 +7416,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7472,7 +7472,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7528,7 +7528,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7584,7 +7584,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7640,7 +7640,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -7696,7 +7696,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9088,7 +9088,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9150,7 +9150,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9160,7 +9160,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9237,7 +9237,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9247,7 +9247,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9257,7 +9257,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9347,7 +9347,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9357,7 +9357,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9367,7 +9367,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9377,7 +9377,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9427,7 +9427,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9499,7 +9499,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9509,7 +9509,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9602,7 +9602,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9612,7 +9612,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9622,7 +9622,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9671,7 +9671,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9744,7 +9744,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9754,7 +9754,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9848,7 +9848,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9858,7 +9858,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9868,7 +9868,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -9940,7 +9940,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10002,7 +10002,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10012,7 +10012,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10089,7 +10089,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10099,7 +10099,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10109,7 +10109,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10200,7 +10200,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10210,7 +10210,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10220,7 +10220,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10230,7 +10230,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10279,7 +10279,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10336,7 +10336,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10407,7 +10407,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10417,7 +10417,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10488,7 +10488,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10498,7 +10498,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10555,7 +10555,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10627,7 +10627,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10637,7 +10637,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10716,7 +10716,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10726,7 +10726,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10819,7 +10819,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10829,7 +10829,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10839,7 +10839,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10912,7 +10912,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10983,7 +10983,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -10993,7 +10993,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11086,7 +11086,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11096,7 +11096,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11106,7 +11106,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11222,7 +11222,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11232,7 +11232,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11242,7 +11242,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11252,7 +11252,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11333,7 +11333,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11404,7 +11404,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11414,7 +11414,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11507,7 +11507,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11517,7 +11517,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11527,7 +11527,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11599,7 +11599,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11655,7 +11655,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11717,7 +11717,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11727,7 +11727,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11803,7 +11803,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11813,7 +11813,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11823,7 +11823,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11871,7 +11871,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11933,7 +11933,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -11943,7 +11943,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12019,7 +12019,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12029,7 +12029,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12039,7 +12039,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12101,7 +12101,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12111,7 +12111,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12203,7 +12203,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12213,7 +12213,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12223,7 +12223,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12371,7 +12371,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12441,7 +12441,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12451,7 +12451,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12543,7 +12543,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12553,7 +12553,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12563,7 +12563,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12635,7 +12635,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12705,7 +12705,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12715,7 +12715,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12807,7 +12807,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12817,7 +12817,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12827,7 +12827,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12900,7 +12900,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12971,7 +12971,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -12981,7 +12981,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13074,7 +13074,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13084,7 +13084,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13094,7 +13094,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13195,7 +13195,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13205,7 +13205,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13215,7 +13215,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13330,7 +13330,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13340,7 +13340,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13350,7 +13350,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13360,7 +13360,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13441,7 +13441,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13512,7 +13512,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13522,7 +13522,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13615,7 +13615,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13625,7 +13625,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13635,7 +13635,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13749,7 +13749,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13759,7 +13759,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13769,7 +13769,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13779,7 +13779,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13901,7 +13901,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13911,7 +13911,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13921,7 +13921,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -13931,7 +13931,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14039,7 +14039,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14049,7 +14049,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14059,7 +14059,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14132,7 +14132,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14203,7 +14203,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14213,7 +14213,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14279,7 +14279,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14351,7 +14351,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14361,7 +14361,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14454,7 +14454,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14464,7 +14464,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14474,7 +14474,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14530,7 +14530,7 @@ const definitions = [
             await reporting.bind(endpoint1, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint1, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14586,7 +14586,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14676,7 +14676,7 @@ const definitions = [
             await reporting.bind(endpoint5, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint5, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14686,7 +14686,7 @@ const definitions = [
             await reporting.bind(endpoint6, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint6, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14696,7 +14696,7 @@ const definitions = [
             await reporting.bind(endpoint7, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint7, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14706,7 +14706,7 @@ const definitions = [
             await reporting.bind(endpoint8, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint8, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14754,7 +14754,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14825,7 +14825,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14835,7 +14835,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14899,7 +14899,7 @@ const definitions = [
             await reporting.bind(endpoint2, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint2, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14969,7 +14969,7 @@ const definitions = [
             await reporting.bind(endpoint3, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint3, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
@@ -14979,7 +14979,7 @@ const definitions = [
             await reporting.bind(endpoint4, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint4, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
