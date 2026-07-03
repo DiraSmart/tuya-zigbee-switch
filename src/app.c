@@ -71,7 +71,7 @@ static bool boot_announce_sent = false;
 // detected parent loss. Detecting a "joined but silently isolated" router would
 // need an APS delivery-confirmation signal the HAL does not currently expose;
 // a blind periodic rejoin on a deployed fleet would do more harm than good.
-#define LINK_REFRESH_INTERVAL_MS (60u * 60u * 1000u) // 1 hour
+#define LINK_REFRESH_INTERVAL_MS (30u * 60u * 1000u) // 30 min
 static uint32_t last_link_refresh_ms = 0;
 #endif
 

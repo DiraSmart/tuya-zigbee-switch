@@ -585,7 +585,7 @@ const definitions = [
             await reporting.bind(endpoint{{loop.index  + (device.switchNames | length)}}, coordinatorEndpoint, ["genOnOff"]);
             await reporting.onOff(endpoint{{loop.index  + (device.switchNames | length)}}, {
                 min: 0,
-                max: constants.repInterval.HOUR, // heartbeat: report state at least hourly
+                max: 120, // heartbeat: report state at least every 2 min (self-heals desync)
                 change: 1,
             });
             // Read the current relay state so HA shows it right after
