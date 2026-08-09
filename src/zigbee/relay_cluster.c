@@ -6,6 +6,7 @@
 #include "device_config/nvm_items.h"
 #include "hal/nvm.h"
 #include "hal/printf_selector.h"
+#include "state_sync.h"
 #include "switch_cluster.h"
 
 hal_zigbee_cmd_result_t relay_cluster_callback(zigbee_relay_cluster *cluster,
@@ -103,8 +104,12 @@ void update_relay_clusters() {
 }
 
 void relay_cluster_report(zigbee_relay_cluster *cluster) {
+    // Two paths on purpose: the stack's own report to the binding table (fast,
+    // unacknowledged) and a queued APS-acknowledged unicast to the coordinator
+    // that is retried until Home Assistant actually has the state.
     hal_zigbee_notify_attribute_changed(cluster->endpoint, ZCL_CLUSTER_ON_OFF,
                                         ZCL_ATTR_ONOFF);
+    state_sync_relay_changed(cluster->endpoint);
 }
 
 // Report every relay's current on/off state. Called on boot/join so z2m/HA
@@ -112,15 +117,19 @@ void relay_cluster_report(zigbee_relay_cluster *cluster) {
 void report_all_relay_states() {
     for (int i = 0; i < 10; i++) {
         if (relay_cluster_by_endpoint[i] != NULL) {
-            relay_cluster_report(relay_cluster_by_endpoint[i]);
+            hal_zigbee_notify_attribute_changed(
+                relay_cluster_by_endpoint[i]->endpoint, ZCL_CLUSTER_ON_OFF,
+                ZCL_ATTR_ONOFF);
         }
     }
+    state_sync_report_all();
 }
 
 void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,
                                    hal_zigbee_endpoint *endpoint) {
     relay_cluster_by_endpoint[endpoint->endpoint] = cluster;
     cluster->endpoint = endpoint->endpoint;
+    state_sync_track_endpoint(endpoint->endpoint);
     relay_cluster_load_attrs_from_nv(cluster);
 
     cluster->relay->callback_param = cluster;
@@ -293,6 +302,9 @@ void relay_cluster_on_relay_change(zigbee_relay_cluster *cluster,
                                    uint8_t state) {
     hal_zigbee_notify_attribute_changed(cluster->endpoint, ZCL_CLUSTER_ON_OFF,
                                         ZCL_ATTR_ONOFF);
+    // Also queue an acknowledged report, so a lost report is retried instead of
+    // leaving Home Assistant showing the wrong state until the next heartbeat.
+    state_sync_relay_changed(cluster->endpoint);
 
     // 3-way mirror with anti-loop guard: only forward to bindings on a real
     // state transition. relay_on/relay_off fire this callback even when the

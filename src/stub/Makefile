@@ -59,6 +59,7 @@ SOURCES := \
 	$(SRC_DIR)/device_config/nvm_migrations.c \
 	$(SRC_DIR)/zigbee/basic_cluster.c \
 	$(SRC_DIR)/zigbee/relay_cluster.c \
+	$(SRC_DIR)/zigbee/state_sync.c \
 	$(SRC_DIR)/zigbee/switch_cluster.c \
 	$(SRC_DIR)/zigbee/group_cluster.c \
 	$(SRC_DIR)/zigbee/general_commands.c \

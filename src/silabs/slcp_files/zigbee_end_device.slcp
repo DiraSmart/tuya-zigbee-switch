@@ -53,6 +53,7 @@ source:
 - {path: ../../zigbee/general_commands.c}
 - {path: ../../zigbee/group_cluster.c}
 - {path: ../../zigbee/relay_cluster.c}
+- {path: ../../zigbee/state_sync.c}
 - {path: ../../zigbee/switch_cluster.c}
 - {path: ../../zigbee/cover_switch_cluster.c}
 - {path: ../../zigbee/cover_cluster.c}

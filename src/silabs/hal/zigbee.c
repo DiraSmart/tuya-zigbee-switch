@@ -367,6 +367,63 @@ hal_zigbee_send_report_attr(uint8_t endpoint, uint16_t cluster_id,
     return (st == SL_STATUS_OK) ? HAL_ZIGBEE_OK : HAL_ZIGBEE_ERR_SEND_FAILED;
 }
 
+static hal_zigbee_delivery_callback_t delivery_confirm_callback = NULL;
+
+void hal_zigbee_register_on_delivery_confirm_callback(
+    hal_zigbee_delivery_callback_t callback) {
+    delivery_confirm_callback = callback;
+}
+
+hal_zigbee_status_t hal_zigbee_send_report_attr_confirmed(uint8_t  endpoint,
+                                                          uint16_t cluster_id,
+                                                          uint16_t attr_id) {
+    hal_zigbee_attribute *attr =
+        find_hal_attr(endpoint, cluster_id, attr_id);
+
+    if (attr == NULL) {
+        return HAL_ZIGBEE_ERR_BAD_ARG;
+    }
+    if (sl_zigbee_af_network_state() != SL_ZIGBEE_JOINED_NETWORK) {
+        return HAL_ZIGBEE_ERR_NOT_JOINED;
+    }
+
+    uint8_t buf[2 + 1 + 8]; /* attrId(2) + type(1) + value */
+    uint8_t value_len       = attr->size;
+
+    if (value_len > 8) {
+        return HAL_ZIGBEE_ERR_BAD_ARG;
+    }
+
+    buf[0] = (uint8_t)(attr_id & 0xFF);
+    buf[1] = (uint8_t)(attr_id >> 8);
+    buf[2] = attr->data_type_id;
+    if (value_len) {
+        memmove(&buf[3], attr->value, value_len);
+    }
+
+    if (sl_zigbee_af_fill_command_global_server_to_client_report_attributes(
+            cluster_id, buf, 3 + value_len) != SL_STATUS_OK) {
+        return HAL_ZIGBEE_ERR_SEND_FAILED;
+    }
+
+    sl_zigbee_af_set_command_endpoints(endpoint, 1);
+    sl_status_t st =
+        sl_zigbee_af_send_command_unicast(SL_ZIGBEE_OUTGOING_DIRECT, 0x0000);
+
+    // The EmberZNet build is not the deployed target; report the local send
+    // result as the delivery verdict instead of hooking the message-sent
+    // callback (which the app framework owns).
+    if (delivery_confirm_callback != NULL) {
+        delivery_confirm_callback(endpoint, cluster_id, st == SL_STATUS_OK);
+    }
+    return (st == SL_STATUS_OK) ? HAL_ZIGBEE_OK : HAL_ZIGBEE_ERR_SEND_FAILED;
+}
+
+void hal_zigbee_request_rejoin(void) {
+    // EmberZNet manages rejoin internally (end-device and router rejoin
+    // policies); nothing to force from the application here.
+}
+
 hal_zigbee_status_t hal_zigbee_send_announce(void) {
     if (sl_zigbee_send_device_announcement() != SL_STATUS_OK) {
         return HAL_ZIGBEE_ERR_SEND_FAILED;

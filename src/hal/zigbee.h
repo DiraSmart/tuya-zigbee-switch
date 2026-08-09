@@ -209,6 +209,46 @@ hal_zigbee_send_report_attr(uint8_t endpoint, uint16_t cluster_id,
                             uint16_t attr_id, uint8_t zcl_type_id,
                             const void *value, uint8_t value_len);
 
+/**
+ * Send an attribute report to the coordinator as an APS-ACKNOWLEDGED unicast.
+ *
+ * Unlike hal_zigbee_send_report_attr() (and the stack's own periodic
+ * reporting), which are fire-and-forget to whatever is in the binding table,
+ * this asks the APS layer for an end-to-end acknowledgement from the
+ * coordinator. The result is delivered asynchronously through the callback
+ * registered with hal_zigbee_register_on_delivery_confirm_callback(), so the
+ * application can retry a report that Home Assistant / zigbee2mqtt never got.
+ *
+ * @param endpoint Source endpoint
+ * @param cluster_id Cluster containing the attribute
+ * @param attr_id Attribute ID to report
+ * @return HAL_ZIGBEE_OK if the report was handed to the stack
+ */
+hal_zigbee_status_t hal_zigbee_send_report_attr_confirmed(uint8_t  endpoint,
+                                                          uint16_t cluster_id,
+                                                          uint16_t attr_id);
+
+/**
+ * Function called when a message sent from `endpoint` for `cluster_id` is
+ * confirmed (or fails) by the APS layer. `success` is true only when the
+ * destination acknowledged it end-to-end.
+ */
+typedef void (*hal_zigbee_delivery_callback_t)(uint8_t endpoint,
+                                               uint16_t cluster_id,
+                                               bool     success);
+
+/** Register callback for APS delivery confirmations */
+void hal_zigbee_register_on_delivery_confirm_callback(
+    hal_zigbee_delivery_callback_t callback);
+
+/**
+ * Ask the stack to rejoin the network it is already provisioned for (keeps the
+ * network key and IEEE address, so the device stays the same in HA). Used as a
+ * last resort when the device believes it is joined but the coordinator no
+ * longer answers.
+ */
+void hal_zigbee_request_rejoin(void);
+
 /** Send Zigbee "announce" command to notify other devices of our presence
  * @return HAL_ZIGBEE_OK on success, error code otherwise
  */

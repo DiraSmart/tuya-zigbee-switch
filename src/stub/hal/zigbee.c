@@ -246,6 +246,38 @@ hal_zigbee_send_report_attr(uint8_t endpoint, uint16_t cluster_id,
     return HAL_ZIGBEE_OK;
 }
 
+static hal_zigbee_delivery_callback_t delivery_confirm_callback = NULL;
+
+void hal_zigbee_register_on_delivery_confirm_callback(
+    hal_zigbee_delivery_callback_t callback) {
+    delivery_confirm_callback = callback;
+    io_log("ZIGBEE", "Registered delivery confirm callback");
+}
+
+hal_zigbee_status_t hal_zigbee_send_report_attr_confirmed(uint8_t  endpoint,
+                                                          uint16_t cluster_id,
+                                                          uint16_t attr_id) {
+    if (network_status != HAL_ZIGBEE_NETWORK_JOINED) {
+        io_log("ZIGBEE", "Cannot send confirmed report - not joined to network");
+        return HAL_ZIGBEE_ERR_NOT_JOINED;
+    }
+
+    io_evt("zcl_report_confirmed ep=%u cluster=0x%04X attr=0x%04X", endpoint,
+           cluster_id, attr_id);
+
+    // The stub network never drops anything: acknowledge immediately so the
+    // application's delivery watchdog stays idle in tests.
+    if (delivery_confirm_callback != NULL) {
+        delivery_confirm_callback(endpoint, cluster_id, true);
+    }
+    return HAL_ZIGBEE_OK;
+}
+
+void hal_zigbee_request_rejoin(void) {
+    io_log("ZIGBEE", "Rejoin requested");
+    io_evt("zdo_rejoin");
+}
+
 hal_zigbee_status_t hal_zigbee_send_announce(void) {
     io_log("ZIGBEE", "Sending Zigbee announce");
     io_evt("zdo_announce");

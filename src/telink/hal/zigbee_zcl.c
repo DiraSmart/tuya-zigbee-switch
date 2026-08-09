@@ -26,6 +26,7 @@ static hal_zigbee_endpoint *hal_endpoints = NULL;
 static uint8_t hal_endpoints_cnt          = 0;
 static hal_attribute_change_callback_t attribute_change_callback = NULL;
 static hal_zcl_activity_callback_t     zcl_activity_callback     = NULL;
+static hal_zigbee_delivery_callback_t  delivery_confirm_callback = NULL;
 
 static cluster_registerFunc_t get_register_func_by_cluster_id(u16 cluster_id) {
     if (cluster_id == ZCL_CLUSTER_GEN_BASIC) {
@@ -190,6 +191,25 @@ static void af_rx_callback(void *arg) {
     zcl_rx_handler(arg);
 }
 
+// APS delivery confirmation. Called by the stack once a frame we sent from this
+// endpoint has been acknowledged end-to-end (status 0) or definitively failed
+// (no ACK after the APS retries, no route, ...). This is what lets the app know
+// whether a state report actually reached the coordinator.
+static void af_data_confirm_callback(void *arg) {
+    apsdeDataConf_t *cnf = (apsdeDataConf_t *)arg;
+
+    if (cnf == NULL || delivery_confirm_callback == NULL) {
+        return;
+    }
+    delivery_confirm_callback(cnf->srcEndpoint, cnf->clusterId,
+                              cnf->status == APS_STATUS_SUCCESS);
+}
+
+void hal_zigbee_register_on_delivery_confirm_callback(
+    hal_zigbee_delivery_callback_t callback) {
+    delivery_confirm_callback = callback;
+}
+
 void telink_zigbee_hal_zcl_init(hal_zigbee_endpoint *endpoints,
                                 uint8_t endpoints_cnt) {
     zcl_init(zcl_incoming_message_callback);
@@ -253,7 +273,7 @@ void telink_zigbee_hal_zcl_init(hal_zigbee_endpoint *endpoints,
             cluster_info_ptr++;
         }
         af_endpointRegister(endpoint->endpoint, endpoint_desc_ptr,
-                            af_rx_callback, NULL);
+                            af_rx_callback, af_data_confirm_callback);
         u8 cluster_count = cluster_info_ptr - endpoint_first_cluster_ptr;
         zcl_register(endpoint->endpoint, cluster_count, endpoint_first_cluster_ptr);
 
@@ -339,6 +359,40 @@ hal_zigbee_send_report_attr(uint8_t endpoint, uint16_t cluster_id,
         zcl_sendReportCmd(endpoint, &dstEpInfo, TRUE, ZCL_FRAME_SERVER_CLIENT_DIR,
                           cluster_id, pAttrEntry->id, pAttrEntry->type,
                           pAttrEntry->data);
+    }
+    return HAL_ZIGBEE_OK;
+}
+
+hal_zigbee_status_t hal_zigbee_send_report_attr_confirmed(uint8_t  endpoint,
+                                                          uint16_t cluster_id,
+                                                          uint16_t attr_id) {
+    if (!zb_isDeviceJoinedNwk()) {
+        return HAL_ZIGBEE_ERR_NOT_JOINED;
+    }
+
+    zclAttrInfo_t *pAttrEntry = zcl_findAttribute(endpoint, cluster_id, attr_id);
+
+    if (pAttrEntry == NULL) {
+        return HAL_ZIGBEE_ERR_BAD_ARG;
+    }
+
+    // Unicast straight to the coordinator (0x0000, endpoint 1) with the APS
+    // acknowledge bit set, instead of the stack's fire-and-forget report to the
+    // binding table. The APS layer retries on its own and, when it finally
+    // gives up, af_data_confirm_callback tells us the report never landed.
+    epInfo_t dstEpInfo;
+
+    TL_SETSTRUCTCONTENT(dstEpInfo, 0);
+    dstEpInfo.profileId        = HA_PROFILE_ID;
+    dstEpInfo.dstAddrMode      = APS_SHORT_DSTADDR_WITHEP;
+    dstEpInfo.dstAddr.shortAddr = 0x0000;
+    dstEpInfo.dstEp            = 1;
+    dstEpInfo.txOptions        = APS_TX_OPT_ACK_TX;
+
+    if (zcl_sendReportCmd(endpoint, &dstEpInfo, TRUE, ZCL_FRAME_SERVER_CLIENT_DIR,
+                          cluster_id, pAttrEntry->id, pAttrEntry->type,
+                          pAttrEntry->data) != ZCL_STA_SUCCESS) {
+        return HAL_ZIGBEE_ERR_SEND_FAILED;
     }
     return HAL_ZIGBEE_OK;
 }

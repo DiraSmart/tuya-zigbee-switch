@@ -11,6 +11,7 @@
 #include "zigbee/battery_cluster.h"
 #include "zigbee/general_commands.h"
 #include "zigbee/relay_cluster.h"
+#include "zigbee/state_sync.h"
 #ifdef END_DEVICE
 #include "zigbee/poll_control_cluster.h"
 #endif
@@ -47,8 +48,9 @@ void process_device_type_change() {
 
 void app_init(void) {
     handle_version_changes();
-    parse_config(); // Does most of the setup, including all callbacks
-                    // registration
+    state_sync_init(); // before parse_config: it registers the relay endpoints
+    parse_config();    // Does most of the setup, including all callbacks
+                       // registration
     hal_zigbee_init_ota();
     init_global_attr_write_callback();
 
@@ -68,9 +70,9 @@ static bool boot_announce_sent = false;
 //
 // Note: this does NOT force a rejoin. A full disconnect (NOT_JOINED) is already
 // recovered by start_network_steering below, and the Telink SDK rejoins on a
-// detected parent loss. Detecting a "joined but silently isolated" router would
-// need an APS delivery-confirmation signal the HAL does not currently expose;
-// a blind periodic rejoin on a deployed fleet would do more harm than good.
+// detected parent loss. The "joined but silently isolated" case is handled by
+// state_sync, which rejoins only after acknowledged reports keep failing --
+// evidence-driven, unlike a blind periodic rejoin on a deployed fleet.
 #define LINK_REFRESH_INTERVAL_MS (30u * 60u * 1000u) // 30 min
 static uint32_t last_link_refresh_ms = 0;
 #endif
@@ -79,6 +81,10 @@ void app_task() {
 #ifdef END_DEVICE
     poll_control_cluster_update();
 #endif
+
+    // Relay state delivery watchdog: acknowledged reports, retries and link
+    // escalation. Keeps Home Assistant on the real state.
+    state_sync_task();
 
     // TODO: add jitter to avoid all devices trying to join at once
     if (hal_zigbee_get_network_status() != HAL_ZIGBEE_NETWORK_JOINED &&
