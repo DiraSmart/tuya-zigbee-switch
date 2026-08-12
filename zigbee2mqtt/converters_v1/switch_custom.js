@@ -457,14 +457,6 @@ const definitions = [
         icon: "data:image/png;base64,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",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -523,14 +515,6 @@ const definitions = [
         icon: "data:image/png;base64,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w61bt5AkycalSxdvvvzyy3/z0ksvfXDu3DlFRAFY8wKXiEzwVabxadBwyKtOOjeQZ02vuMXOo1KQIoKOI0RRpAG4KmmVNwzJsLW1he3tbezu7mJjYyM5dOjQa4PBIH377be3T548+S/r6+vm1Vdf3en3+y9/+9vf3gYwPHfunDp//nznags7zWOR7fdZkI3whwlQC8MtY6M828FGlCr79itN4goxAETu5zjukdaRggjSLEUyTJCkCW7dvAVjsiuDwe7O9esf0cGDB/6z11u49utfv6/eeee9d06ePPnaxYsX6bvf/W7y0UcffTDuuz3//PP62Wef7WRLv64WrErZyExh1EzCeosjD0hsf2fKnR9SirRSMWmtKYpjrYqceoMsS5EkCTY2NgDgk83NTVpf/2jj2LFja9evX6f33//g5unTj//bzZs30x/+8If0ne9853UAW1NoXeVU6Nramvsfq6urhojQVVB1EliDwYAAIeZMSEFMxgQhCJPkjWSKqmVT7VGqSCkFpSIdRZGKoghEpFxfhk8+vYmdnR2sr6/LwYMHXk+SZPvatQ/N4mLv+1rrjy5dukSXL1/+xalTp37xve99j958880BxiRLuc81xmgAtLa2hvX1dbl06ZJ4x7SauPPnz6Pr0hlgWW1Dr7/+unnkkUd4ZWWFdnd3qbcQZ72FmEB5nE8E6ChCL+5FjpJI0xSDwQBb29tYX/8YcRy/ffXqVXNg6eB/JGly45e/fNukafr93/zm6icvvfTv/N57b707WWsqGGOitbU1AMD6+nrRvOPChQssuYCIDO5B6ZLGkhdeeEE/++yzm2fOnPm7OI7/ajgc6g8//HDpyJEj2NnZ3gEo2dnZofX1dXPw4MH/StPs0w8/vErvv//Bx1/60m//6xtvvEE/+MHapz/60atvTDBRBJu34puot956S1544QX2NFKGIHsMkT7n8tRTTx07ceLEsoj84eHDh9Pjx4//z7FjxzZ//vOfy3PPPScAbk1hpqLnnnuOnnjiCTl79iyvrq46U8QBGvcgsHJucXzClIjotTUQUDVVly5dkgCcAKyx4FpdXaW1NaizZ/NIb3V1VTx/LNTABwkSJEiQIEGCBAkSJEiQIEGCBAkSJEiQIEGCBAkSJMic5f8BFcr7G7cKZa0AAAAASUVORK5CYII=",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -621,14 +605,6 @@ const definitions = [
         icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAbX0lEQVR42u1dS4wcx3n+/qqentnlcpd6kDSjKJQFk3ohUCDpYAE2Ih2TAMkhsQ7JLUFswPfA8MlkDjkYSI5BoosDGAgQ7cEGdDACUPEasGQnlmSIjgJFhJeRGFEiGXHJfc2ju/4/h+rqru7pnpkld4dssv7FYGd6enprp77+3w8gUKBAgQIFChQoUKBAgQIFChQoUKBAgQIFChQoUKBA9yNRGxctInptbY3W1tbw0ksvYW1t7VYvxf6LM2fOyJ6+PJr69UkAVqBb+wJrwOWOGWNU5Tue+n1Xb5K1tTU+e/YsB2AdLKciAD0AL37ve9979PLlyxLH8WEi2j1//jwzMw4fPoxer4der4c4jjEajTAYDDAYDJAkCQaDAYwxYOb05MmT/xHH8QgAkiQxzJyeOnWqDwAbGxvY2NiA/3xjYwPr6+tYX1+fabkANgPHaoH4A8A3b978y48++ugfP/nkEywsLGBlZQUnT57E9vY2mBlxHEMpBaUUiAgiUnqQAMwMFgaAkSJlhAUGLCIiRJT656dpChEBM8MYgyRJkCQJmBlpmjqQ5u+JiCRJQsycfvGLX/x3rfWQM+r1en1mFmNM/jkRwXA4RL/fx2AwwHA4BDOLUgr9fn/30qVLr377299+zy6NWiNaoxbdBExE8pWvfOXc1772te3nnnuuSwQsLi6SUgpLS0tQSvlAtEAiKokrBcqPGWPiXHQpe467hv+56nP/77j3RKQkBrPzfn/CjVK6BjPnn3Vr11rj/Pnzf/ruu+8+BmCzTeBqDbDOnDmjAaRPP/30V59//oWlbjdOt7e3I3f3p2kCIjXGjqWiBxGLZdNE+e4KACbHvrNPZWDxgVKnR/nn1ACGiUialPw6QPrYi6KIjh071j19+vQRIrr5ne98R7XFIGgTxwIADAYDNRqNoHUEIg0RBSIFpTQAApFAhCFCsD8ACaDqADKGFmsmshSALIGyQVEvcURVAreeIt5RMCCpvidEmpJkOKparwFY+0jOWtrY2NhJUyNKKbLixoomZsBjFnazxf2e8Sa3jApKKcgetE9fjNVzIZmgztIE4GGMC7eFWrPql156iQHgxIkTPxeRAQCdKdv5JtyCn6l2j6sKv3vM4nLwzys+i4ngaXoABBEgiiIJHOvgRaFhNuxvnrOunNpkN1dqxdlUBwFlQLlFe1mk/u+NcdPSH3XncAVwFpT9fj9wrANU3gWwd6/s0/1L+YNqtJwDdJ14P/4qRPwHPPG+gMCxDpjiOE73zeT2Ocd+oUpountQ/NNlqkhtI7UOWP2+Up6nYMxnVWwQWZdBtpHubK1obH9FJMcCu+uKxQiRzs70rTep8DzvOcm+uJ2dCCciRFESdKyDpuFwoABrEbb9rp5mBLT5f2ydLbu4iHtGXIwr+GULNONYAiyyr2cGYB3UolVZ5Lm44CyAmwbGPbsoDp6LpadOPdM6s1Ah0F1Phw4tSQBWoEBoVxCaAEin06HbEVtN8b4mESlUDdNlni+pftY99u9eLfStjQCsgyZjDGFPkbzb39wcT96TkHp7jwErTdM9x1v2RSGX6pMArXtKx4rjuOLaln0FWFUkNsUaJwWnpwWuq0l+zSIQwY8VaJqeNA7wu821cV+LwraBqg5AxWvCvVohFrWXC0wRXwLA5bxDpmpEbrOViy9W9p2qV2i8IHvX9MS1RN56XfpzJQ5e+j8YIgYA59VCAVh3GxBvR9W+rQ/7l+EajlXcILPoYwFYdwOYqMx0mG5NoRQvNWK/dKKy8t5sAIQg9B3iQ1Udpm4TGJKLH55iJU6y8vaqrI9/hmsfTdd2oDLGBFF4V3IsseBSyLIxG7hOns9V4RJ1tYWTwLZ3rhaU97tOgZ+0ieIl7BFRBi6aqrwLM0CFqs5V7jNF55rmo5odWBSANdcFRxGVuQfnmzPJjHfvGA+QDkQqAxIbY0GVncPGluITKUBcjrqrnFb5lW0RhKuINgCkWl+4Z23EL6wIwLqLyNUVThI1IgJFBMMMRYROt4skSUBK2fe0hkYEpVWRKgwCC8OUrDkLDmYLcqoRp7eqiAer8G4BU4lF1cstJ0a11hYMGYjOn/8Vdnd30O12LbCUAhTlVdQgglYaUSdCFMWI4xjdbhedTgda26LnTkdDa52DSSmF4XCYvz9NhO8HGAOwboEGg0HFEqzvn1ANFUuFe7nPMDM6cYzrGzewtbODL3/5y3kHmCQZAbAdZ/r9PoaDAUZZt5l+fwhmRhTZr9AYk1mDnIvCNE0RxzGefPLJvFqaKj0hmjiUq5Vk5lnbJgVg3R71ShUst+NasqLLom40GuHEiRO4cOEC1tfXcfz4ccRxjOFoAKUI3W4Xvd4ClhcXEUURFNmeakpZk8CJTyILqiiKoLXGBx98gI8++ginT5/OC0+n6V++uyJfYwDWAcOqVy2Bvz3R6XpgpYnB5/+3gc2tTfR6i1hePoITJ76Anf5WqdpaRDBKRkhTAWdcigVgNiARiJgcWAsLCzh16hQ+/vjjvKfWNEu2+mAOIZ15WYXivvBM7clL60tZA7lfyhn1Tjw6C05BhJEaa/WxCHZ2d9EfDHH8+HF0u10sHlpAp6dczxpPuFolPlIMVsBQNMgIOpxCAJhsbU48PvjggxiNRhMduXXH21yF1ErlfdxZOfmcsQ2DQJhzLmTYIDUpWOzr0WgEY1KkJoVJ0wyEDrBZsBopRpKCxYBFQdCBZG4Jh0GViUfXvc8p8LP64pRSwfN+x63AvZjpnsJPBIgxMIZLISLJEOssO+as2hoEFsJQFqzyrhJElCBVjKEixKm1IlkMIAU4/GrtvSTxBWDNmTjjOE4cumO+1dUc96NKf1KLNgeeJkXaWX0ijMOLQ6RYApkFLJoUaX+EESKYOLE9tjzRKUJgFjiGVQVZXb7WnrrkBGDtI7dSamaLsEl3GU8BLnMSt/EWwEWqC6kYP7uQ4M3/+hQQ4HdPr+C5x5dgZJhnQ0jmqSexnnkrdjl3pk5zO/hrDRxrLn6srHEsVRXqZjCVgSUZF6mASupL3K2fLAvrwIrOhAn/9tan+HCrByUMc2MdT558FrFKIKxAStvPMQBFYHYctsy1ZhHlbXU3tDJtRpggrACxPUjZNVrLQCBiZurEJ6LArppMCCQ2TmgbUzGEAQUNhQgkCgQFkxA6yuAv/uQ0Hlkm/MZKim/+0XPo6gSgCDoDlQt+2x+VrY3yxmyFYeHWW30U628jx7o3iikE2A/LPN9sjIOSQBC2XCZNEhxfNniQhojjBEsPJUD6ORRrayFOrNBpOkaVNpEIDtI7iil/OMBtKLuu1WR1922gWtn8dACkCICGuTnAN3/vS7gZayTbfRAWAR4CpCGg+jBTrseVXSVO5JZFevC8z5V6QO7qLGcQFJsxA4ryggYZK5W3Fyu14VaU62EEgqIIRIKjSzt4kGKMdgXb3RgdUdBgq7R7TlrysGrjkwKlClA15V65NQXlfX5syuMALl5It835iuecO0upwhWFGFo0km4f/7T7S/RGC/iDhSdAmoB0BSQpSKW5S8O3LQrO6oDdrI0IJHje74BnNA/l7Aeoiq3MuASLfUg2oYKtCLOZqIBKBbuRxt9vvIFe0sVXDz+BZdZIeAuECMRUyDkRKCn72soxaGnUG2d1ogZg7Ye7AQM7zYEEIEaRKjVr7pKC+P1EyWSWmV97SCBoKIoghjNnZzZ/B4KEUiyIwt8c+TOMIAA00kTAYJDi3HWRrwvl6Qa2r2mh15HXdyTvdcsEzQpKdADWvLSssjNzv5hgPmOwAAWo3OFYBLAdUBGNUvxO77eQEqE3SKGNQqqzSiACPMRDKuusGx7VxLGCKJwjzypbWftDzrueTQWzgWMpkvO8FsswAihRoETQE0JsIhgiQAlYTJ5xWtLNIGMWbOjdcBeR1lqUolI1sX0umZXlm++TdSrm4iSWIl89j0FmNfDlQU1WXBnoPJkmjQipIrASaJbcNeGAyhgfnVJykUg9p/I5cwDWfIxCz8Vw636vglvZpu6OWw2HQzucctCHGY4sB8r22Chbp8jEWVo9gcmbMqbEcytwlhlRTvBzx6eGdG4zkTEA65ZdA/tZ8l5wkCiKEEUR4k4HKUsOLDuckrKCs9QWwxLBECESoGMIiWIwGGCbMuMKK5pjl806H4vjpAFYc8OWv0H25lZ5m+7y9AjPnSDFpAk/pkgEkBKQspameyhN0FGRAMNZ8FsDAPXyiRfs/F0a6CgD5mrRBJcAVe2PJVkGrALlFdwGAmlxwK2lPUgzKVSTDlMfHnGvm8fE+ced4s7MeVGrX3ovnjx2uVxSkdMu3Wb2wtVJRsW+MugArCbl3e1tU5vF2cRo/fFcqQYVoRzl5c7nf5KzXhC+HmRTnm83btm0Xgoc68B1LPILKnxu1aTo1w11qj53CnWp/IoAyiqm0ZBWXM33qn+vvjLa5cU3gb4chKYArIMkv8VPY/TfKSg5slwXPWlU2/ySq2qAmzOFigulLnNHIB/6BdCYZkel6M64KG5af/6+Ccr7PPWsMQ51u6KnmgOVg4sIMmbVAWBjvfAgKFFIFKBFQFLfjqSJY05bO4fGa/OUhSRsrBnmOzn9+RAghsB4v+3zer0q43CiIEyw11agPAnGbjC76acgSBQhiQAmQZwQtiIFZYCINQgaJAo2LqnGvuamhm9SJLMCSgAlEDKBY82DkiQRV00zJkakCjKpdVyPW4Uyptf4iXn+6Exlg4W2tCs5BJDBTvcGVlIg4kNIFYMyxd7q9tLYt31SR0L3/1VrEQOwDor65bu+NM251B9NapX6arFEk4mftyTKLEDKr8eAATpkYDoAk0HHCEQURhHGvOVNoZzi/WYdi4iQpmkA1jxoZN0NOaTYdZaRIu2EAJgS6ypzp7qiURGu1Bpm4BMBMfJWkwKBMoy0N8B3t1/HCMBf9/4QbBYxjHags/QG1/Gm2o5oHMzlLNYmt0jbWhq1OufdZQ24cIuSQptpbM3vpQw3cZNcFEKghOFqbWyGAkFDoS+E/+xfwbY26B8SrIwURmIrdXIxPLN7QGot36p1GjjWvEAlkpvxTscaiyJKxUCrpLTkroCKbuNy3DlzIuRdSUnABPTSQ/ju0Vdg1BDajDDqbIFUDOHCoyEzAWq8UNatqc2isDVWoZuHHEWJhYQwjDFFwYJha+o7rpNbVwRRBFbW2VnnS1I0ntBndRwFJg2mCIYUWGkwKaQKSGHwSHIEJ0fHIKaDYeaBFxfvq2QzVFshzXLjTPJzBY51AJSmaf6FCyQvrmjMo9nDyJr6ph1FnDEHCwTDjKURmoPf1XL9Mqhogrhs9/Svdnre/TCNFF7tZq/6DAJJpEEdE9RlJ5CDE4234C7nevFEC9Qv/6pzogZgzYl2dwsglF0HhWKOhmlbdZ2M67QhY0zGFaVRFNleDhV9DuNV1LbkXhq7+fm48UHp4pZBFM5XdYfsIQmummteUtxRzmxgZhg2SJIkzyStBSZ0w8pMmbN54KjnPlR6TrkeaHKABWDNUceyivusxjtq/FaeJVlqPUl5/9CFhQUo3eBD8rLwSu8R58FpdzzSs33NfnKgA7MfsgrAOkDqdg0LigZoYJt7LkqBKdeGSuKwpLtw0UPU6mg2RuiKMOw5Ug5Eoyb3vEH3UWydrbarX9YRcGxgeUM2KRfhIxIFEgVNIaQzTydWyYHoQOKyEAhNXV2Kng3jxydxtppepk1DmrwysVIHL6fw7zELIyjvcyTOcrFE7NA4IRQ9srLX1LQ5ZIphAoQsv70+GDyxVyg1xfhQ6/og7D21J7SKnDvDyhyOrhAURUGo34Cj6c4nQqnfaFGEgVqz/3bbI/lJfvcLtc/dMMHH40fnym9JA9hwy0MIpMGuq/4da9UJbnWERlu5VvuKKYZ2gEBe0InC313Wnpo4lv8JN+V0774icjNzAHBetFq0J6qL+03SmSgA687S8eNLQwApSwrDqR07wgYEzntZWcCoxo30O+sRaduvCgJWWaWz8kq8mLw5OZTHI0EaHWJELOhDQ4jQyXK4HHcyGYCZynn0JT+XZK27K8vUIJdE2kpqnfet1+uJcwUwm5q7evadoLwTjJcT5SvbYt0HmrPf+UbbGGF3cBgDWUQ/6qNrdhGlugA0jRuQjaVnVPPwOHLgWPP3OtwWFW0c/QZpVOpX5bgGZYxQKHutDAbdXVBE6AqQEsFELmvLS8PJfA57mUbhzssEdQDWfOiB2tQXf3zvXjYvB5hX5u5nnSoPwSxsRZ4QhnGCv+NzODSK8Oedl7EghzBSO1C+CaFobMrE2ByghgQHUTb9hlQ7dawWBqI28v5VNhSzf1XHjtXkKc5SqPiGbD5XavvzYQjCW1uX8NbWRewqQYQIypjcgKiaClNdEg3Gho6C531u5BrPWl8U74tYzPWqOreCE2fZ6xEEvXQR3z3yx+iZEZY4wc1oE12OARhvlN305GS/e+AYuAjQOgrAmp9uZev1uJRkNwa/TPT41qEaczmUM06pVFpvFGAU5x36CEBENryYmhRfkgehRWCEESEr9YoyniUFUJ0e57scXNZC4whfqvSeD8CaC7TGJjhMF4e3JvUlE4HZX82bhZAAIzYgASIoKHG5WNP9UbMOEg/tuOdIg8GAisHhk2oEJw9xumUdLG/dTohIZd1mBFxAvnFNNNZ2kia7QmQf1x6U98l05cqVrjGpZnYaSf3dX4Rrsg0SQl0nM5caTCAoNV7/5/xKDMl/G8naRJIbD0x58LsOVJOswlx5r41tSkWUB451YGSMIWbJG6NNVsUnqeUYc1eUe71PFk/OaGAUzdeqAIKnWyml8sfsok+gdcggnQvZxmvi+ZqkAVBUVpTq2HXWeNZvNKu0yl87QFSHVhIRFNvkQPE5kSIYTnNXiDE2MtDpdNDpdPJeWLO4R1w0IKQmz4m63eNDETLO/Oc8Ec8WDiqlwJnXcRbpYcFD6MYd8GIPN24Qtnc2MRjuYpgMMBgMSr24/Adgq3D8mc/D4TD/zOLiIh577DFsbm5iZWVlrMlbtTTsXqLWAesLX+hZwZPNtxnrZeXVAhI1l3W5/gqOI3W7XSwsLKDT6WA4HMAYg/X1dWitxzrvRVGUc6AoihDHcc5Zjhw5kneI0Vrj8uXL2Q3RxWAwqO0aWGclOrEZshvm7m7gYorpWH47Nc5cFg90/jmdTgefffYZXnjhBTz11FNI0xTb29vFlIqsfMuvZnZlYv6YFBHJK3x2dnawsrKCJ554AqPRqASUumRCqqmeDgME5kQbGxv4zUezuc4ljYryDfG5S5M/yX/fGIOHH34Yly9fxptvvokoirC4uIg0TTEcDmGMQRzHJV3J9XB3xxxn63Q66PV6+TG//0JV/JWNgfEOhfb8IArvOBfDHosV/E02xuDZZ58t1RE6MNQNAKhafeNZo7ZMbRblu07HarvedQ8BC2NcYZYNLer3GEmSoNPp1BZT1E2493WjOuenb0VO46DVG8KJQqWCjjUnUQgABiIpRAxMFpBWgmxiBCHN+1plos5PqWkQiYXokVqQTm6eVhybBOymMvtJXMwv5d/P/vEHfoO3X/yVzT1XqVPtymA95NPFYpOorONCVV9XY9PaPc7RKd35UYQHHnigfZLj3hGCrhtppcGts/4qPaumice6BL0qd9rrtW6FOp0Yjz/+eBCFB00PPFAxz8nzTblCB0V5RgJQON6b5ufMDN0ZwDGpbdGtgCuKdCs51j2nvOfMyxtIIV5RgjqAGTcHJujFxgoDsO5CUN0JQOwnsIgCsOZkFW6UcZThxGRZMXnBaNWSqqmSmUn3aRwaOJ+JEXZ9AVh33Eb0+zegoYNMq6wrRWghw7rHRKFILaBQ5V5tkOi5NRrSZuaqe1Q3oD6LYdwJul/AOiiAVrmr5VjBj3WX3/1tDI+EnPdWgKst65w2SCqIwgO5h/Pm7mP6k59Et6dNabT+Gq4hDRXKxNhrDtW0OdUBWPckyRQxJaXffnJem1s9BlF4V4BuL50a7g9qKceiRouvjeKjLivCHQ9dk+9ZrX++I0cmD3UKwLp/cbiP7oEsg5QDsOYoOsYmkFTuboLeH3WnyVps2u+mUSgzGAdZQbWtMyI23W5H3bixcWh1dTUA6/7R26neQKxwr8JmLKa5ZicyEYkQQ5ESLxs10lqh242jfr+Pixcvnn3nnXe2XnvtNU1EJgDrPjOohV21jgEInPc1VYoBIIq0CEuklCKlFDpxRymVdWwWW9HT7/dx/fr1fr/f729vb77/9ttv//O3vvWtfxARImqXSLwngDUmBsmV2M8+IrdZ7MKfOy2FVQohIvYcs6SUgu5o1Yki5WoPRaxsHA6H2O5vYzAYYGtrC/3+7idLS0v/fe3aVXXlypX3jx49+ot33nlHffrppz/++c8/uPHeez+5ka1PtQ1UgWPVA038jSRSQgRXfBoREbTW0FqR0kqJCExq0O/3MRzu4vpn1xHH8YXNzZty5cqVjYcfPvrj3d3dwfnz5wHof+319Odraz+jH/7wX64CuDFhHbS6uqraJP7uBeV95jnxNZwt92IqpZgUieU3FCmtEHc6pHWkSVlWZZhhUoPtnW3sbG8PmHmwublJV69d3Xjo6INrVz+7Sh9f+uj6bz366I+uXdtIz517Y/sHP3jt7WmLy8r187jQ2toara2tAQCfOXNGsv/RtPUGbR2wRqMRMadKJBVAxA6KVAQoYWNVZCKIIvtONpSSdFYSryOllVKklQayUYKDfh8bN65je2cbmzdvfn748PL5zz+/Th9//D/pQw899HqSJDffffdds7Oz89by8vLnq6urWF9fHwIYTAEOAdBra2v48MMP6etf/7o5c+YMAODs2bPSxI3Onj3bes4ftYhLAQD99Kc/NS+++KI5duwYKaUpijQ6Hc3GWL0ma/BBURQpV02cJIlVjDe2sL29dUNErl66dImXlpZ/lCSjm++990tDRD+6cOHC1ve///0bAK5OVd2VwhtvvJF/f9euXRMAWF1dxerqqsl0LwGQunO+8Y1v3DcqRZs4lrz22mv6lVde2fr1r3/9t3Ec/5UxRtbXL/YeeeSR3nA47IvIcGdnhzY2Nq4sLy//YmtrO7l48SL1+9vvHD164ldvvvkT9frrr3/4ySef/O8UkVkSUdnvXEw5oL/88stp0EobGEFbF/7888+vPPXUU90rV24eOnZs+bePHz/+y2PHjm2eO3cO586d6wMYTeJ+WSOQ6NVXX6XTp0/L2toaOxGFEEm+P4GV+XVkkpgyxkQZl8lF1eoq8PTT78vZs2c5bH0AVuPaRQRnzpyhZ555ht5//33xxVTgOoECBQoUKFCgQIECBQoUKFCgQIECBQoUKFCgQIECBQo0f/p/7woAaVZDaeIAAAAASUVORK5CYII=",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -750,14 +726,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -878,14 +846,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1006,14 +966,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1134,14 +1086,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1262,14 +1206,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1318,14 +1254,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1398,14 +1326,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1478,14 +1398,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1543,14 +1455,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1609,14 +1513,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1665,14 +1561,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1745,14 +1633,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1849,14 +1729,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -1979,14 +1851,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2037,14 +1901,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2119,14 +1975,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2225,14 +2073,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2353,14 +2193,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2457,14 +2289,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2585,14 +2409,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2642,14 +2458,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2699,14 +2507,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2779,14 +2579,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2859,14 +2651,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -2963,14 +2747,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3043,14 +2819,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3123,14 +2891,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3179,14 +2939,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3259,14 +3011,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3340,14 +3084,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3397,14 +3133,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3501,14 +3229,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3557,14 +3277,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3637,14 +3349,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3693,14 +3397,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3750,14 +3446,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -3851,14 +3539,6 @@ const definitions = [
                 },
             }),
             deviceEndpoints({ endpoints: {"cover_switch": 1, "cover": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.networkIndicator("network_led", "cover_switch"),
             windowCovering({ 
@@ -3935,14 +3615,6 @@ const definitions = [
                 },
             }),
             deviceEndpoints({ endpoints: {"cover_switch_left": 1, "cover_switch_right": 2, "cover_left": 3, "cover_right": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.networkIndicator("network_led", "cover_switch_left"),
             windowCovering({ 
@@ -4033,14 +3705,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4089,14 +3753,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4145,14 +3801,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4201,14 +3849,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4257,14 +3897,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4313,14 +3945,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4370,14 +3994,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4474,14 +4090,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4602,14 +4210,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4658,14 +4258,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4714,14 +4306,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4770,14 +4354,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4850,14 +4426,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -4953,14 +4521,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5009,14 +4569,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5089,14 +4641,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5193,14 +4737,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5321,14 +4857,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5377,14 +4905,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5433,14 +4953,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5489,14 +5001,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5545,14 +5049,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5601,14 +5097,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5658,14 +5146,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5738,14 +5218,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5866,14 +5338,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -5970,14 +5434,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6026,14 +5482,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6082,14 +5530,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6138,14 +5578,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6194,14 +5626,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6250,14 +5674,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6308,14 +5724,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6389,14 +5797,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6493,14 +5893,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6549,14 +5941,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6605,14 +5989,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6685,14 +6061,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6789,14 +6157,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6845,14 +6205,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6925,14 +6277,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -6981,14 +6325,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7082,14 +6418,6 @@ const definitions = [
                 },
             }),
             deviceEndpoints({ endpoints: {"cover_switch": 1, "cover": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.networkIndicator("network_led", "cover_switch"),
             windowCovering({ 
@@ -7145,14 +6473,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7249,14 +6569,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7305,14 +6617,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7385,14 +6689,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7465,14 +6761,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7521,14 +6809,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7577,14 +6857,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7633,14 +6905,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7761,14 +7025,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7841,14 +7097,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7922,14 +7170,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -7978,14 +7218,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8043,14 +7275,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8108,14 +7332,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8173,14 +7389,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8238,14 +7446,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8302,14 +7502,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8366,14 +7558,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8430,14 +7614,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8494,14 +7670,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -8559,14 +7727,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -8651,14 +7811,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -8704,14 +7856,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -8757,14 +7901,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.networkIndicator("network_led", "button_1"),
             romasku.pressAction("button_1_press_action", "button_1"),
@@ -8850,14 +7986,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -8942,14 +8070,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -8995,14 +8115,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9048,14 +8160,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9114,14 +8218,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9193,14 +8289,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9285,14 +8373,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9377,14 +8457,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9430,14 +8502,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9483,14 +8547,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9536,14 +8592,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9602,14 +8650,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9681,14 +8721,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9760,14 +8792,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9852,14 +8876,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9918,14 +8934,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -9971,14 +8979,6 @@ const definitions = [
         extend: [
             romasku.batteryPercentage(),
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.pressAction("button_1_press_action", "button_1"),
             romasku.switchAction("button_1_action_mode", "button_1"),
@@ -10062,14 +9062,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10118,14 +9110,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10199,14 +9183,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10303,14 +9279,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10432,14 +9400,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10498,14 +9458,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10596,14 +9548,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10700,14 +9644,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10767,14 +9703,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10865,14 +9793,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -10994,14 +9914,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11050,14 +9962,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11131,14 +10035,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11236,14 +10132,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11364,14 +10252,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11429,14 +10309,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11494,14 +10366,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11583,14 +10447,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11672,14 +10528,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11738,14 +10586,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11835,14 +10675,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -11932,14 +10764,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12061,14 +10885,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12126,14 +10942,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12223,14 +11031,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12353,14 +11153,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12514,14 +11306,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12579,14 +11363,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12676,14 +11452,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12805,14 +11573,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12869,14 +11629,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -12925,14 +11677,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13005,14 +11749,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13109,14 +11845,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13165,14 +11893,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13245,14 +11965,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13349,14 +12061,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13445,14 +12149,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13594,14 +12290,6 @@ const definitions = [
                 },
             }),
             deviceEndpoints({ endpoints: {"cover_switch": 1, "cover": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.networkIndicator("network_led", "cover_switch"),
             windowCovering({ 
@@ -13657,14 +12345,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13721,14 +12401,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13817,14 +12489,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -13945,14 +12609,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14009,14 +12665,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14105,14 +12753,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14233,14 +12873,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14298,14 +12930,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14395,14 +13019,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14524,14 +13140,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14653,14 +13261,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14815,14 +13415,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14880,14 +13472,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -14977,14 +13561,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15105,14 +13681,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15265,14 +13833,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15425,14 +13985,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15553,14 +14105,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15618,14 +14162,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15716,14 +14252,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15782,14 +14310,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -15879,14 +14399,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "l1": 4, "l2": 5, "l3": 6, "default": 4, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -16008,14 +14520,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"l1": 1, "default": 1, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.deviceConfig("device_config"),
             romasku.relayLights(["l1"]),
             romasku.generalPowerOnBehavior("power_on_behavior", [1]),
@@ -16056,14 +14560,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -16112,14 +14608,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "button_3": 3, "button_4": 4, "l1": 5, "l2": 6, "l3": 7, "l4": 8, "default": 5, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -16240,14 +14728,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -16305,14 +14785,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -16401,14 +14873,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "l1": 2, "default": 2, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
@@ -16465,14 +14929,6 @@ const definitions = [
         description: "Custom switch (https://github.com/romasku/tuya-zigbee-switch)",
         extend: [
             deviceEndpoints({ endpoints: {"button_1": 1, "button_2": 2, "l1": 3, "l2": 4, "default": 3, } }),
-            // "default" points at the first relay: z2m reads a device's state
-            // after it reconnects with Device.endpoint() (no endpoint name), which
-            // resolves the "default" key and otherwise falls back to endpoints[0]
-            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
-            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
-            // returns the first name matching an endpoint id, so "l1" has to win
-            // the reverse lookup (a "default" match publishes state without the
-            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             romasku.childLockEnabled("child_lock_enabled"),
             romasku.childLock("child_lock"),
             romasku.deviceConfig("device_config"),
