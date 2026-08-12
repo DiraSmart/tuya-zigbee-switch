@@ -505,7 +505,18 @@ const definitions = [
                 {%- for coverName in device.coverNames -%}
                     "{{coverName}}": {{loop.index + (device.switchNames | length) + (device.relayNames | length) + (device.coverSwitchNames | length)}},{{" "}}
                 {%- endfor -%}
+                {%- if device.relayNames -%}
+                    "default": {{1 + (device.switchNames | length)}},{{" "}}
+                {%- endif -%}
             } }),
+            // "default" points at the first relay: z2m reads a device's state
+            // after it reconnects with Device.endpoint() (no endpoint name), which
+            // resolves the "default" key and otherwise falls back to endpoints[0]
+            // -- endpoint 1, the BUTTON, whose genOnOff is a client and answers
+            // UNSUPPORTED_ATTRIBUTE. It must stay LAST in this map: endpointName()
+            // returns the first name matching an endpoint id, so "l1" has to win
+            // the reverse lookup (a "default" match publishes state without the
+            // endpoint suffix). getEndpointNames() skips it, so no extra entity.
             {% set first_endpoint = device.switchNames[0] if device.switchNames else (device.relayNames[0] if device.relayNames else (device.coverSwitchNames[0] if device.coverSwitchNames else device.coverNames[0])) %}
             {% if device.switchNames and device.relayNames %}
             romasku.childLockEnabled("child_lock_enabled"),
