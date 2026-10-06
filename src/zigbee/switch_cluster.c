@@ -54,6 +54,32 @@ static void sync_switch_indicator_led(zigbee_switch_cluster *cluster) {
     led_off(cluster->indicator_led);
 }
 
+// A 3-way satellite shows a light that lives elsewhere, so the honest value only
+// arrives once Home Assistant has acted -- a few hundred milliseconds in which
+// the switch looks dead and people press again. Flip the LED now and let the
+// next sync correct it if the light did not actually change: a LED that is wrong
+// until the next sync beats a switch that feels broken on every single press.
+//
+// This is display only. The press still travels as an event and Home Assistant
+// still decides the real target from the light's true state, so guessing wrong
+// here can never flip the wrong light.
+static void switch_cluster_optimistic_flip(zigbee_switch_cluster *cluster) {
+    if (cluster->role != ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_3WAY ||
+        !switch_cluster_has_valid_relay(cluster)) {
+        return;
+    }
+
+    zigbee_relay_cluster *relay = &relay_clusters[cluster->relay_index - 1];
+
+    // Someone moved the indicator off manual by hand: whatever they chose is
+    // driving the LED now, so leave it alone.
+    if (relay->indicator_led_mode != ZCL_ONOFF_INDICATOR_MODE_MANUAL) {
+        return;
+    }
+
+    relay_cluster_set_indicator_state(relay, !relay->indicator_state);
+}
+
 void update_switch_clusters() {
     for (int i = 0; i < switch_clusters_cnt; i++) {
         sync_switch_indicator_led(&switch_clusters[i]);
@@ -405,7 +431,9 @@ void switch_cluster_on_button_press(zigbee_switch_cluster *cluster) {
         switch_cluster_flash_indicator(cluster);
     }
     // 3-way: the LED shows the state of a light that lives elsewhere. Flashing
-    // it would read as the light having changed when it may not have.
+    // it would read as the light having changed when it may not have; flip it to
+    // the state this press is asking for instead.
+    switch_cluster_optimistic_flip(cluster);
 
     if (cluster->mode == ZCL_ONOFF_CONFIGURATION_SWITCH_TYPE_TOGGLE) {
         // Toggle does not support modes (RISE, SHORT, LONG)
@@ -454,6 +482,11 @@ void switch_cluster_on_button_release(zigbee_switch_cluster *cluster) {
             switch_cluster_relay_action_off(cluster);
         }
         switch_cluster_binding_action_off(cluster);
+        // A maintained rocker makes two actions, one per direction, so releasing
+        // it asks for a change just like pressing it did. A momentary button
+        // does not: its release is the end of one press, and flipping again
+        // would undo the flip above.
+        switch_cluster_optimistic_flip(cluster);
         cluster->multistate_state = MULTISTATE_POSITION_OFF;
         hal_zigbee_notify_attribute_changed(
             cluster->endpoint, ZCL_CLUSTER_MULTISTATE_INPUT_BASIC,

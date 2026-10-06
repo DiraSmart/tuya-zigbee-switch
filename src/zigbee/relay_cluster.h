@@ -53,6 +53,13 @@ extern bool relay_cluster_mirror_suppressed;
 // Apply the indicator mode + power-on behaviour that a switch role implies,
 // refresh the LED and persist. Lives here because both fields belong to the
 // relay cluster, while the role that decides them lives on the button.
+// Drive the indicator LED directly. Deliberately does NOT persist: this is
+// called on every press of a 3-way satellite, and NV has a write budget.
+// Home Assistant's own writes still go through the attribute handler, which
+// does persist.
+void relay_cluster_set_indicator_state(zigbee_relay_cluster *cluster,
+                                       uint8_t on);
+
 void relay_cluster_apply_role_settings(zigbee_relay_cluster *cluster,
                                        uint8_t indicator_mode,
                                        uint8_t startup_mode);
