@@ -95,6 +95,18 @@ void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,
                                 attribute_id);
 }
 
+void relay_cluster_apply_role_settings(zigbee_relay_cluster *cluster,
+                                       uint8_t indicator_mode,
+                                       uint8_t startup_mode) {
+    if (cluster == NULL) {
+        return;
+    }
+    cluster->indicator_led_mode = indicator_mode;
+    cluster->startup_mode       = startup_mode;
+    sync_indicator_led(cluster);
+    relay_cluster_store_attrs_to_nv(cluster);
+}
+
 void update_relay_clusters() {
     for (int i = 0; i < 10; i++) {
         if (relay_cluster_by_endpoint[i] != NULL) {

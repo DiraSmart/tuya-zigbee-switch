@@ -50,6 +50,13 @@ void sync_group_apply(void);
 // to 3-way targets (mirroring again would send the command twice).
 extern bool relay_cluster_mirror_suppressed;
 
+// Apply the indicator mode + power-on behaviour that a switch role implies,
+// refresh the LED and persist. Lives here because both fields belong to the
+// relay cluster, while the role that decides them lives on the button.
+void relay_cluster_apply_role_settings(zigbee_relay_cluster *cluster,
+                                       uint8_t indicator_mode,
+                                       uint8_t startup_mode);
+
 void update_relay_clusters();
 
 void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,

@@ -78,6 +78,7 @@
 #define ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_LEVEL_MOVE_RATE    0xff04
 #define ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_BINDING_MODE       0xff05
 #define ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_CHILD_LOCK_ENABLED 0xff06
+#define ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_ROLE               0xff07
 
 
 // Multistate cluster
@@ -154,6 +155,13 @@
 #define ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_TOGGLE_SIMPLE            0x02
 #define ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_TOGGLE_SMART_SYNC        0x03
 #define ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_TOGGLE_SMART_OPPOSITE    0x04
+
+// What a button is FOR. One setting instead of three: writing it derives
+// relay_mode here plus the paired relay's indicator mode and power-on
+// behaviour, so a gang is configured from Home Assistant in one write.
+#define ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_RELAY  0x00 // drives its own load
+#define ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_3WAY   0x01 // mirrors a light elsewhere
+#define ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_BUTTON 0x02 // scenes/covers, no load
 
 #define ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED                    0x00
 #define ZCL_ONOFF_CONFIGURATION_RELAY_MODE_RISE                        0x01

@@ -32,6 +32,22 @@ const ota = require("zigbee-herdsman-converters/lib/ota");
 ********************************************************************/
 
 const romasku = {
+    // What this gang is for. One control instead of three: the firmware derives
+    // relay mode, indicator mode and power-on from it, so a gang is set up with
+    // a single write and cannot end up half-configured.
+    switchRole: (name, endpointName) =>
+        enumLookup({
+            name,
+            endpointName,
+            lookup: { relay: 0, three_way: 1, button: 2 },
+            cluster: "genOnOffSwitchCfg",
+            attribute: { ID: 0xff07, type: 0x30 }, // Enum8
+            description: `What this button is for:
+            - relay: drives its own light (LED follows it, power-on = previous)
+            - three_way: the light lives elsewhere; the LED shows that light's state, written by Home Assistant
+            - button: scenes or covers, drives no load; the LED lights while held`,
+            entityCategory: "config",
+        }),
     switchAction: (name, endpointName) =>
         enumLookup({
             name,
@@ -132,10 +148,10 @@ const romasku = {
     // General (whole-device) relay indicator LED mode: one control that writes
     // the indicator mode to every relay endpoint.
     generalIndicatorMode: (name, relayEndpoints) => {
-        const lookup = {relay: 0, opposite: 1, off: 3};
+        const lookup = {relay: 0, opposite: 1, manual: 2, off: 3};
         return {
             exposes: [e.enum(name, ea.STATE_SET, Object.keys(lookup))
-                .withDescription("Indicator LED (all relays): relay=on with light, opposite=on when off, off=always off")
+                .withDescription("Indicator LED (all relays): relay=on with light, opposite=on when off, manual=driven externally (write the per-relay indicator state), off=always off")
                 .withCategory("config")],
             toZigbee: [{
                 key: [name],
@@ -208,10 +224,10 @@ const romasku = {
         enumLookup({
             name,
             endpointName,
-            lookup: { relay: 0, opposite: 1, off: 3 },
+            lookup: { relay: 0, opposite: 1, manual: 2, off: 3 },
             cluster: "genOnOff",
             attribute: { ID: 0xff01, type: 0x30 }, // Enum8
-            description: "Indicator LED: relay = ON when light is on, opposite = ON when light is off, off = always off",
+            description: "Indicator LED: relay = ON when light is on, opposite = ON when light is off, manual = leave it to whoever writes the indicator state, off = always off",
             entityCategory: "config",
         }),
     relayIndicator: (name, endpointName) =>
@@ -534,10 +550,23 @@ const definitions = [
             romasku.generalPowerOnBehavior("power_on_behavior", [{% for relayName in device.relayNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
             {% if device.relayIndicatorNames %}
             romasku.generalIndicatorMode("indicator_mode", [{% for relayName in device.relayIndicatorNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
+            {# Per-relay indicator controls. The whole-device control above writes
+                every relay at once, which cannot express a device whose gangs play
+                different roles (one drives its own load, another mirrors a light
+                that lives elsewhere). These address one relay each, and the write
+                path for "manual" mode needs them: nothing can drive an indicator
+                externally without a per-relay state to write. #}
+            {% for relayName in device.relayIndicatorNames %}
+            romasku.relayIndicatorMode("{{relayName}}_indicator_mode", "{{relayName}}"),
+            romasku.relayIndicator("{{relayName}}_indicator", "{{relayName}}"),
+            {% endfor %}
             {% endif %}
             {% endif %}
             {% for switchName in device.switchNames %}
             romasku.pressAction("{{switchName}}_press_action", "{{switchName}}"),
+            {% if device.relayNames %}
+            romasku.switchRole("{{switchName}}_role", "{{switchName}}"),
+            {% endif %}
             romasku.switchAction("{{switchName}}_action_mode", "{{switchName}}"),
             {% if device.relayNames %}
             romasku.decouple("{{switchName}}_decouple", "{{switchName}}"),

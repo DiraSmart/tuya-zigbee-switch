@@ -43,8 +43,11 @@ static void sync_switch_indicator_led(zigbee_switch_cluster *cluster) {
         return;
     }
 
-    if (cluster->relay_mode != ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED &&
-        switch_cluster_has_valid_relay(cluster)) {
+    // Only a plain button owns its LED (lit while held). For the other roles the
+    // relay cluster drives it -- from its own state when the gang drives a load,
+    // or from whatever Home Assistant writes when it mirrors a light elsewhere.
+    // Clearing it here would fight that.
+    if (cluster->role != ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_BUTTON) {
         return;
     }
 
@@ -82,6 +85,8 @@ void switch_cluster_store_attrs_to_nv(zigbee_switch_cluster *cluster);
 void switch_cluster_load_attrs_from_nv(zigbee_switch_cluster *cluster);
 void switch_cluster_on_write_attr(zigbee_switch_cluster *cluster,
                                   uint16_t attribute_id);
+
+static void switch_cluster_apply_role(zigbee_switch_cluster *cluster);
 
 void switch_cluster_report_action(zigbee_switch_cluster *cluster);
 
@@ -124,11 +129,13 @@ void switch_cluster_add_to_endpoint(zigbee_switch_cluster *cluster,
                ZCL_DATA_TYPE_UINT8, ATTR_WRITABLE, cluster->level_move_rate);
     SETUP_ATTR(7, ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_BINDING_MODE,
                ZCL_DATA_TYPE_ENUM8, ATTR_WRITABLE, cluster->binded_mode);
+    SETUP_ATTR(8, ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_ROLE, ZCL_DATA_TYPE_ENUM8,
+               ATTR_WRITABLE, cluster->role);
 
     // Configuration
     endpoint->clusters[endpoint->cluster_count].cluster_id =
         ZCL_CLUSTER_ON_OFF_SWITCH_CONFIG;
-    endpoint->clusters[endpoint->cluster_count].attribute_count = 8;
+    endpoint->clusters[endpoint->cluster_count].attribute_count = 9;
     endpoint->clusters[endpoint->cluster_count].attributes      = cluster->attr_infos;
     endpoint->clusters[endpoint->cluster_count].is_server       = 1;
     endpoint->cluster_count++;
@@ -389,14 +396,16 @@ void switch_cluster_on_button_press(zigbee_switch_cluster *cluster) {
     if (g_child_lock_enabled && g_child_lock_active) {
         return; // child-locked: button does nothing (network LED shows the lock)
     }
-    if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED) {
-        // virtual (decoupled) button: light the indicator while held, off on release
+    if (cluster->role == ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_BUTTON) {
+        // scene/cover button: light the indicator while held, off on release
         if (cluster->indicator_led != NULL) {
             led_on(cluster->indicator_led);
         }
-    } else {
+    } else if (cluster->role == ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_RELAY) {
         switch_cluster_flash_indicator(cluster);
     }
+    // 3-way: the LED shows the state of a light that lives elsewhere. Flashing
+    // it would read as the light having changed when it may not have.
 
     if (cluster->mode == ZCL_ONOFF_CONFIGURATION_SWITCH_TYPE_TOGGLE) {
         // Toggle does not support modes (RISE, SHORT, LONG)
@@ -429,9 +438,9 @@ void switch_cluster_on_button_release(zigbee_switch_cluster *cluster) {
     if (g_child_lock_enabled && g_child_lock_active) {
         return; // device child-locked: physical button does nothing
     }
-    if (cluster->relay_mode == ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED &&
+    if (cluster->role == ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_BUTTON &&
         cluster->indicator_led != NULL) {
-        led_off(cluster->indicator_led); // virtual button: indicator off on release
+        led_off(cluster->indicator_led); // scene button: indicator off on release
     }
     if (cluster->mode == ZCL_ONOFF_CONFIGURATION_SWITCH_TYPE_TOGGLE) {
         // Only flash on release for toggles,
@@ -521,8 +530,59 @@ void synchronize_multistate_state(zigbee_switch_cluster *cluster) {
                                         ZCL_ATTR_MULTISTATE_INPUT_PRESENT_VALUE);
 }
 
+// One write configures a gang. Picking a role from Home Assistant has to be
+// enough: asking an installer to also get relay mode, indicator mode and
+// power-on right, per gang, across dozens of switches, is how a house ends up
+// half-configured.
+static void switch_cluster_apply_role(zigbee_switch_cluster *cluster) {
+    uint8_t relay_mode;
+    uint8_t indicator_mode;
+    uint8_t startup_mode;
+
+    switch (cluster->role) {
+    case ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_3WAY:
+        // Mirrors a light that lives elsewhere: the button must not move the
+        // local relay, and the LED must obey whoever reports that light rather
+        // than a relay that controls nothing.
+        relay_mode     = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED;
+        indicator_mode = ZCL_ONOFF_INDICATOR_MODE_MANUAL;
+        startup_mode   = ZCL_START_UP_ONOFF_SET_ONOFF_TO_OFF;
+        break;
+
+    case ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_BUTTON:
+        // Scenes and covers: no load at all. The relay cluster leaves the LED
+        // alone so the button can light it while held.
+        relay_mode     = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED;
+        indicator_mode = ZCL_ONOFF_INDICATOR_MODE_OFF;
+        startup_mode   = ZCL_START_UP_ONOFF_SET_ONOFF_TO_OFF;
+        break;
+
+    case ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_RELAY:
+    default:
+        cluster->role  = ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_RELAY;
+        relay_mode     = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_SHORT;
+        indicator_mode = ZCL_ONOFF_INDICATOR_MODE_SAME;
+        startup_mode   = ZCL_START_UP_ONOFF_SET_ONOFF_TO_PREVIOUS;
+        break;
+    }
+
+    cluster->relay_mode = relay_mode;
+
+    if (switch_cluster_has_valid_relay(cluster)) {
+        relay_cluster_apply_role_settings(&relay_clusters[cluster->relay_index - 1],
+                                          indicator_mode, startup_mode);
+    }
+
+    sync_switch_indicator_led(cluster);
+}
+
 void switch_cluster_on_write_attr(zigbee_switch_cluster *cluster,
                                   uint16_t attribute_id) {
+    if (attribute_id == ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_ROLE) {
+        switch_cluster_apply_role(cluster);
+        switch_cluster_store_attrs_to_nv(cluster);
+        return;
+    }
     printf("Index at write attr: %d\r\n", cluster->switch_idx);
     if (attribute_id == ZCL_ATTR_ONOFF_CONFIGURATION_SWITCH_RELAY_INDEX) {
         if (relay_clusters_cnt == 0) {
@@ -553,6 +613,7 @@ void switch_cluster_store_attrs_to_nv(zigbee_switch_cluster *cluster) {
         cluster->button->long_press_duration_ms;
     nv_config_buffer.level_move_rate = cluster->level_move_rate;
     nv_config_buffer.binded_mode     = cluster->binded_mode;
+    nv_config_buffer.role            = cluster->role;
     hal_nvm_write(NV_ITEM_SWITCH_CLUSTER_DATA(cluster->switch_idx),
                   sizeof(zigbee_switch_cluster_config),
                   (uint8_t *)&nv_config_buffer);
@@ -575,6 +636,10 @@ void switch_cluster_load_attrs_from_nv(zigbee_switch_cluster *cluster) {
         nv_config_buffer.button_long_press_duration;
     cluster->level_move_rate = nv_config_buffer.level_move_rate;
     cluster->binded_mode     = nv_config_buffer.binded_mode;
+    // Restored, not re-applied: relay_mode here and the relay's indicator and
+    // power-on modes each come back from their own NV, so replaying the role on
+    // boot would overwrite a deliberate per-field tweak with the role default.
+    cluster->role            = nv_config_buffer.role;
 
     // Validate relay_index to prevent out-of-bounds access
     if (relay_clusters_cnt == 0) {
