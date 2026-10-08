@@ -224,10 +224,10 @@ const romasku = {
         enumLookup({
             name,
             endpointName,
-            lookup: { relay: 0, opposite: 1, manual: 2, off: 3 },
+            lookup: { relay: 0, manual: 2, off: 3 },
             cluster: "genOnOff",
             attribute: { ID: 0xff01, type: 0x30 }, // Enum8
-            description: "Indicator LED: relay = ON when light is on, opposite = ON when light is off, manual = leave it to whoever writes the indicator state, off = always off",
+            description: "Indicator LED: relay = follows this relay, manual = whoever writes the indicator state drives it (what the 3-way role uses), off = always off. The role sets this; change it only to kill a LED that bothers someone at night.",
             entityCategory: "config",
         }),
     relayIndicator: (name, endpointName) =>
@@ -549,7 +549,6 @@ const definitions = [
             romasku.relayLights({{device.relayNames | tojson }}),
             romasku.generalPowerOnBehavior("power_on_behavior", [{% for relayName in device.relayNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
             {% if device.relayIndicatorNames %}
-            romasku.generalIndicatorMode("indicator_mode", [{% for relayName in device.relayIndicatorNames %}{{ loop.index + (device.switchNames | length) }}{% if not loop.last %}, {% endif %}{% endfor %}]),
             {# Per-relay indicator controls. The whole-device control above writes
                 every relay at once, which cannot express a device whose gangs play
                 different roles (one drives its own load, another mirrors a light
@@ -566,10 +565,6 @@ const definitions = [
             romasku.pressAction("{{switchName}}_press_action", "{{switchName}}"),
             {% if device.relayNames %}
             romasku.switchRole("{{switchName}}_role", "{{switchName}}"),
-            {% endif %}
-            romasku.switchAction("{{switchName}}_action_mode", "{{switchName}}"),
-            {% if device.relayNames %}
-            romasku.decouple("{{switchName}}_decouple", "{{switchName}}"),
             {% endif %}
             {% endfor %}
             {% for coverName in device.coverNames %}

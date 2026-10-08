@@ -571,6 +571,7 @@ static void switch_cluster_apply_role(zigbee_switch_cluster *cluster) {
     uint8_t relay_mode;
     uint8_t indicator_mode;
     uint8_t startup_mode;
+    uint8_t action;
 
     switch (cluster->role) {
     case ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_3WAY:
@@ -580,6 +581,11 @@ static void switch_cluster_apply_role(zigbee_switch_cluster *cluster) {
         relay_mode     = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED;
         indicator_mode = ZCL_ONOFF_INDICATOR_MODE_MANUAL;
         startup_mode   = ZCL_START_UP_ONOFF_SET_ONOFF_TO_OFF;
+        // Plain TOGGLE on purpose. The smart variants compute an absolute value
+        // from the LOCAL relay, which on a satellite is a mirror that may be
+        // stale -- it would ask for the state the light is already in and eat
+        // the press. TOGGLE delegates the decision to whoever knows the truth.
+        action         = ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_TOGGLE_SIMPLE;
         break;
 
     case ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_BUTTON:
@@ -588,6 +594,7 @@ static void switch_cluster_apply_role(zigbee_switch_cluster *cluster) {
         relay_mode     = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_DETACHED;
         indicator_mode = ZCL_ONOFF_INDICATOR_MODE_OFF;
         startup_mode   = ZCL_START_UP_ONOFF_SET_ONOFF_TO_OFF;
+        action         = ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_TOGGLE_SIMPLE;
         break;
 
     case ZCL_ONOFF_CONFIGURATION_SWITCH_ROLE_RELAY:
@@ -596,10 +603,15 @@ static void switch_cluster_apply_role(zigbee_switch_cluster *cluster) {
         relay_mode     = ZCL_ONOFF_CONFIGURATION_RELAY_MODE_SHORT;
         indicator_mode = ZCL_ONOFF_INDICATOR_MODE_SAME;
         startup_mode   = ZCL_START_UP_ONOFF_SET_ONOFF_TO_PREVIOUS;
+        // This gang owns the load, so it knows the real state and can send it
+        // as an absolute ON/OFF. Matters for switches still wired with manual
+        // bindings: a relative TOGGLE inverts for good when one is lost.
+        action         = ZCL_ONOFF_CONFIGURATION_SWITCH_ACTION_TOGGLE_SMART_SYNC;
         break;
     }
 
     cluster->relay_mode = relay_mode;
+    cluster->action     = action;
 
     if (switch_cluster_has_valid_relay(cluster)) {
         relay_cluster_apply_role_settings(&relay_clusters[cluster->relay_index - 1],
