@@ -62,6 +62,12 @@ extern bool relay_cluster_mirror_suppressed;
 // called on every press of a 3-way satellite, and NV has a write budget.
 // Home Assistant's own writes still go through the attribute handler, which
 // does persist.
+// Re-announce the indicator state of a relay endpoint, if it has a LED at all.
+// Called from the state_sync heartbeat: the indicator is reported fire-and-
+// forget, so without a periodic repeat a single lost packet leaves Home
+// Assistant showing the wrong LED state forever.
+void relay_cluster_refresh_indicator_report(uint8_t endpoint);
+
 void relay_cluster_set_indicator_state(zigbee_relay_cluster *cluster,
                                        uint8_t on);
 

@@ -1,5 +1,6 @@
 #include "state_sync.h"
 #include "consts.h"
+#include "relay_cluster.h"
 #include "hal/printf_selector.h"
 #include "hal/timer.h"
 #include "hal/zigbee.h"
@@ -221,6 +222,13 @@ void state_sync_task(void) {
         // synchronous (the test stub) would otherwise be discarded.
         in_flight_ep      = ep;
         in_flight_sent_ms = now;
+        // Ride along on the same beat. The relay state gets an acknowledged
+        // report and retries; the indicator LED state only ever got a single
+        // unacknowledged notify, so one lost packet left Home Assistant showing
+        // a LED that does not match the light. Repeating it here costs nothing
+        // and bounds that error to one heartbeat.
+        relay_cluster_refresh_indicator_report(ep);
+
         if (hal_zigbee_send_report_attr_confirmed(ep, ZCL_CLUSTER_ON_OFF,
                                                   ZCL_ATTR_ONOFF) !=
             HAL_ZIGBEE_OK) {

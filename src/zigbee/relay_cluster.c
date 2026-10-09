@@ -95,6 +95,20 @@ void relay_cluster_callback_attr_write_trampoline(uint8_t endpoint,
                                 attribute_id);
 }
 
+void relay_cluster_refresh_indicator_report(uint8_t endpoint) {
+    if (endpoint >= 10) {
+        return;
+    }
+    zigbee_relay_cluster *cluster = relay_cluster_by_endpoint[endpoint];
+
+    // No LED means no such attribute on this endpoint.
+    if (cluster == NULL || cluster->indicator_led == NULL) {
+        return;
+    }
+    hal_zigbee_notify_attribute_changed(cluster->endpoint, ZCL_CLUSTER_ON_OFF,
+                                        ZCL_ATTR_ONOFF_INDICATOR_STATE);
+}
+
 void relay_cluster_set_indicator_state(zigbee_relay_cluster *cluster,
                                        uint8_t on) {
     if (cluster == NULL) {
