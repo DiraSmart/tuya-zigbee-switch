@@ -246,7 +246,10 @@ const romasku = {
             attribute: {ID: 0xff02, type: 0x10},  // Boolean
             description: "State of the relay indicator LED. Written by Home Assistant for a 3-way satellite; not meant to be set by hand.",
             access: "ALL",
-            entityCategory: "diagnostic",
+            // Stays "config", not "diagnostic": z2m rejects a settable
+            // diagnostic expose, and this one has to be settable -- writing it
+            // is how Home Assistant drives a 3-way satellite's LED.
+            entityCategory: "config",
         }),
     batteryPercentage: () => {
         const result = numeric({
