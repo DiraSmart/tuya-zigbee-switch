@@ -170,11 +170,13 @@ void relay_cluster_add_to_endpoint(zigbee_relay_cluster *cluster,
                    ATTR_WRITABLE, cluster->indicator_led_mode);
         SETUP_ATTR(4, ZCL_ATTR_ONOFF_INDICATOR_STATE, ZCL_DATA_TYPE_BOOLEAN,
                    ATTR_WRITABLE, cluster->indicator_state);
+        SETUP_ATTR(5, ZCL_ATTR_ONOFF_LED_DISABLED, ZCL_DATA_TYPE_BOOLEAN,
+                   ATTR_WRITABLE, cluster->led_disabled);
     }
 
     endpoint->clusters[endpoint->cluster_count].cluster_id      = ZCL_CLUSTER_ON_OFF;
     endpoint->clusters[endpoint->cluster_count].attribute_count =
-        cluster->indicator_led != NULL ? 5 : 3;
+        cluster->indicator_led != NULL ? 6 : 3;
     endpoint->clusters[endpoint->cluster_count].attributes   = cluster->attr_infos;
     endpoint->clusters[endpoint->cluster_count].is_server    = 1;
     endpoint->clusters[endpoint->cluster_count].cmd_callback =
@@ -288,6 +290,14 @@ void sync_indicator_led(zigbee_relay_cluster *cluster) {
         return;
     }
 
+    // Someone wanted this LED dark. Deliberately does NOT clear indicator_state:
+    // the logical state stays true, so turning the LED back on shows the right
+    // thing immediately instead of waiting for the next sync to refill it.
+    if (cluster->led_disabled) {
+        led_off(cluster->indicator_led);
+        return;
+    }
+
     if (cluster->indicator_led_mode == ZCL_ONOFF_INDICATOR_MODE_OFF) {
         cluster->indicator_state = 0; // always off
     } else if (cluster->indicator_led_mode == ZCL_ONOFF_INDICATOR_MODE_SAME) {
@@ -354,6 +364,13 @@ void relay_cluster_on_write_attr(zigbee_relay_cluster *cluster,
         sync_group_apply();
         return;
     }
+    if (attribute_id == ZCL_ATTR_ONOFF_LED_DISABLED) {
+        uint8_t value = cluster->led_disabled;
+        hal_nvm_write(NV_ITEM_RELAY_LED_DISABLED(cluster->relay_idx),
+                      sizeof(value), (uint8_t *)&value);
+        sync_indicator_led(cluster);
+        return;
+    }
     if (attribute_id == ZCL_ATTR_ONOFF_INDICATOR_STATE) {
         sync_indicator_led(cluster);
     }
@@ -394,6 +411,13 @@ void relay_cluster_load_attrs_from_nv(zigbee_relay_cluster *cluster) {
                      sizeof(group_id),
                      (uint8_t *)&group_id) == HAL_NVM_SUCCESS) {
         cluster->sync_group_id = group_id;
+    }
+
+    uint8_t led_disabled;
+    if (hal_nvm_read(NV_ITEM_RELAY_LED_DISABLED(cluster->relay_idx),
+                     sizeof(led_disabled),
+                     (uint8_t *)&led_disabled) == HAL_NVM_SUCCESS) {
+        cluster->led_disabled = led_disabled;
     }
 
     hal_nvm_status_t st = hal_nvm_read(

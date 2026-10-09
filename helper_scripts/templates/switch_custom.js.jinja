@@ -220,14 +220,20 @@ const romasku = {
             description: "Action of the switch: 'released' or 'press' or 'long_press'",
             entityCategory: "diagnostic",
         }),
-    relayIndicatorMode: (name, endpointName) =>
-        enumLookup({
+    // Plain on/off, not a mode. The mode belongs to the role; someone who just
+    // wants a dark bedroom should not have to read about modes, nor be able to
+    // knock a 3-way gang out of "manual" by picking the wrong one. ON means the
+    // LED works (whatever the role decided it should show).
+    relayLed: (name, endpointName) =>
+        binary({
             name,
             endpointName,
-            lookup: { relay: 0, manual: 2, off: 3 },
+            valueOn: ["ON", 0],   // led_disabled = 0 -> the LED does its job
+            valueOff: ["OFF", 1], // led_disabled = 1 -> dark, whatever the role says
             cluster: "genOnOff",
-            attribute: { ID: 0xff01, type: 0x30 }, // Enum8
-            description: "Indicator LED: relay = follows this relay, manual = whoever writes the indicator state drives it (what the 3-way role uses), off = always off. The role sets this; change it only to kill a LED that bothers someone at night.",
+            attribute: { ID: 0xff04, type: 0x10 }, // Boolean (led_disabled)
+            description: "Indicator LED of this relay. Turn OFF to keep it dark (a bedroom at night); what it shows when ON is decided by the button's role.",
+            access: "ALL",
             entityCategory: "config",
         }),
     relayIndicator: (name, endpointName) =>
@@ -238,9 +244,9 @@ const romasku = {
             valueOff: ["OFF", 0],
             cluster: "genOnOff",
             attribute: {ID: 0xff02, type: 0x10},  // Boolean
-            description: "State of the relay indicator LED",
+            description: "State of the relay indicator LED. Written by Home Assistant for a 3-way satellite; not meant to be set by hand.",
             access: "ALL",
-            entityCategory: "config",
+            entityCategory: "diagnostic",
         }),
     batteryPercentage: () => {
         const result = numeric({
@@ -556,7 +562,7 @@ const definitions = [
                 path for "manual" mode needs them: nothing can drive an indicator
                 externally without a per-relay state to write. #}
             {% for relayName in device.relayIndicatorNames %}
-            romasku.relayIndicatorMode("{{relayName}}_indicator_mode", "{{relayName}}"),
+            romasku.relayLed("{{relayName}}_led", "{{relayName}}"),
             romasku.relayIndicator("{{relayName}}_indicator", "{{relayName}}"),
             {% endfor %}
             {% endif %}

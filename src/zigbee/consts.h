@@ -66,6 +66,7 @@
 #define ZCL_ATTR_ONOFF_INDICATOR_MODE     0xff01
 #define ZCL_ATTR_ONOFF_INDICATOR_STATE    0xff02
 #define ZCL_ATTR_ONOFF_SYNC_GROUP_ID      0xff03
+#define ZCL_ATTR_ONOFF_LED_DISABLED       0xff04
 
 // OnOff configuration cluster
 

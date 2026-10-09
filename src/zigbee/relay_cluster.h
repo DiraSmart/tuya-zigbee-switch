@@ -12,10 +12,15 @@ typedef struct {
     uint8_t              endpoint;
     uint8_t              startup_mode;
     uint8_t              indicator_led_mode;
-    hal_zigbee_attribute attr_infos[5];
+    hal_zigbee_attribute attr_infos[6];
     relay_t *            relay;
     led_t *              indicator_led;
     uint8_t              indicator_state;
+    // Kills this relay's indicator LED regardless of the mode the role set.
+    // Separate from indicator_led_mode on purpose: the role owns the mode, and
+    // a person who just wants a dark bedroom should not have to understand
+    // modes -- nor be able to knock a 3-way gang out of "manual" by accident.
+    uint8_t              led_disabled;
     // Last relay state propagated to bindings. Used as an anti-loop guard for
     // the 3-way mirror: we only forward to bindings on a real state transition,
     // so a mirrored command bouncing back (already in that state) stops here.

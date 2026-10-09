@@ -32,5 +32,9 @@
 // Per-relay 3-way sync group id (separate item so adding it doesn't change the
 // relay cluster config struct size / reset existing relay settings).
 #define NV_ITEM_RELAY_SYNC_GROUP(relay_idx) (37 + (relay_idx))
+// Per-relay "kill this LED" switch. Its own item for the same reason as the
+// sync group above: growing the relay config struct would make every existing
+// relay fall back to defaults on the next update.
+#define NV_ITEM_RELAY_LED_DISABLED(relay_idx) (42 + (relay_idx))
 
 #endif /* DEVICE_CONFIG_NVM_ITEMS_H_ */
