@@ -118,9 +118,16 @@ action:
   - choose:
       # La tecla no decide el valor: le pide a HA que invierta el estado REAL de
       # la luz. Si el LED de esa tecla quedó viejo, el apretón sale bien igual.
+      #
+      # UN SOLO actor por luz. Con el binding encendido el relé ya recibió el
+      # comando directo de la tecla; si HA mandara además el suyo serían dos
+      # toggles por apretón y la luz quedaría como estaba, de forma intermitente
+      # según cuál llegue primero. Con binding, HA solo escribe los LEDs.
       - conditions:
           - condition: trigger
             id: apreton
+          - condition: template
+            value_template: "{{ not crear_binding }}"
         sequence:
           - service: homeassistant.toggle
             target:
