@@ -213,6 +213,13 @@ action:
           # IEEE en vez de nombre: el nombre lo cambia el instalador, el IEEE no
           # cambia ni con un factory reset. z2m igual muestra nombres en la
           # pestaña Vincular, así que no se pierde nada al revisarlo.
+          # Por NOMBRE y no por IEEE: z2m respondió "Source device
+          # '0xa4c138.../1' does not exist" a una dirección bien formada, y sus
+          # propios ejemplos de bind usan nombres. El nombre del dispositivo en
+          # HA es el friendly_name que puso z2m, así que coinciden; y se
+          # resuelve en cada corrida, con lo cual un renombrado posterior no
+          # deja el binding sin recrear.
+          nombre_luz: "{{ device_attr(luz, 'name') or '' }}"
           ieee_luz: >-
             {{ (device_attr(luz, 'identifiers') | list | first | last | default('', true))
                | regex_findall('(0x[0-9a-fA-F]{16})') | first | default('', true) }}
@@ -245,14 +252,13 @@ action:
             {{ (gangs_luz | int + idx_luz | int) if (gangs_luz | int > 0 and idx_luz | int > 0) else 0 }}
           pares: >-
             {% set ns = namespace(l=[]) %}
-            {% if ieee_luz and gangs_luz | int > 0 and idx_luz | int > 0 %}
+            {% if nombre_luz and gangs_luz | int > 0 and idx_luz | int > 0 %}
               {% for b in botones %}
-                {% set ie = (device_attr(b, 'identifiers') | list | first | last | default('', true))
-                            | regex_findall('(0x[0-9a-fA-F]{16})') | first | default('', true) %}
+                {% set nb = device_attr(b, 'name') or '' %}
                 {# El botón sí es directo: button_2 es el endpoint 2. #}
                 {% set ep = b | regex_findall('_button_(\d+)') | first | default(0, true) | int %}
-                {% if ie and ep > 0 and ie != ieee_luz %}
-                  {% set ns.l = ns.l + [ie ~ '/' ~ ep] %}
+                {% if nb and ep > 0 and nb != nombre_luz %}
+                  {% set ns.l = ns.l + [nb ~ '/' ~ ep] %}
                 {% endif %}
               {% endfor %}
             {% endif %}
@@ -268,11 +274,11 @@ action:
             data:
               title: 3-way - binding
               message: >-
-                blueprint v7 (escucha la respuesta de z2m)
+                blueprint v8 (bind por nombre)
 
                 luz: {{ luz }}
 
-                IEEE luz: "{{ ieee_luz }}" | modelo: {{ device_attr(luz,'model') }}
+                luz nombre: "{{ nombre_luz }}" | IEEE: "{{ ieee_luz }}"
 
                 gangs: {{ gangs_luz }} | luz nro: {{ idx_luz }} | endpoint: {{ ep_luz }}
 
@@ -291,7 +297,7 @@ action:
                 topic: zigbee2mqtt/bridge/request/device/bind
                 payload: >-
                   {{ {'from': repeat.item,
-                      'to': ieee_luz ~ '/' ~ ep_luz,
+                      'to': nombre_luz ~ '/' ~ ep_luz,
                       'clusters': ['genOnOff']} | to_json }}
 
             # Espaciado: con varias luces configuradas, todas re-bindean en el
