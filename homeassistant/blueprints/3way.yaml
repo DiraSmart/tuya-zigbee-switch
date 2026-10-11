@@ -202,9 +202,15 @@ action:
           # El número depende del modelo: los endpoints son 1..N para los
           # botones y N+1..2N para los relés, así que en el 1-gang l1 es el 2 y
           # en el 3-gang es el 4. N sale del propio modelo (DS-ZB-00N-v2).
+          # Dos formas porque Home Assistant guarda en "model" la DESCRIPCIÓN
+          # del converter ("DiraSmart 1-gang Zigbee (v2)"), no su model
+          # ("DS-ZB-001-v2"). Se miran los dos campos y los dos patrones.
           gangs_luz: >-
-            {{ (device_attr(luz, 'model') or '')
-               | regex_findall('DS-ZB-0*(\d+)') | first | default(0, true) | int }}
+            {% set m = (device_attr(luz, 'model') or '') ~ ' '
+                       ~ (device_attr(luz, 'model_id') or '') %}
+            {% set a = m | regex_findall('(\d+)[ -]?gang') %}
+            {% set b = m | regex_findall('DS-ZB-0*(\d+)') %}
+            {{ (a + b) | first | default(0, true) | int }}
           idx_luz: >-
             {{ luz | regex_findall('_l(\d+)') | last | default(0, true) | int }}
 
