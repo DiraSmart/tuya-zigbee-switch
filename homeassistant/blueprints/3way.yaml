@@ -258,7 +258,7 @@ action:
                 {# El botón sí es directo: button_2 es el endpoint 2. #}
                 {% set ep = b | regex_findall('_button_(\d+)') | first | default(0, true) | int %}
                 {% if nb and ep > 0 and nb != nombre_luz %}
-                  {% set ns.l = ns.l + [nb ~ '/' ~ ep] %}
+                  {% set ns.l = ns.l + [{'nombre': nb, 'ep': ep}] %}
                 {% endif %}
               {% endfor %}
             {% endif %}
@@ -274,7 +274,7 @@ action:
             data:
               title: 3-way - binding
               message: >-
-                blueprint v8 (bind por nombre)
+                blueprint v9 (from_endpoint/to_endpoint separados)
 
                 luz: {{ luz }}
 
@@ -292,12 +292,18 @@ action:
       - repeat:
           for_each: "{{ pares }}"
           sequence:
+            # Campos SEPARADOS para los endpoints, no "nombre/1" pegado: ese
+            # era el bug. Con el sufijo, z2m busca un dispositivo llamado
+            # literalmente "Otros 3way pasillo lavanderia/1" y responde que no
+            # existe -- que es exactamente lo que venía diciendo el error.
             - service: mqtt.publish
               data:
                 topic: zigbee2mqtt/bridge/request/device/bind
                 payload: >-
-                  {{ {'from': repeat.item,
-                      'to': nombre_luz ~ '/' ~ ep_luz,
+                  {{ {'from': repeat.item.nombre,
+                      'from_endpoint': repeat.item.ep,
+                      'to': nombre_luz,
+                      'to_endpoint': ep_luz,
                       'clusters': ['genOnOff']} | to_json }}
 
             # Espaciado: con varias luces configuradas, todas re-bindean en el
