@@ -191,6 +191,18 @@ action:
           {{ trigger.id | default('') == 'bind_respuesta'
              and (trigger.payload_json.status | default('')) != 'ok' }}
     then:
+      # Acotado a los equipos de ESTA luz: el tópico es global, así que sin
+      # filtrar un solo bind fallido avisaría una vez por automatización.
+      - variables:
+          mios: >-
+            {% set ns = namespace(l=[device_attr(luz, 'name') or '']) %}
+            {% for b in botones %}
+              {% set ns.l = ns.l + [device_attr(b, 'name') or ''] %}
+            {% endfor %}
+            {{ ns.l | reject('eq', '') | list }}
+      - condition: template
+        value_template: >-
+          {{ mios | select('in', trigger.payload) | list | count > 0 }}
       - service: persistent_notification.create
         data:
           title: 3-way - z2m rechazó el bind
@@ -210,31 +222,20 @@ action:
           {{ crear_binding and (es_manual or trigger.id == 'bindear') }}
     then:
       - variables:
-          # IEEE en vez de nombre: el nombre lo cambia el instalador, el IEEE no
-          # cambia ni con un factory reset. z2m igual muestra nombres en la
-          # pestaña Vincular, así que no se pierde nada al revisarlo.
-          # Por NOMBRE y no por IEEE: z2m respondió "Source device
-          # '0xa4c138.../1' does not exist" a una dirección bien formada, y sus
-          # propios ejemplos de bind usan nombres. El nombre del dispositivo en
-          # HA es el friendly_name que puso z2m, así que coinciden; y se
-          # resuelve en cada corrida, con lo cual un renombrado posterior no
-          # deja el binding sin recrear.
+          # El nombre del dispositivo en HA es el friendly_name que publicó
+          # z2m, así que coinciden. Se resuelve en cada corrida: si mañana
+          # renombran el switch, el binding se sigue recreando bien.
           nombre_luz: "{{ device_attr(luz, 'name') or '' }}"
-          ieee_luz: >-
-            {{ (device_attr(luz, 'identifiers') | list | first | last | default('', true))
-               | regex_findall('(0x[0-9a-fA-F]{16})') | first | default('', true) }}
-          # Por NÚMERO, no por nombre: z2m rechaza el nombre de endpoint en
-          # el pedido de bind ("Source device '0x.../button_1' does not
-          # exist"), aunque la interfaz sí los muestre.
+
+          # Cuántos gangs tiene el equipo, CONTANDO sus relés en vez de leerlo
+          # de un nombre de modelo: Home Assistant guarda en "model" la
+          # descripción del converter, no su model, y ese texto no tiene
+          # formato garantizado. Las entidades sí son un dato duro -- un equipo
+          # con l1/l2/l3 tiene tres gangs.
           #
-          # El número depende del modelo: los endpoints son 1..N para los
-          # botones y N+1..2N para los relés, así que en el 1-gang l1 es el 2 y
-          # en el 3-gang es el 4. N sale del propio modelo (DS-ZB-00N-v2).
-          # Se CUENTAN los relés del equipo en vez de leer el número de un
-          # nombre de modelo. Ya fallamos dos veces con eso: HA guarda en
-          # "model" la descripción del converter, no su model, y nada obliga a
-          # que ese texto tenga un formato estable. Las entidades sí son un
-          # dato duro: un equipo con l1/l2/l3 tiene tres gangs, punto.
+          # Hace falta porque el endpoint del relé depende del modelo: los
+          # endpoints son 1..N para botones y N+1..2N para relés, así que l1 es
+          # el 2 en un 1-gang y el 4 en un 3-gang.
           gangs_luz: >-
             {% set ns = namespace(v=[]) %}
             {% for e in device_entities(device_id(luz)) %}
@@ -264,38 +265,15 @@ action:
             {% endif %}
             {{ ns.l }}
 
-      # Una corrida manual es alguien probando: que vea qué resolvió, aunque
-      # haya salido bien. Fallar callado es lo que nos costó una vuelta entera.
-      - if:
-          - condition: template
-            value_template: "{{ es_manual }}"
-        then:
-          - service: persistent_notification.create
-            data:
-              title: 3-way - binding
-              message: >-
-                blueprint v9 (from_endpoint/to_endpoint separados)
-
-                luz: {{ luz }}
-
-                luz nombre: "{{ nombre_luz }}" | IEEE: "{{ ieee_luz }}"
-
-                gangs: {{ gangs_luz }} | luz nro: {{ idx_luz }} | endpoint: {{ ep_luz }}
-
-                teclas: {{ botones | count }} | a bindear: {{ pares | count }}
-
-                {{ pares }}
-
       - condition: template
         value_template: "{{ pares | count > 0 }}"
 
       - repeat:
           for_each: "{{ pares }}"
           sequence:
-            # Campos SEPARADOS para los endpoints, no "nombre/1" pegado: ese
-            # era el bug. Con el sufijo, z2m busca un dispositivo llamado
-            # literalmente "Otros 3way pasillo lavanderia/1" y responde que no
-            # existe -- que es exactamente lo que venía diciendo el error.
+            # Los endpoints van en SUS PROPIOS campos. Pegarlos al nombre
+            # con una barra hace que z2m busque un dispositivo llamado
+            # "Pasillo/1" y responda que no existe.
             - service: mqtt.publish
               data:
                 topic: zigbee2mqtt/bridge/request/device/bind
