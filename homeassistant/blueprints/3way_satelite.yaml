@@ -1,0 +1,108 @@
+blueprint:
+  name: 3-way — satélite
+  description: >-
+    Un botón de pared que maneja una luz que vive en otro lado, y cuyo LED
+    refleja el estado de esa luz.
+
+    Crear una automatización por cada botón satélite. La luz principal puede ser
+    un relé Zigbee o una luz WiFi: da igual, siempre se comanda desde Home
+    Assistant.
+
+    REQUISITO previo, una sola vez por satélite: poner el role de ese botón en
+    "three_way" (control "Button N role" en z2m). Eso desacopla la tecla de su
+    relé y deja el LED en manos de Home Assistant. Sin eso, el firmware ata el
+    LED a su propio relé y pisa lo que escriba esta automatización.
+  domain: automation
+  input:
+    luz_principal:
+      name: Luz principal
+      description: La luz que se prende y apaga de verdad.
+      selector:
+        entity:
+          domain: [light, switch]
+    boton:
+      name: Botón del satélite
+      description: El sensor "press action" del botón que se aprieta.
+      selector:
+        entity:
+          domain: [sensor]
+    led:
+      name: LED del satélite
+      description: >-
+        El "indicator" del relé que está al lado de ese botón (button_1 -> l1,
+        button_2 -> l2, button_3 -> l3).
+      selector:
+        entity:
+          domain: [switch]
+    backstop:
+      name: Reintento periódico
+      description: >-
+        Cada cuánto se reescribe el LED aunque nada haya cambiado. Es la red de
+        seguridad para un mensaje que se perdió: sin esto, un LED que quedó mal
+        se queda mal para siempre.
+      default: "/5"
+      selector:
+        select:
+          options:
+            - label: cada minuto
+              value: "/1"
+            - label: cada 5 minutos
+              value: "/5"
+            - label: cada 15 minutos
+              value: "/15"
+            - label: cada 30 minutos
+              value: "/30"
+
+# queued: dos apretones seguidos se procesan en orden en vez de descartarse.
+mode: queued
+max: 10
+
+variables:
+  luz: !input luz_principal
+
+trigger:
+  # "press" lo emite un pulsador momentáneo; "position_on"/"position_off" los
+  # emite una tecla de posición mantenida, donde subirla y bajarla son dos
+  # acciones distintas del usuario. "released" NO está: es el final de un
+  # apretón, no un apretón nuevo.
+  - platform: state
+    entity_id: !input boton
+    to: ["press", "position_on", "position_off"]
+    id: apreton
+
+  - platform: state
+    entity_id: !input luz_principal
+    to: ["on", "off"]
+    id: sincronizar
+
+  - platform: time_pattern
+    minutes: !input backstop
+    id: sincronizar
+
+  - platform: homeassistant
+    event: start
+    id: sincronizar
+
+action:
+  - choose:
+      # El botón no decide el valor: le pide a HA que invierta el estado real de
+      # la luz principal. Si el LED de este satélite quedó viejo, el apretón sale
+      # bien igual — por eso manda un apretón y no un ON/OFF calculado acá.
+      - conditions:
+          - condition: trigger
+            id: apreton
+        sequence:
+          - service: homeassistant.toggle
+            target:
+              entity_id: !input luz_principal
+
+      # El LED sigue a la luz principal, sin importar quién la cambió: este
+      # botón, otro satélite, la app, o una automatización.
+      - conditions:
+          - condition: trigger
+            id: sincronizar
+        sequence:
+          - service: >-
+              {{ 'switch.turn_on' if is_state(luz, 'on') else 'switch.turn_off' }}
+            target:
+              entity_id: !input led
