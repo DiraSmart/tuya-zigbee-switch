@@ -172,16 +172,20 @@ action:
             target:
               entity_id: "{{ leds }}"
 
-      # Binding directo, solo si se pidió. Se reescribe sin preguntar: z2m no
-      # sabe si el equipo todavía lo tiene (su pestaña Vincular muestra su
-      # propia base, no el equipo), y bindear algo ya bindeado no hace daño.
-      # Por eso no se verifica antes, se reescribe y listo.
-      - conditions:
-          - condition: trigger
-            id: bindear
-          - condition: template
-            value_template: "{{ crear_binding }}"
-        sequence:
+  # Binding directo, FUERA del choose a propósito: así una corrida manual
+  # ("Ejecutar") también lo aplica. Probar una automatización es ejecutarla a
+  # mano, y en una corrida manual `trigger` no existe, así que ninguna rama del
+  # choose matchea y no pasaba nada.
+  #
+  # Se reescribe sin preguntar: z2m no sabe si el equipo todavía lo tiene (su
+  # pestaña Vincular muestra su propia base, no el equipo), y bindear algo ya
+  # bindeado no hace daño.
+  - if:
+      - condition: template
+        value_template: "{{ crear_binding }}"
+      - condition: template
+        value_template: "{{ trigger is not defined or trigger.id | default('') == 'bindear' }}"
+    then:
           - variables:
               # IEEE en vez de nombre: el nombre lo cambia el instalador, el
               # IEEE no cambia ni con un factory reset. z2m igual muestra
@@ -197,8 +201,21 @@ action:
                 {{ luz | regex_findall('_(l\d+)') | last | default('', true) }}
 
           # Luz WiFi, o algo que no es un relé Zigbee: no hay a qué bindear.
-          - condition: template
-            value_template: "{{ ieee_luz != '' and ep_luz != '' }}"
+          # Si el usuario PIDIÓ binding y no se puede, se avisa: fallar callado
+          # deja a alguien esperando una mejora que nunca ocurrió.
+          - if:
+              - condition: template
+                value_template: "{{ ieee_luz == '' or ep_luz == '' }}"
+            then:
+              - service: persistent_notification.create
+                data:
+                  title: 3-way - no se pudo bindear
+                  message: >-
+                    No se pudo resolver {{ luz }} como relé Zigbee
+                    (IEEE: "{{ ieee_luz }}", endpoint: "{{ ep_luz }}").
+                    Si es una luz WiFi es normal: desactivá el binding en esta
+                    automatización. Si es Zigbee, avisá con estos dos valores.
+              - stop: "Luz no bindeable"
 
           - repeat:
               for_each: "{{ botones }}"
@@ -210,18 +227,22 @@ action:
                     ep_btn: >-
                       {{ repeat.item | regex_findall('_(button_\d+)') | first | default('', true) }}
 
-                - condition: template
-                  value_template: >-
-                    {{ ieee_btn != '' and ep_btn != '' and ieee_btn != ieee_luz }}
+                # if y no condition: dentro de un repeat, una condición que
+                # falla aborta el BUCLE ENTERO, así que un botón que no se
+                # puede resolver dejaría sin bindear a los que vienen después.
+                - if:
+                    - condition: template
+                      value_template: >-
+                        {{ ieee_btn != '' and ep_btn != '' and ieee_btn != ieee_luz }}
+                  then:
+                    - service: mqtt.publish
+                      data:
+                        topic: zigbee2mqtt/bridge/request/device/bind
+                        payload: >-
+                          {{ {'from': ieee_btn ~ '/' ~ ep_btn,
+                              'to':   ieee_luz ~ '/' ~ ep_luz,
+                              'clusters': ['genOnOff']} | to_json }}
 
-                - service: mqtt.publish
-                  data:
-                    topic: zigbee2mqtt/bridge/request/device/bind
-                    payload: >-
-                      {{ {'from': ieee_btn ~ '/' ~ ep_btn,
-                          'to':   ieee_luz ~ '/' ~ ep_luz,
-                          'clusters': ['genOnOff']} | to_json }}
-
-                # Espaciado: con varias luces configuradas, todas re-bindean en
-                # el mismo arranque de HA y conviene no disparar todo junto.
-                - delay: "00:00:02"
+                    # Espaciado: con varias luces configuradas, todas re-bindean
+                    # en el mismo arranque de HA; conviene no disparar junto.
+                    - delay: "00:00:02"
