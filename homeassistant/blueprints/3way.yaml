@@ -114,6 +114,13 @@ trigger:
     hours: "/6"
     id: bindear
 
+  # La respuesta de z2m a cada bind. Sin esto solo sabíamos lo que mandamos,
+  # no lo que pasó con el pedido: un bind rechazado se veía igual que uno que
+  # funcionó, salvo yendo a mirar el log de z2m a mano.
+  - platform: mqtt
+    topic: zigbee2mqtt/bridge/response/device/bind
+    id: bind_respuesta
+
 action:
   - choose:
       # La tecla no decide el valor: le pide a HA que invierta el estado REAL de
@@ -176,6 +183,20 @@ action:
   # ("Ejecutar") también lo aplica. Probar una automatización es ejecutarla a
   # mano, y en una corrida manual no hay trigger, así que ninguna rama del
   # choose matchea y no pasaría nada.
+  # Un bind que falla tiene que decirlo. Solo cuando falla: si sale bien no
+  # hace falta enterarse cada seis horas.
+  - if:
+      - condition: template
+        value_template: >-
+          {{ trigger.id | default('') == 'bind_respuesta'
+             and (trigger.payload_json.status | default('')) != 'ok' }}
+    then:
+      - service: persistent_notification.create
+        data:
+          title: 3-way - z2m rechazó el bind
+          message: "{{ trigger.payload }}"
+      - stop: "Respuesta de bind reportada"
+
   - variables:
       # Tres formas, porque Home Assistant no es consistente entre versiones:
       # en una corrida manual `trigger` puede no existir, existir en None, o
@@ -247,7 +268,7 @@ action:
             data:
               title: 3-way - binding
               message: >-
-                blueprint v6 (cuenta relés)
+                blueprint v7 (escucha la respuesta de z2m)
 
                 luz: {{ luz }}
 
