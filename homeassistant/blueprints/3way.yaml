@@ -52,21 +52,6 @@ max: 10
 variables:
   luz: !input luz_principal
   botones: !input botones
-  # El LED de cada tecla vive en el relé emparejado, en el MISMO equipo:
-  # button_2 -> l2_indicator. Se deduce en vez de pedirlo porque es mecánico y
-  # elegirlo a mano, cuarenta veces, es donde se cuelan los errores.
-  leds: >-
-    {% set ns = namespace(l=[]) %}
-    {% for b in botones %}
-      {% set n = b | regex_findall('button_(\d+)') | first | default('', true) %}
-      {% if n %}
-        {% set hit = device_entities(device_id(b))
-                     | select('search', '_l' ~ n ~ '_indicator')
-                     | list %}
-        {% if hit %}{% set ns.l = ns.l + [hit[0]] %}{% endif %}
-      {% endif %}
-    {% endfor %}
-    {{ ns.l }}
 
 trigger:
   # "press" lo emite un pulsador momentáneo; "position_on"/"position_off" una
@@ -108,6 +93,34 @@ action:
           - condition: trigger
             id: sincronizar
         sequence:
+          # Se calcula ACÁ y no en el bloque variables de arriba a propósito:
+          # ese se evalúa en cada ejecución, así que un fallo deducindo LEDs
+          # abortaba también el camino del apretón y la luz no se prendía. Un
+          # LED que no se encuentra no debe poder romper el encendido.
+          - variables:
+              # El LED de cada tecla vive en el relé emparejado, en el MISMO
+              # equipo: button_2 -> l2_indicator. Se deduce en vez de pedirlo
+              # porque es mecánico, y elegirlo a mano cuarenta veces es donde
+              # se cuelan los errores.
+              leds: >-
+                {% set ns = namespace(l=[]) %}
+                {% for b in botones %}
+                  {% set d = device_id(b) %}
+                  {% if d %}
+                    {% set n = b | regex_findall('button_(\d+)') | first | default('', true) %}
+                    {% if n %}
+                      {% set hit = device_entities(d)
+                                   | select('search', '_l' ~ n ~ '_indicator')
+                                   | list %}
+                      {% if hit %}{% set ns.l = ns.l + [hit[0]] %}{% endif %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+                {{ ns.l }}
+
+          - condition: template
+            value_template: "{{ leds | count > 0 }}"
+
           - service: >-
               {{ 'switch.turn_on' if is_state(luz, 'on') else 'switch.turn_off' }}
             target:
