@@ -195,21 +195,32 @@ action:
           ieee_luz: >-
             {{ (device_attr(luz, 'identifiers') | list | first | last | default('', true))
                | regex_findall('(0x[0-9a-fA-F]{16})') | first | default('', true) }}
-          # Endpoint por NOMBRE (l1/l2/l3) y no por número: el número cambia
-          # según el modelo -- l1 es el endpoint 2 en el 1-gang y el 4 en el
-          # 3-gang -- mientras que el nombre es el mismo en todos.
-          ep_luz: >-
-            {{ luz | regex_findall('_(l\d+)') | last | default('', true) }}
+          # Por NÚMERO, no por nombre: z2m rechaza el nombre de endpoint en
+          # el pedido de bind ("Source device '0x.../button_1' does not
+          # exist"), aunque la interfaz sí los muestre.
+          #
+          # El número depende del modelo: los endpoints son 1..N para los
+          # botones y N+1..2N para los relés, así que en el 1-gang l1 es el 2 y
+          # en el 3-gang es el 4. N sale del propio modelo (DS-ZB-00N-v2).
+          gangs_luz: >-
+            {{ (device_attr(luz, 'model') or '')
+               | regex_findall('DS-ZB-0*(\d+)') | first | default(0, true) | int }}
+          idx_luz: >-
+            {{ luz | regex_findall('_l(\d+)') | last | default(0, true) | int }}
 
       - variables:
+          # Endpoint del relé = cantidad de gangs + número de la luz.
+          ep_luz: >-
+            {{ (gangs_luz | int + idx_luz | int) if (gangs_luz | int > 0 and idx_luz | int > 0) else 0 }}
           pares: >-
             {% set ns = namespace(l=[]) %}
-            {% if ieee_luz and ep_luz %}
+            {% if ieee_luz and gangs_luz | int > 0 and idx_luz | int > 0 %}
               {% for b in botones %}
                 {% set ie = (device_attr(b, 'identifiers') | list | first | last | default('', true))
                             | regex_findall('(0x[0-9a-fA-F]{16})') | first | default('', true) %}
-                {% set ep = b | regex_findall('_(button_\d+)') | first | default('', true) %}
-                {% if ie and ep and ie != ieee_luz %}
+                {# El botón sí es directo: button_2 es el endpoint 2. #}
+                {% set ep = b | regex_findall('_button_(\d+)') | first | default(0, true) | int %}
+                {% if ie and ep > 0 and ie != ieee_luz %}
                   {% set ns.l = ns.l + [ie ~ '/' ~ ep] %}
                 {% endif %}
               {% endfor %}
@@ -228,7 +239,9 @@ action:
               message: >-
                 luz: {{ luz }}
 
-                IEEE luz: "{{ ieee_luz }}" | endpoint: "{{ ep_luz }}"
+                IEEE luz: "{{ ieee_luz }}" | modelo: {{ device_attr(luz,'model') }}
+
+                gangs: {{ gangs_luz }} | luz nro: {{ idx_luz }} | endpoint: {{ ep_luz }}
 
                 teclas: {{ botones | count }} | a bindear: {{ pares | count }}
 
